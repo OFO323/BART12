@@ -1,54 +1,77 @@
-const knex = require('./Connection');
+import sqlite3 from 'sqlite3';
+import Data from '../Connection/Connection.js'
 
-exports.allInfo = async(req, res)=>{
-    //res.json("DATABASE CONNECTION WAS SUCCESSFUL TO ALL");
+//QUERY THAT RETURN ALL TUPLES OF A TABLE
+export const All = (req, res)=>{
+Data.all("SELECT * FROM greetings", (err, row)=>{
+    if(err)
+        console.log(err);
+    else    
+        console.log(row);
+        res.send(row);
+})
+}
 
-    knex.select('*')
-        .from('Classes')
-        .then(userData =>{
-            res.json(userData);
-        })
-        .catch((err) =>{
-             res.json("THERE WAS AN ERROR RETRIEVING ALL DATA");
-            })
+//A FILTER SEARCH FUCNTION
+export const firstFilter = (req, res) =>{
+Data.serialize( ()=>{
+    
+    Data.all("SELECT * FROM Classes WHERE c_bore >= ?", [req.params.bore], (err, row)=>{
+        if(err)
+            console.log(err)
+        else
+            console.log(row);
+            res.send(row);
+            
+    })
+})
+}
+
+//CREATES NEW ENTRIES
+export const create = (req, res)=>{
+
+Data.serialize(()=>{
+    Data.run("INSERT INTO greetings(message) VALUES (?)", [req.params.message], (err, row)=>{
+        if(err)
+            console.log(err);
+        else
+            console.log(JSON.stringify(row));
+            res.send(row);
+    })
+})
 };
 
-exports.createEntry = async(req, res)=>{
-    //res.json("CREATE ENTRY FUNCTION REACHED")
 
-    knex('Classes')
-        .insert({
-            'c_class': req.body.c_class,
-            'c_type': req.body.c_type,
-            'c_country': req.body.c_country,
-            'c_numGuns': req.body.c_numGuns,
-            'c_bore': req.body.c_bore,
-            'c_displacement': req.body.c_displacement
-        })
-        .then (() =>{
-            res.json({message: "Class" + req.body.c_class + " of type" + req.body.c_type + " from" + req.body.c_country + " and the quantitiy: " + req.body.c_numGuns + " with bore Size" + req.body.c_bore + " finally a displacemnt" + req.body.c_displacement + "added."});
-        })
-        .catch(err => res.json({message: "THERE WAS AN ERROR CREATING AN ENTRY"}))
-}
+//MAKES UPDATES TO TUPLES THAT SATISFY THE CONDITION
+export const update = (req, res)=>{
+Data.serialize(()=>{
+    Data.run("UPDATE greetings SET message = ? WHERE message = ?", [req.params.newmessage , req.params.oldmessage], (err, row)=>{
+        if(err)
+            console.log(err)
+        else
+            console.log(row);
+            res.send(row);
+        
+    })
+})
+};
 
-exports.deleteEntry = async(req,res)=>{
-    //res.json("DELETE ENTRY FUNCTION REACHED")
+//REMOVES THE TUPLES THAT SATISFY THE CONDITION
+export const remove = (req, res)=>{
 
-    knex('Classes')
-        .where('c_class', req.body.c_class)
-        .del()
-        .then(() => res.json({message: "SHIP " + req.body.c_class + " DELETED."}))
-        .catch(err=> res.json({message: "THERE WAS AN ERROR DELETING AN ENTRY"}))
+    const {message} = req.body;
 
-}
+Data.serialize(()=>{
+    Data.run("DELETE FROM greetings WHERE message LIKE (?)", [req.params.message], (err, row)=>{
+        if(err)
+            console.log(err);
+        else
+            console.log(row)
+            res.send(row);
 
-exports.deleteAll  = async(req, res)=>{
-    //res.json("DELETE ALL FUNCTION REACHED")
+    })
+})
+};
 
-    knex
-        .select('*')
-        .from('Classes')
-        .truncate()
-        .then((()=> res.json({message: "ALL SHIPS HAVE BEEN DELETED"})))
-        .catch(err=>({message: "THERE WAS A PROBLEM DELETING EVERYTHING"}))
-}
+export default Data;
+

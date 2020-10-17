@@ -1,36 +1,27 @@
-const express = require('express')
+import express from 'express';
+import bodyParser from 'body-parser';
+import Routes from './router.js';
+import cors from 'cors';
 
-const bodyParser = require('body-parser')
-const compression = require('compression')
-const cors = require('cors')
-const helmet = require('helmet')
+//EXPRESS LETS US CREATE A SERVER
+let app = express();
 
-const classRouter = require('./router');
+//USING THE ROUTER FUNTION TO INTIALIZE THAT WE WILL HAVE DIFFENT TYPES OF REQUESTS
+let router = express.Router();
 
-const PORT = 4002
-
-const app = express();
-
-app.use(cors());
-app.use(helmet());
-app.use(compression());
-app.use(bodyParser.urlencoded({extended: false}));
+//THIS IS THE MIDDLE WHERE THAT WILL HELP US DISPLAY THE INFORMATION
 app.use(bodyParser.json());
+app.use(cors());
+
+//INITIALIZE WHAT THE DEFAULT ROUTE WILL BE
+app.use('/', Routes);
+app.get('/', (req, res, next)=> res.send("WHATS UP"));
 
 
-
-app.use('/Class', classRouter);
-
-app.use((err, req, res, next)=>{
-     console.log(err);
-     res.status(500).send("SORRY WE COULD NOT FIND THAT");
-})
-
-app.use((req, res, next)=>{
-    res.status(404).send("OOPS WE COULD NOT FIND THAT");
-})
-
-
-app.listen(PORT, ()=>{
-    console.log("SERVER IS RUNNING ON: " + PORT);
+//ADDING A LISTENER WILL GIVE THE APP AN ADDRESS WE CAN GO TO
+app.listen(4005, (err)=>{
+    if(err)
+        console.log(err)
+    else
+        console.log("Server running")
 });

@@ -1,19 +1,12 @@
-const path = require('path');
+import sqlite3 from 'sqlite3';
 
-const dbPath = path.resolve(__dirname, './database3.db');
+//OPENNING CONNECTION TO THE DATABASE
+let Data = new sqlite3.Database('./database2.db', sqlite3.OPEN_READWRITE, (err)=>{
+    if(err)
+        console.log(err);
+    else
+        console.log("Success");
+});
 
-const knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-        filename: dbPath,
-    },
-    useNullAsDefault: true,
-})
 
-knex
-    .select("*")
-    .from("Classes")
-    .then(data => console.log("data: ", data))
-    .catch(err => console.log(err))
-
-module.exports = knex;
+export default Data;
