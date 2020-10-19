@@ -1,13 +1,23 @@
-const express = require("express");
+import express from 'express';
+import {All, firstFilter, create, update, remove} from './routes';
+import sqlite3 from 'sqlite3';
 
-const Routes = require('./routes');
-const router = express.Router();
+//EXPRESS HAS A ROUTER OBJECT THAT LETS US CREATE ROUTES FOR THE DIFFERENT REQUESTS
+const routes = express.Router();
 
-//Write out all possible routes
+//ROUTES TO THE DIFFERENT FUCNTIONS DEPENDING ON REQUEST
+routes.get('/', All);
 
-router.get('/all', Routes.allInfo);
-router.post('/create', Routes.createEntry);
-router.put('/delete', Routes.deleteEntry);
-router.put('/deleteAll', Routes.deleteAll);
+routes.post('/', create);
 
-module.exports = router;
+routes.get('/:bore', firstFilter);
+
+routes.delete('/:message', remove);
+
+
+
+routes.patch('/:oldmessage/:newmessage', update)
+
+
+
+export default routes;
