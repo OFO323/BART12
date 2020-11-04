@@ -129,6 +129,7 @@ INSERT INTO Department(dep_Num, dep_Name) VALUES (0802845, 'Civil/Structural Eng
 INSERT INTO Department(dep_Num, dep_Name) VALUES (0802820, 'Systems Engineering');
 
 --TABLE : Project Managers
+--need to search data for other reports where each project managers is involved to find other useful needed attributes for this table 
 CREATE TABLE projectManagers(d_Num BOOLEAN NOT NULL, name CHAR NOT NULL);
 INSERT INTO projectManagers(d_Num, name) VALUES (0802847, 'Fields,Bryant');
 INSERT INTO projectManagers(d_Num, name) VALUES (0802881, 'Sims,Steven M');
@@ -137,7 +138,6 @@ INSERT INTO projectManagers(d_Num, name) VALUES (0802845, 'Wu,Victor W');
 INSERT INTO projectManagers(d_Num, name) VALUES (0802820, 'Dietrich,Steven D');
 
 -- TABLE : Projects
-
 CREATE TABLE Projects(name CHAR NOT NULL, id_num BOOLEAN NOT NULL, manager CHAR NOT NULL, dept_ID BOOLEAN NOT NULL, progress CHAR NOT NULL);
 
 
