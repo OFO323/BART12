@@ -98,7 +98,7 @@ INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17025343, 'TP-Maintenance DAY: Replacing Parking Lot Lighting at A60', 'INPRG', 44011, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17025343, 'TP-Maintenance DAY: Replacing Parking Lot Lighting at A60', 'INPRG', 44011, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17025343, 'TP-Maintenance DAY: Replacing Parking Lot Lighting at A60', 'INPRG', 44011, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
-INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17258130, 'TP-Maintenance GRAVE: Replacing Parking Lot Lighting at A60', 'WSCHED', 44069, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
+INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17258130, 'TP-MaintenanceÂ GRAVE:Â ReplacingÂ ParkingÂ LotÂ LightingÂ atÂ A60', 'WSCHED', 44069, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17208607, 'A60-TP-Maintenance SWING: Concourse, Platform Level Lighting Replacement at A60', 'COMP', 44056, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17208607, 'A60-TP-Maintenance SWING: Concourse, Platform Level Lighting Replacement at A60', 'COMP', 44056, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17208607, 'A60-TP-Maintenance SWING: Concourse, Platform Level Lighting Replacement at A60', 'COMP', 44056, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
@@ -119,6 +119,23 @@ INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 16621791, 'TP-Cons: A-Line Third Rail Replacement Phase 3-(15ELRR3)', 'WSCHED', 43916, 'A-LINE', 'PRJ', 1000003069, '54RR004', 'M&E Line Rail EQP', 'FDSTR', 'FD-Third Rail Replacement');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 16621791, 'TP-Cons: A-Line Third Rail Replacement Phase 3-(15ELRR3)', 'WSCHED', 43916, 'A-LINE', 'PRJ', 1000003069, '54RR004', 'M&E Line Rail EQP', 'FDSTR', 'FD-Third Rail Replacement');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 16621791, 'TP-Cons: A-Line Third Rail Replacement Phase 3-(15ELRR3)', 'WSCHED', 43916, 'A-LINE', 'PRJ', 1000003069, '54RR004', 'M&E Line Rail EQP', 'FDSTR', 'FD-Third Rail Replacement');
+
+-- TABLE : Department
+CREATE TABLE Department(dep_Num BOOLEAN NOT NULL, dep_Name CHAR NOT NULL);
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802847, 'Operating & Capital Programs');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802881, 'Power & Mechanical Engineering');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802856, 'Integration Engineering');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802845, 'Civil/Structural Eng & Constru');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802820, 'Systems Engineering');
+
+--TABLE : Project Managers
+CREATE TABLE projectManagers(d_Num BOOLEAN NOT NULL, name CHAR NOT NULL);
+INSERT INTO projectManagers(d_Num, name) VALUES (0802847, 'Fields,Bryant');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802881, 'Sims,Steven M');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802856, 'Small,Kathy U');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802845, 'Wu,Victor W');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802820, 'Dietrich,Steven D');
+
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
