@@ -67,7 +67,7 @@ export const remove = (req, res)=>{
 
 
 Data.serialize(()=>{
-    Data.each("DELETE FROM greetings WHERE message LIKE (?)", [req.params.message], (err, row)=>{
+    Data.each("DELETE FROM Workorders WHERE w_projectid LIKE (?) AND w_WOnum = ?", [req.params.projectid, req.params.wo_num], (err, row)=>{
         if(err)
             console.log(err);
         else
