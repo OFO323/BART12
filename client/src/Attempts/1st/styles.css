@@ -1,0 +1,51 @@
+.body {
+  align-items: stretch;
+  word-spacing: 10px;
+  text-align: left;
+  padding: 5px;
+  justify-content: space-around;
+  kerning: 1px;
+}
+
+.listTitle {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  justify-content: center;
+  display: table;
+
+  /*Spacing between each tuple*/
+  width: 100%;
+  align-content: stretch;
+  grid: 100%;
+  grid-area: 100%;
+  flex: 50%;
+  flex-wrap: wrap;
+  empty-cells: show;
+  border: 3px solid black;
+  border-collapse: collapse;
+  color: blue;
+}
+
+.listContent {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  justify-content: center;
+  display: table;
+  text-align: center;
+
+  /*Spacing between each tuple*/
+  width: 100%;
+  align-content: stretch;
+  grid: 100%;
+
+  flex: 50%;
+  flex-wrap: wrap;
+  empty-cells: show;
+  border: 3px solid black;
+  border-collapse: collapse;
+  color: black;
+}
+
+.navItem {
+  align-items: center;
+}
