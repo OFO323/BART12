@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from 'axios';
 
 class CreateWO extends Component{
     constructor(props){
@@ -31,21 +32,48 @@ class CreateWO extends Component{
 
     onSubmit(){
         console.log("SUCCESSFULLY SUBMITTED FORM")
+        console.log(`WO ProjId: ${this.state.w_projectid}`)
+        console.log(`WO WOnum: ${this.state.w_WOnum}`)
+        console.log(`WO-desc: ${this.state.w_desc}`)
 
-        this.setState({
-            w_projectid : '',
-            w_WOnum: 0,
-            w_desc: '',
-            w_status: '',
-            w_reporteddate: '',
-            w_location: '',
-            w_type: '',
-            w_TPID: '',
-            w_PSProject: '',
-            w_PSProjDesc: '',
-            w_PSActivity: '',
-            w_PSActDesc: ''
-        })
+        const newWorkorder = {
+           "w_projectid" : this.state.w_projectid,
+           "w_WOnum": this.state.w_WOnum,
+           "w_desc": this.state.w_desc,
+           "w_status": this.state.w_status,
+           "w_reporteddate": this.state.w_reporteddate,
+           "w_location": this.state.w_location,
+           "w_type": this.state.w_type,
+           "w_TPID": this.state.w_TPID,
+           "w_PSProject": this.state.w_PSProject,
+           "w_PSProjDesc": this.state.w_PSProjDesc,
+           "w_PSActivity": this.state.w_PSActivity,
+           "w_PSActDesc": this.state.w_PSActDesc
+        }
+
+        axios.post('http://localhost:4006/create', newWorkorder)
+            .then(res => console.log(res.data))
+
+        if(this.state.w_WOnum == 10){
+            this.props.history.push('/alertMessage'); 
+        }
+
+            this.setState({
+               'w_projectid' : '',
+               'w_WOnum': 0,
+               'w_desc': '',
+               'w_status': '',
+               'w_reporteddate': '',
+               'w_location': '',
+               'w_type': '',
+               'w_TPID': '',
+               'w_PSProject': '',
+               'w_PSProjDesc': '',
+               'w_PSActivity': '',
+               'w_PSActDesc': ''
+            })
+
+           
     }
 
     render(){

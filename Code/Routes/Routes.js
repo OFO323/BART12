@@ -15,6 +15,8 @@ routes.post('/:message', create);
 
 routes.get('/:bore', firstFilter);
 
+routes.get('/Assets/:Anum', AssetNum);
+
 routes.delete('/:message', remove);
 
     

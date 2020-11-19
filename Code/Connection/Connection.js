@@ -36,6 +36,21 @@ Data.serialize( ()=>{
 })
 }
 
+export const AssetNum = (req, res)=>{
+    //console.log("Entered");
+    //console.log(req.params)
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE ?", [req.params.Anum], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                //console.log(JSON.stringify(row))
+                res.send(row)
+
+        })
+    })
+}
+
 export const create = (req, res)=>{
 
     console.log(req.body);
