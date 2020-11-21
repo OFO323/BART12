@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-
-
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Workorder from './WorkOrder.js';
 class WorkOrders extends Component{
     constructor(props){
         super(props);
         this.state = {
-            workorders : []
+            workorders: []
         }
+     //   this.onClick = this.onClick.bind(this)
     }
 
     componentDidMount(){
@@ -19,45 +21,46 @@ class WorkOrders extends Component{
         .then(workorders => this.setState({workorders}))
     }
 
+    // onClick(data){
+
+    //     console.log(data);
+    // //     axios.get(`http://localhost:4006/Workorders/${data}`, (err, res)=>{
+    // //         if(err){
+    // //             console.log(err);
+    // //         }
+    // //         else{
+    // //             console.log(res);
+    // //         }
+    // //     })
+
+    // }
+
     render(){
         const {workorders} = this.state
+        console.log(workorders);
         return(
             <div>
-                <table>
-                    <table>
-                        <tr>
-                            <th>Project Id</th>
-                            <th>Workorder Number</th>
-                            <th>Workorder Description</th>
-                            <th>Status</th>
-                            <th>Report Date</th>
-                            <th>Workorder Location</th>
-                            <th>Workorder type</th>
-                            <th>TPID</th>
-                            <th>PSPProject</th>
-                            <th>PS Project Description</th>
-                            <th>PS Activity</th>
-                            <th>PS Action Desctiption</th>
-                        </tr>
-                    </table>
-                    <table>
+                <table className = "WOtable">
+                        <thead className = "WOtitles">
+                            <tr>
+                            <th scope = "col">Project Id</th>
+                            <th scope = "col">Workorder Number</th>
+                            <th scope = "col">Workorder Description</th>
+                            <th scope = "col">Status</th>
+                            <th scope = "col">Report Date</th>
+                            <th scope = "col">Workorder Location</th>
+                            <th scope = "col">Workorder type</th>
+                            </tr>
+                        </thead>
+                    <tbody>
                         {workorders.length ? (
                             <div>
                                 {workorders.map ((item)=>{
                                     return(
-                                    <tr>
-                                        <td>{item.w_projectid}</td>
-                                        <td>{item.w_WOnum}</td>
-                                        <td>{item.w_desc}</td>
-                                        <td>{item.w_status}</td>
-                                        <td>{item.w_reporteddate}</td>
-                                        <td>{item.w_location}</td>
-                                        <td>{item.w_type}</td>
-                                        <td>{item.w_TPID}</td>
-                                        <td>{item.w_PSProject}</td>
-                                        <td>{item.w_PSProjDesc}</td>
-                                        <td>{item.w_PSActivity}</td>
-                                        <td>{item.w_PSActDesc}</td>
+                                    <tr className = "Workorder">
+                                        
+                                        <Workorder  w_projectid = {item.w_projectid} w_WOnum = {item.w_WOnum} w_desc = {item.w_desc}  w_status = {item.w_status} w_reportdate = {item.w_reportdate} w_location = {item.w_location} w_type = {item.w_type} w_TPID = {item.w_TPID} w_PSProject = {item.w_PSProject} w_PSProjDesc = {item.w_PSProjDesc} w_PSActivity = {item.w_PSActivity} w_PSActDesc = {item.w_PSActDesc}/>
+                                        
                                     </tr>
                                     )
                                 })}
@@ -67,7 +70,7 @@ class WorkOrders extends Component{
                                 Loading ...
                             </div>
                         )}
-                    </table>
+                    </tbody>
                 </table>
             </div>
         )

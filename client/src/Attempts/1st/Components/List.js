@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles.css';
+import ARow from './AssetRow.js'
 class Assets extends Component{
     constructor(props){
         super(props);
@@ -43,12 +45,11 @@ class Assets extends Component{
                     {list.map ((item)=> {
                       return (
                         <tr>
-                          <td>{item.a_projectid}</td>
-                          <td>{item.a_dept} </td>
-                          <td>{item.a_metername} </td>
-                          <td>{item.a_meterdesc} </td>
-                          <td>{item.a_meterreading} </td>
-                          <td>{item.a_readdate} </td>
+                          <Link to = {{ pathname : `/Asset`, state :{
+                            Days : [item.a_readdate],   
+                            Meter: [item.a_meterreading],
+                            Asset : [item.a_projectid]
+                          }}} > <ARow projectId = {item.a_projectid} dept = {item.a_dept} meterName = {item.a_metername} reading = {item.a_meterreading} date = {item.a_readdate} /> </Link>
                         </tr>
                       )
                     })}
