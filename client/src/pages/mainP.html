@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Main Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class = "container-fluid">
+            <div class = "page-header">
+            <h1>Home Page</h1>
+            <p1>BART Capital Project Managment Database </p1>
+        </div>
+        </div>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <div class = "container-fluid">
+                <div class = "navbar navbar-header">
+                    <a class = "navbar-brand" href = "#">
+                        <img src="./bart.png" width="30" height="30" alt="Bay Area Rapid Transit">
+                    </a>
+                </div>
+
+                <ul class = "nav navbar-nav">
+                    <li class = "active"><a href = "#">Main Page</a></li>
+                    <li class = "active"><a href = "#">Assets</a></li>
+                    <li class = "active"><a href = "#">Workorders</a></li>
+                    <li class = "active"><a href = "#">Projects</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Search Database <span class="caret"></span></a>                
+                        <ul class = "dropdown-menu">
+                            <li><a href = "#">Assets</a></li>
+                            <li><a href = "#">Workorders</a></li>
+                            <li><a href = "#">Project</a></li>
+                        </ul>
+            </div>
+        </nav>
+
+        <div class = "container-fluid">
+            <div class = "page-header">
+                <h3>Notifications</h3>
+            </div>
+        </div>
+        <div class = "list-group">
+            <a href = "#" class = "list-group-item list-group-item-danger">Alert/Danger<span class = "badge">2</span></a>
+            <a href = "#" class = "list-group-item list-group-item-info">Info<span class = "badge">5</span></a>
+            <a href = "#" class = "list-group-item list-group-item-success">Success<span class = "badge">3</span></a>
+            <a href = "#" class = "list-group-item list-group-item-warning">Progess<span class = "badge">4</span></a>
+        </div>
+        <div class = "container-fluid">
+            <div = class = "page-header">
+                <h3>Recent Updates</h3>
+            </div>
+        </div>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                <th scope="col-lg-5">Workorders</th>
+                <th scope="col-lg-5">Involved Asset</th>
+                <th scope="col-lg-2">PM/CM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>615648</td>
+                    <td>AC-23</td>
+                    <td>PM</td>
+                </tr>
+                <tr>
+                    <td>614568 [UPDATED]</td>
+                    <td>TC-65</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>614568</td>
+                    <td>TC-65</td>
+                    <td>CM</td>
+                </tr>
+                <tr>
+                    <td>615646</td>
+                    <td>MB-13</td>
+                    <td>PM</td>
+                </tr>
+                <tr>
+                    <td>615876</td>
+                    <td>AD-47</td>
+                    <td>CM</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
