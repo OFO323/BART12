@@ -1,5 +1,5 @@
 import express from 'express';
-import {Assets, WorkOrders, firstFilter, AssetNum, create, update, remove} from '../Connection/Connection.js';
+import {Assets, WorkOrders, MName,DeptName, firstFilter, AssetNum, create, update, remove} from '../Connection/Connection.js';
 import sqlite3 from 'sqlite3';
 
 
@@ -16,6 +16,10 @@ routes.post('/create', create);
 routes.get('/:w_WOnum', firstFilter);
 
 routes.get('/Assets/:Anum', AssetNum);
+
+routes.get('/Assets/:Anum/:Adept', DeptName);
+
+routes.get('/Assets/:Anum/:Adept/:Ameter', MName);
 
 routes.delete('/:projectid/:WOnum', remove);
 

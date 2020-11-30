@@ -52,6 +52,29 @@ export const AssetNum = (req, res)=>{
     })
 }
 
+export const DeptName = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                //console.log(row)
+                res.send(row)
+        } )
+    })
+}
+
+export const MName = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) AND a_metername LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept, req.params.Ameter], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                res.send(row)
+        })
+    })
+}
+
 export const create = (req, res)=>{
 
     console.log(req.body);

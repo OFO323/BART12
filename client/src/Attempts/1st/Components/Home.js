@@ -7,7 +7,6 @@ class Home extends Component{
     render(){
         return(
             <div>
-                <p>HELLO FROM THE HOME PAGE</p>
                 <nav className = 'navbar navbar-expand-lg navbar-light bg-light'>
                     <ul className = 'navbar-nav mr-auto'>
                         <li className = 'nav-item'>
@@ -17,7 +16,7 @@ class Home extends Component{
                             <Link to = {"/workorders"} className = 'nav-link'>View WorkOrders</Link>
                         </li>
                         <li className = 'nav-item'>
-                            <Link className = 'nav-link' to = {'/createWorkorders'}>Create WorkOrder</Link>
+                            <Link className = 'nav-link' to = {'/createWorkorder'}>Create WorkOrder</Link>
                         </li>
                     </ul>
                 </nav>

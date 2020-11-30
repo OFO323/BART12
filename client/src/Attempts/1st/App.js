@@ -18,7 +18,7 @@ class App1 extends Component{
         return(
         <Router>
             <div>
-                <h1>Project App1 Page</h1>
+                <h1>Project App Page</h1>
                 <Switch>
                     <Route exact path = '/' component = {Home}/>.
                     <Route path = '/Assets' component = {Assets} />

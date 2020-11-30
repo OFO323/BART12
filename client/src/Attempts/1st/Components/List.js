@@ -25,6 +25,8 @@ class Assets extends Component{
 
         const {list} = this.state;
 
+        //console.log(this.state);
+
         return (
             <div >
               <h1 >List of Items</h1>
@@ -46,9 +48,9 @@ class Assets extends Component{
                       return (
                         <tr>
                           <Link to = {{ pathname : `/Asset`, state :{
-                            Days : [item.a_readdate],   
-                            Meter: [item.a_meterreading],
-                            Asset : [item.a_projectid]
+                            Meter: [item.a_metername],
+                            Asset : [item.a_projectid],
+                            Department: [item.a_dept],
                           }}} > <ARow projectId = {item.a_projectid} dept = {item.a_dept} meterName = {item.a_metername} reading = {item.a_meterreading} date = {item.a_readdate} /> </Link>
                         </tr>
                       )
