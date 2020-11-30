@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 //import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -14,6 +13,9 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import Badge from 'react-bootstrap/Badge';
 import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -48,11 +50,23 @@ class Home extends Component{
                         <Nav.Link >
                             <Link to = {'/createWorkorders'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
-                        <NavDropdown title = 'Search Database'>
-                            <NavDropdown.Item href = 'assetSearch'>Assets</NavDropdown.Item>
-                            <NavDropdown.Item href = 'WOSearch'>WorkOrders</NavDropdown.Item>
-                            <NavDropdown.Item href = 'projectsSearch'>Projects</NavDropdown.Item>
-                        </NavDropdown>
+                        <Form inline>
+                            <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+                                <p style = {{color:"grey", margin:1}}>Search Database</p>
+                            </Form.Label>
+                            <Form.Control
+                                as="select"
+                                className="my-1 mr-sm-2"
+                                id="inlineFormCustomSelectPref"
+                                custom
+                            >
+                                <option value="0">Choose...</option>
+                                <option value="1">Assts</option>
+                                <option value="2">Workorders</option>
+                            </Form.Control>
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                            <Button variant="outline-info">Search</Button>
+                        </Form>
                     </Nav>
                 </Navbar>
 
