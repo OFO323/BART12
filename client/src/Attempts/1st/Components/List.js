@@ -45,9 +45,6 @@ class Assets extends Component{
               <Button variant="outline-info">Search</Button>
           </Form>
           </Navbar>
-          <Container fluid>
-            <h1><u><strong>List of Items</strong></u></h1>
-          </Container>
           <Table variant = 'dark'>
               <thead>
                   <tr>
