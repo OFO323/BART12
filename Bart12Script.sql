@@ -141,6 +141,7 @@ INSERT INTO projectManagers(d_Num, name) VALUES (0802820, 'Dietrich,Steven D');
 CREATE TABLE Projects(name VARCHAR(50) NOT NULL, id_num VARCHAR(10) NOT NULL, manager VARCHAR(20) NOT NULL, dept_ID VARCHAR(30) NOT NULL, progress VARCHAR(100) NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 
 INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Replacement of TBT Emergency Doors', "09AF002", "Fields, Bryant", "0802847-Operating & Capital Programs", "Nearly Finsished");
+INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Removal of TBT Emergency Doors', "09AF002", "Fields, Bryant", "0802847-Operating & Capital Programs", "There has been a set back");
 
 SELECT name, id_num, manager, dept_ID, progress, datetime(created_at, 'localtime') as updated_at FROM Projects;
  
