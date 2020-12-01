@@ -11,6 +11,21 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 //import Col from 'react-bootstrap/Col';
 
+const List = item => (
+  <tr>
+      <Link to = {{ pathname : `/Asset`, state :{
+                              Days : [item.list.a_readdate],   
+                              Meter: [item.list.a_meterreading],
+                              Asset : [item.list.a_projectid]
+                            }}} >
+      <td>{item.list.a_projectid}</td></Link>
+      <td>{item.list.a_dept}</td>
+      <td>{item.list.a_metername}</td>
+      <td>{item.list.a_meterreading}</td>
+      <td>{item.list.a_readdate}</td>
+  </tr>
+)
+
 class Assets extends Component{
     constructor(props){
         super(props);
@@ -22,6 +37,12 @@ class Assets extends Component{
     componentDidMount(){
         this.getList();
     }
+
+    AssetList(){
+      return this.state.list.map (function(current, i){
+          return <List list = {current} key = {i} />
+      });
+  }
 
     getList = () => {
         fetch('http://localhost:4006/Assets')
@@ -47,9 +68,9 @@ class Assets extends Component{
               <Button variant="outline-info">Search</Button>
           </Form>
           </Navbar>
-          <Table variant = 'dark'>
+          <Table className = "table table-striped" variant = 'dark'>
               <thead>
-                  <tr>
+                  <tr class="text-primary">
                     <th>ProjectId</th>
                     <th>Department</th>
                     <th>Metername</th>
@@ -58,7 +79,8 @@ class Assets extends Component{
                   </tr>
               </thead>
               <tbody>
-                {list.length ? (
+                {this.AssetList()}
+                {/* {list.length ? (
                     <div>
                       {list.map ((item)=> {
                         return (
@@ -74,7 +96,7 @@ class Assets extends Component{
                     </div>
                   ):(<div>
                     Loading...
-                  </div>) }
+                  </div>) } */}
               </tbody>
           </Table>
             </Fragment>
