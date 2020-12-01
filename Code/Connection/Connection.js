@@ -1,6 +1,32 @@
 import sqlite3 from 'sqlite3';
 import Data from './actualConnection.js'
 
+//used for the search bar in asset page and main page
+export const AssetSearch = (req, res) => {
+    Data.serialize( () => {
+
+        Data.all("SELECT * FROM Assets WHERE a_projectid = ?", [req.params.a_projectid], (err, row)=>{
+            if(err){
+                console.log(err);
+            }else {
+                res.send(row);
+            }
+        })
+    })
+}
+
+//used for the search bar in WO page and main page 
+export const WOSearch = (req, res) => {
+    Data.serialize( () => {
+        Data.all("SELECT * FROM Workorder WHERE w_projectid = ?", [req.params.w_projectid], (err, row)=>{
+            if(err){
+                console.log(err);
+            }else {
+                res.send(row);
+            }
+        })
+    })
+}
 
 
 export const Assets = (req, res)=>{
