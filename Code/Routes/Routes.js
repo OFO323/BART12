@@ -1,5 +1,5 @@
 import express from 'express';
-import {Assets, WorkOrders, firstFilter, AssetNum, create, update, remove, Updates} from '../Connection/Connection.js';
+import {Assets, WorkOrders, firstFilter, AssetNum, create, update, remove, Updates, AssetSearch, WOSearch} from '../Connection/Connection.js';
 import sqlite3 from 'sqlite3';
 
 
@@ -11,6 +11,11 @@ routes.get('/Workorders', WorkOrders);
 
 //notifications data req - working
 routes.get('/projUpdates', Updates);
+
+//any search involving assets
+routes.get('/assetSearch', AssetSearch);
+//any search involving workorders
+routes.get('/woSearch', WOSearch);
 
 routes.post('/create', create);
 
