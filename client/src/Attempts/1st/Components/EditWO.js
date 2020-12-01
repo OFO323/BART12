@@ -7,7 +7,7 @@ class editWorkorders extends Component{
         super(props);
         this.state = {
             'w_projectid': " ",
-            'w_WOnum': 0,
+            'w_WOnum': props.location.state.Workorder,
             'w_desc': '',
             'w_status': '',
             'w_reporteddate': 0,
@@ -19,6 +19,7 @@ class editWorkorders extends Component{
             'w_PSActivity': '',
             'w_PSActDesc': ''
         }
+        console.log(this.props)
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -69,7 +70,6 @@ class editWorkorders extends Component{
     render(){
         return(
             <div>
-                <h1>HELLO WORLD FROM THE EDIT WORKORDER PAGE</h1>
                 <form onSubmit = {this.onSubmit}>
                     <div>
                         <div className = 'form-group'>

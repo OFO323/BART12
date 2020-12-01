@@ -8,8 +8,10 @@ class deleteWO extends Component{
         super(props);
         this.state = {
             w_projectid: '',
-            w_WOnum: 0
+            w_WOnum: props.location.state.Workorder,
         }
+
+        console.log(props)
 
     //onChange -> updates state of search bar content 
     //onSubmit -> what is submitted 
