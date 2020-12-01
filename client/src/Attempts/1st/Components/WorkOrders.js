@@ -20,9 +20,14 @@ const Workorders = item => (
         <td>{item.workorders.w_WOnum}</td>
         <td>{item.workorders.w_desc}</td>
         <td>{item.workorders.w_status}</td>
-        <td>{item.workorders.w_reportdate}</td>
+        <td>{item.workorders.w_reporteddate}</td>
         <td>{item.workorders.w_location}</td>
         <td>{item.workorders.w_type}</td>
+        <td>
+            <Link to = {"/EditWO/" + item.workorders.w_WOnum}>Edit</Link>/
+            <Link to = {"/deleteWO/" + item.workorders.w_WOnum}>Delete</Link>
+            
+        </td>
     </tr>
 )
 
@@ -98,6 +103,7 @@ class WorkOrders extends Component{
                         <th>Report Date</th>
                         <th>Workorder Location</th>
                         <th>Workorder type</th>
+                        <th>Edit/Delete</th>
                     </tr>
                 </thead>
                 <tbody>
