@@ -24,8 +24,12 @@ const Workorders = item => (
         <td>{item.workorders.w_location}</td>
         <td>{item.workorders.w_type}</td>
         <td>
-            <Link to = {"/EditWO/" + item.workorders.w_WOnum}>Edit</Link>/
-            <Link to = {"/deleteWO/" + item.workorders.w_WOnum}>Delete</Link>
+            <Link to = {{pathname:"/editWorkorder",state :{
+                Workorder : [item.workorders.w_WOnum]
+            }}}>Edit</Link>/
+            <Link to = {{pathname:"deleteWorkorder", state:{
+                Workorder: [item.workorders.w_WOnum],
+            }}}>Delete</Link>
             
         </td>
     </tr>
@@ -75,7 +79,7 @@ class WorkOrders extends Component{
 
     render(){
         const {workorders} = this.state
-        console.log(workorders);
+        //console.log(workorders);
         return(
             <Fragment>
             <Navbar bg = 'dark' variant = 'dark'>

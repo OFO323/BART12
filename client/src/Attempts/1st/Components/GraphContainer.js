@@ -9,7 +9,8 @@ class Charts extends Component{
         this.state = {  
             data: []
         }
-        //console.log(this.props)
+        console.log(this.props)
+
     }
 
      componentDidMount(){
@@ -27,6 +28,8 @@ class Charts extends Component{
     render(){
 
         const {data} = this.state;
+
+
         //console.log(data)
         
         const Dates = []

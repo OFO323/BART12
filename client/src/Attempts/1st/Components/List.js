@@ -9,13 +9,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
-//import Col from 'react-bootstrap/Col';
+import Col from 'react-bootstrap/Col';
 
 const List = item => (
   <tr>
       <Link to = {{ pathname : `/Asset`, state :{
-                              Days : [item.list.a_readdate],   
-                              Meter: [item.list.a_meterreading],
+                              Department : [item.list.a_dept],   
+                              Meter: [item.list.a_metername],
                               Asset : [item.list.a_projectid]
                             }}} >
       <td>{item.list.a_projectid}</td></Link>
@@ -30,6 +30,7 @@ class Assets extends Component{
     constructor(props){
         super(props);
         this.state = {
+            search: '',
             list : []
         }
     }
@@ -86,8 +87,8 @@ class Assets extends Component{
                         return (
                           <tr>
                             <Link to = {{ pathname : `/Asset`, state :{
-                              Days : [item.a_readdate],   
-                              Meter: [item.a_meterreading],
+                              Department : [item.a_dept],   
+                              Meter: [item.a_metername],
                               Asset : [item.a_projectid]
                             }}} > <ARow projectId = {item.a_projectid} dept = {item.a_dept} meterName = {item.a_metername} reading = {item.a_meterreading} date = {item.a_readdate} /> </Link>
                           </tr>
