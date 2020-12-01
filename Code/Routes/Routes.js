@@ -13,9 +13,9 @@ routes.get('/Workorders', WorkOrders);
 routes.get('/projUpdates', Updates);
 
 //any search involving assets
-routes.get('/assetSearch', AssetSearch);
+routes.get('/assetSearch/:a_metername', AssetSearch);
 //any search involving workorders
-routes.get('/woSearch', WOSearch);
+routes.get('/woSearch/:w_WOnum', WOSearch);
 
 routes.post('/create', create);
 
