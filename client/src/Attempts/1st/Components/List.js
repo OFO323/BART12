@@ -1,7 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles.css';
-import ARow from './AssetRow.js'
+import ARow from './AssetRow.js';
+
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+//import Col from 'react-bootstrap/Col';
+
 class Assets extends Component{
     constructor(props){
         super(props);
@@ -28,21 +37,29 @@ class Assets extends Component{
         //console.log(this.state);
 
         return (
-            <div >
-              <h1 >List of Items</h1>
-              <table>
-                <table className = 'listTitle'>
-                <tr>
+          <Fragment>
+          <Navbar bg="dark" variant="dark">
+          <Form inline>
+              <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+              <p style = {{color:"grey", margin:1}}>Search Assets</p>
+              </Form.Label>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
+              <Button variant="outline-info">Search</Button>
+          </Form>
+          </Navbar>
+          <Table variant = 'dark'>
+              <thead>
+                  <tr>
                     <th>ProjectId</th>
                     <th>Department</th>
                     <th>Metername</th>
-                    <th>Meter Description</th>
                     <th>Meter Reading</th>
                     <th>Reading Date</th>
-                </tr>
-                </table>
-                <table className = 'listContent'>
+                  </tr>
+              </thead>
+              <tbody>
                 {list.length ? (
+<<<<<<< HEAD
                   <div>
                     {list.map ((item)=> {
                       return (
@@ -62,6 +79,27 @@ class Assets extends Component{
                 </table>
               </table>              
             </div>
+=======
+                    <div>
+                      {list.map ((item)=> {
+                        return (
+                          <tr>
+                            <Link to = {{ pathname : `/Asset`, state :{
+                              Days : [item.a_readdate],   
+                              Meter: [item.a_meterreading],
+                              Asset : [item.a_projectid]
+                            }}} > <ARow projectId = {item.a_projectid} dept = {item.a_dept} meterName = {item.a_metername} reading = {item.a_meterreading} date = {item.a_readdate} /> </Link>
+                          </tr>
+                        )
+                      })}
+                    </div>
+                  ):(<div>
+                    Loading...
+                  </div>) }
+              </tbody>
+          </Table>
+            </Fragment>
+>>>>>>> a6677dc7241fc2e040e5575aa29d6de2a2517b20
           );
 
         }

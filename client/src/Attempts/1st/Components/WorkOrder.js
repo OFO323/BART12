@@ -1,18 +1,21 @@
-import React from 'react';
-import '../styles.css';
+import React, { Fragment } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+//import Table from 'react-bootstrap/Table';
+
+
+
 function Workorder(props){
     return(
-        <div>
-        <th className = "list-inline" ></th>
-            <td class="list-inline-item"> {props.w_projectid} </td>
-            <td class="list-inline-item"> {props.w_WOnum} </td>
-            <td class="list-inline-item"> {props.w_desc} </td>
-            <td class="list-inline-item"> {props.w_status} </td>
-            <td class="list-inline-item"> {props.w_reportdate} </td>
-            <td class="list-inline-item"> {props.w_location} </td>
-            <td class="list-inline-item"> {props.w_type} </td>
-        </div>
-
+        <Fragment>
+                <td> {props.w_projectid} </td>
+                <td> {props.w_WOnum} </td>
+                <td> {props.w_desc} </td>
+                <td> {props.w_status} </td>
+                <td> {props.w_reportdate} </td>
+                <td> {props.w_location} </td>
+                <td> {props.w_type} </td>
+        </Fragment>
     )
 
 }
