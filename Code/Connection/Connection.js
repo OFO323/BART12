@@ -2,13 +2,14 @@ import sqlite3 from 'sqlite3';
 import Data from './actualConnection.js'
 
 
+
 export const Assets = (req, res)=>{
 Data.all("Select * from Assets", (err, row)=>{
     if(err)
         console.log(err);
     else    
         //console.log(row);
-        res.send(row)
+        res.send(JSON.stringify(row));
        
 })
 }
@@ -20,6 +21,29 @@ export const WorkOrders = (req, res) =>{
         else
             //console.log(JSON.stringify(row))
             res.send(JSON.stringify(row));
+    })
+}
+
+//for data requests for updates [used for notifTable component] -  working 
+export const Updates = (req, res) => {
+    Data.all("SELECT * FROM projectUpdates", (err, row) =>{
+        if(err){
+            console.log(err);
+        } else {
+            //console.log(row);
+            res.send(row);
+        }
+    })
+}
+
+export const Updates2 = (req, res) => {
+    Data.all("SELECT * FROM projectUpdates WHERE updated_at LIKE ?",[req.params.date] , (err, row) =>{
+        if(err){
+            console.log(err);
+        } else {
+            //console.log(row);
+            res.send(row);
+        }
     })
 }
 

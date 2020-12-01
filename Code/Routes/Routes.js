@@ -1,5 +1,6 @@
 import express from 'express';
 import {Assets, WorkOrders, MName,DeptName, firstFilter, AssetNum, create, update, remove} from '../Connection/Connection.js';
+import {Updates, Updates2} from '../Connection/Connection.js';
 import sqlite3 from 'sqlite3';
 
 
@@ -9,6 +10,9 @@ const routes = express.Router();
 routes.get('/Assets', Assets);
 routes.get('/Workorders', WorkOrders);
 
+//notifications data req - working
+routes.get('/projUpdates', Updates);
+routes.get('/projUpdates/:date', Updates2);
 
 
 routes.post('/create', create);

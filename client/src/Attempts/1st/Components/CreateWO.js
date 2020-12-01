@@ -83,10 +83,10 @@ class CreateWO extends Component{
 
     render(){
         const {w_WOnum} = this.state.w_WOnum
+
         
         return(
             <div>
-                <h1>HELLO WORLD FROM THE CREATE WORKORDER PAGE</h1>
                 <h3>Create New WorkOrder</h3>
                 <form onSubmit = {this.onSubmit}>
                     <div>

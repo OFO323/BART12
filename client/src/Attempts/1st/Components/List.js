@@ -16,8 +16,8 @@ class Assets extends Component{
 
     getList = () => {
         fetch('http://localhost:4006/Assets')
-        .then(res =>res.json())
-        .then(list => this.setState({list}))
+          .then(res =>res.json())
+          .then(list => this.setState({list}))
 
     }
 

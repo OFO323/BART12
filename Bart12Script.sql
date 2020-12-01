@@ -138,13 +138,23 @@ INSERT INTO projectManagers(d_Num, name) VALUES (0802845, 'Wu,Victor W');
 INSERT INTO projectManagers(d_Num, name) VALUES (0802820, 'Dietrich,Steven D');
 
 -- TABLE : Projects
-CREATE TABLE Projects(name CHAR NOT NULL, id_num BOOLEAN NOT NULL, manager CHAR NOT NULL, dept_ID BOOLEAN NOT NULL, progress CHAR NOT NULL);
+CREATE TABLE Projects(name VARCHAR(50) NOT NULL, id_num VARCHAR(10) NOT NULL, manager VARCHAR(20) NOT NULL, dept_ID VARCHAR(30) NOT NULL, progress VARCHAR(100) NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 
+INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Replacement of TBT Emergency Doors', "09AF002", "Fields, Bryant", "0802847-Operating & Capital Programs", "Nearly Finsished");
 
+SELECT name, id_num, manager, dept_ID, progress, datetime(created_at, 'localtime') as updated_at FROM Projects;
+ 
 -- TABLE : projAssets
 -- 'type' could be either PM or CM
-CREATE TABLE projAssets(assetID CHAR NOT NULL, projID CHAR NOT NULL, type CHAR NOT NULL);
+CREATE TABLE projAssets(assetID VARCHAR(25) NOT NULL, projID VAR(25) NOT NULL, type CHAR(2) NOT NULL);
+INSERT INTO projAssets VALUES ('A1 EDGE 2', '09AF002', 'PM');
 
+CREATE VIEW projectUpdates(assetID, projID, progress, updated_at) AS 
+    SELECT assetID, projID, progress, date(created_at, 'localtime')
+    FROM Projects, projAssets
+    WHERE id_num LIKE projID;
+
+DROP VIEW projectUpdates
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
