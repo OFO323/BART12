@@ -59,27 +59,6 @@ class Assets extends Component{
               </thead>
               <tbody>
                 {list.length ? (
-<<<<<<< HEAD
-                  <div>
-                    {list.map ((item)=> {
-                      return (
-                        <tr>
-                          <Link to = {{ pathname : `/Asset`, state :{
-                            Meter: [item.a_metername],
-                            Asset : [item.a_projectid],
-                            Department: [item.a_dept],
-                          }}} > <ARow projectId = {item.a_projectid} dept = {item.a_dept} meterName = {item.a_metername} reading = {item.a_meterreading} date = {item.a_readdate} /> </Link>
-                        </tr>
-                      )
-                    })}
-                  </div>
-                ):(<div>
-                  Loading...
-                </div>) }
-                </table>
-              </table>              
-            </div>
-=======
                     <div>
                       {list.map ((item)=> {
                         return (
@@ -99,7 +78,6 @@ class Assets extends Component{
               </tbody>
           </Table>
             </Fragment>
->>>>>>> a6677dc7241fc2e040e5575aa29d6de2a2517b20
           );
 
         }

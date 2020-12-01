@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-=======
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 //import { Link } from 'react-router-dom';
->>>>>>> a6677dc7241fc2e040e5575aa29d6de2a2517b20
 import Workorder from './WorkOrder.js';
 
 import Table from 'react-bootstrap/Table';
