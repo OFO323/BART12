@@ -10,6 +10,7 @@ import DeleteWO from './Components/deleteWO.js';
 import AlertMessage from './Components/AlertEmail.js';
 import Chart from './Components/GraphContainer.js';
 import Asset from './Components/Asset.js'
+import Notification from './Components/notifTable.js'
 
 class App1 extends Component{
     
@@ -18,7 +19,7 @@ class App1 extends Component{
         return(
         <Router>
             <div>
-                <h1>Project App1 Page</h1>
+                <h1>Project App Page</h1>
                 <Switch>
                     <Route exact path = '/' component = {Home}/>.
                     <Route path = '/Assets' component = {Assets} />
@@ -29,6 +30,7 @@ class App1 extends Component{
                     <Route path = '/alertMessage' component = {AlertMessage}/>
                     <Route path = '/chart' component = {Chart} />
                     <Route path = '/Asset' component = {Asset} />
+                    <Route path = '/updates' component = {Notification}/>
                 </Switch>
             </div>
         </Router>

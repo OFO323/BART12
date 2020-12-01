@@ -16,12 +16,29 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends Component{
+
+    constructor(props){
+        super(props)
+        this.state ={
+            search: ''
+        }
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(event){
+        this.setState({
+            [event.target.name] : [event.target.value]
+        })
+    }
     render(){
         return(
+        <div>
+           
             <Fragment>
                 <Container fluid>
                     <Row>
@@ -42,29 +59,30 @@ class Home extends Component{
                             <Link to = {'/'} className = 'nav-link'>HOME</Link>
                         </Nav.Link>
                         <Nav.Link >
-                            <Link to = {'/assets'} className = 'nav-link'>Assets</Link>
+                            <Link to = {'/Assets'} className = 'nav-link'>Assets</Link>
                         </Nav.Link>
                         <Nav.Link >
                             <Link to = {'/workorders'} className = 'nav-link'>Workorders</Link>
                         </Nav.Link>
                         <Nav.Link >
-                            <Link to = {'/createWorkorders'} className = 'nav-link'>Create Workorder</Link>
+                            <Link to = {'/createWorkorder'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
                         <Form inline>
                             <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
                                 <p style = {{color:"grey", margin:1}}>Search Database</p>
                             </Form.Label>
-                            <Form.Control
-                                as="select"
-                                className="my-1 mr-sm-2"
-                                id="inlineFormCustomSelectPref"
-                                custom
-                            >
-                                <option value="0">Choose...</option>
-                                <option value="1">Assts</option>
-                                <option value="2">Workorders</option>
-                            </Form.Control>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                            <Dropdown>
+                                <Dropdown.Toggle  id="dropdown-custom-components">
+                                Custom toggle
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu >
+                                <Dropdown.Item ><Link to = {`/assets/${this.state.search}`}>Assets</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link to = {'/workorders'}>Workorders</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
                             <Button variant="outline-info">Search</Button>
                         </Form>
                     </Nav>
@@ -187,6 +205,7 @@ class Home extends Component{
                 </table>
             
         </Fragment>
+        </div>
         )
     }
 }

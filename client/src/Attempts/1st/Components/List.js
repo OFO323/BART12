@@ -25,14 +25,16 @@ class Assets extends Component{
 
     getList = () => {
         fetch('http://localhost:4006/Assets')
-        .then(res =>res.json())
-        .then(list => this.setState({list}))
+          .then(res =>res.json())
+          .then(list => this.setState({list}))
 
     }
 
     render(){
 
         const {list} = this.state;
+
+        //console.log(this.state);
 
         return (
           <Fragment>

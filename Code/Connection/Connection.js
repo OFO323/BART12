@@ -52,10 +52,22 @@ export const WorkOrders = (req, res) =>{
 
 //for data requests for updates [used for notifTable component] -  working 
 export const Updates = (req, res) => {
-    Data.all("SELECT * FROM projectsUpdates", (err, row) =>{
+    Data.all("SELECT * FROM projectUpdates", (err, row) =>{
         if(err){
             console.log(err);
         } else {
+            //console.log(row);
+            res.send(row);
+        }
+    })
+}
+
+export const Updates2 = (req, res) => {
+    Data.all("SELECT * FROM projectUpdates WHERE updated_at LIKE ?",[req.params.date] , (err, row) =>{
+        if(err){
+            console.log(err);
+        } else {
+            //console.log(row);
             res.send(row);
         }
     })
@@ -86,6 +98,29 @@ export const AssetNum = (req, res)=>{
                 //console.log(JSON.stringify(row))
                 res.send(row)
 
+        })
+    })
+}
+
+export const DeptName = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                //console.log(row)
+                res.send(row)
+        } )
+    })
+}
+
+export const MName = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) AND a_metername LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept, req.params.Ameter], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                res.send(row)
         })
     })
 }
