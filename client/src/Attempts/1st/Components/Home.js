@@ -81,6 +81,7 @@ class Home extends Component{
                                     asset : [this.state.search]
                                 } }}>Assets</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link to = {'/workorders/' + this.state.search3}>Workorders</Link></Dropdown.Item>
+
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

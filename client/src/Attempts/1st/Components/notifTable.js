@@ -44,7 +44,7 @@ class notifTable extends Component{
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Asset</th>
                         <th>Project</th>
                         <th>Description</th>
                     </tr>
@@ -59,6 +59,25 @@ class notifTable extends Component{
                             )
                         })}
                 </thead>
+                <tbody>
+                    {projectUpdates.length ? (
+                        <div>
+                            {projectUpdates.map((item) => {
+                                return (
+                                    <div>
+                                        <th className = "list-inline" ></th>
+                                            <td class="list-inline-item"> {}</td>
+                                            <td class="list-inline-item"> {props.dept} </td>
+                                            <td class="list-inline-item"> {props.meterName} </td>
+                                            <td class="list-inline-item"> {props.reading} </td>
+                                            <td class="list-inline-item"> {props.date} </td>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )
+                    }
+                </tbody>
             </Table>
         )
 
