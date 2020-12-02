@@ -51,9 +51,9 @@ class Home extends Component{
                     </Row>
                 </Container>
                 <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
-                    <Navbar.Brand>
+                    {/* <Navbar.Brand>
                         <img src = './train.png' alt = "BART" width = '30' height = '30'></img>
-                    </Navbar.Brand>
+                    </Navbar.Brand> */}
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
                     <Nav className = 'mr-auto'>
@@ -70,25 +70,19 @@ class Home extends Component{
                             <Link to = {'/createWorkorder'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
                         <Form inline>
-                            <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-                                <p style = {{color:"grey", margin:1}}>Search Database</p>
-                            </Form.Label>
+                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
                             <Dropdown>
-                                <Dropdown.Toggle  id="dropdown-custom-components">
-                                Custom toggle
+                                <Dropdown.Toggle  id="dropdown-custom-components" variant ="info">
+                                Filter
                                 </Dropdown.Toggle>
-
                                 <Dropdown.Menu >
                                 <Dropdown.Item ><Link to = {{pathname :'/assets', state : {
                                     asset : [this.state.search]
                                 } }}>Assets</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link to = {'/workorders/' + this.state.search3}>Workorders</Link></Dropdown.Item>
-
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
-                            <Button variant="outline-info">Search</Button>
                         </Form>
                     </Nav>
                 </Navbar>
