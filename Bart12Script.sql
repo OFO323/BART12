@@ -62,6 +62,9 @@ INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreadin
 INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('A65', 'TP CONS', 'T2-T-RAIL', 'A-Line Third Rail Replacement Project on Track 2', 930, '6-Sep-20', 'Feet', 1250, 'T2-T-RAIL');
 INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('A65', 'TP CONS', 'T2-T-RAIL', 'A-Line Third Rail Replacement Project on Track 2', 930, '6-Sep-20', 'Feet', 1250, 'T2-T-RAIL');
 INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('A65', 'TP CONS', 'T2-T-RAIL', 'A-Line Third Rail Replacement Project on Track 2', 540, '7-Sep-20', 'Feet', 1250, 'T2-T-RAIL');
+INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('C25', 'POWER', 'BHT-C1 L', 'BHT C1 Lighting Replacement (Goal = 338 Lights))', 134, '3-Jun-20', '# of lights', 338, 'BHT C1 L,BHT C2 L');
+INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('C25', 'POWER', 'BHT-C2 L', 'BHT C2 Lighting Replacement (Goal = 338 Lights))', 40, '4-Jun-20', '# of lights', 338, 'BHT C1 L,BHT C2 L');
+
 
 -- Table: Workorder
 CREATE TABLE Workorder (w_projectid BOOLEAN NOT NULL, w_WOnum BOOLEAN NOT NULL, w_desc CHAR NOT NULL, w_status CHAR NOT NULL, w_reporteddate BOOLEAN NOT NULL, w_location CHAR NOT NULL, w_type CHAR NOT NULL, w_TPID BOOLEAN NOT NULL, w_PSProject CHAR NOT NULL, w_PSProjDesc CHAR NOT NULL, w_PSActivity CHAR NOT NULL, w_PSActDesc CHAR NOT NULL);

@@ -56,9 +56,16 @@ class WorkOrders extends Component{
     }
 
     getWorkorders(){
-        fetch('http://localhost:4006/Workorders')
-        .then(res => res.json())
-        .then(workorders => this.setState({workorders}))
+        if(this.props.location.state){
+            fetch(`http://localhost:4006/woSearch/${this.props.location.state.workorder}`)
+                .then(res => res.json())
+                .then(workorders => this.setState({workorders}))
+        }
+        else{
+            fetch('http://localhost:4006/Workorders')
+                .then(res => res.json())
+                .then(workorders => this.setState({workorders}))
+        }
     }
 
     // onClick(data){
