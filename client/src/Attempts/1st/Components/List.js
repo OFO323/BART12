@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../styles.css';
 import ARow from './AssetRow.js';
 
@@ -33,6 +33,7 @@ class Assets extends Component{
             search: '',
             list : []
         }
+        console.log(this.props)
     }
 
     componentDidMount(){
@@ -40,16 +41,27 @@ class Assets extends Component{
     }
 
     AssetList(){
+
       return this.state.list.map (function(current, i){
           return <List list = {current} key = {i} />
       });
   }
 
     getList = () => {
-        fetch('http://localhost:4006/Assets')
-          .then(res =>res.json())
-          .then(list => this.setState({list}))
+        if(this.props.location.state){
 
+          console.log(this.props.location.state)
+          console.log("Fetching with paramenter")
+          fetch(`http://localhost:4006/Assets/${this.props.location.state.assetID}`)
+            .then(res =>res.json())
+            .then(list => this.setState({list}))
+        }
+        else{
+          console.log("Normal Entry")
+          fetch('http://localhost:4006/Assets')
+            .then(res =>res.json())
+            .then(list => this.setState({list}))
+        }
     }
 
     render(){
