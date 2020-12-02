@@ -57,13 +57,13 @@ export const Updates = (req, res) => {
             console.log(err);
         } else {
             //console.log(row);
-            res.send(row);
+            res.send(JSON.stringify(row));
         }
     })
 }
 
 export const Updates2 = (req, res) => {
-    Data.all("SELECT * FROM projectUpdates WHERE updated_at LIKE ?",[req.params.date] , (err, row) =>{
+    Data.all("SELECT * FROM projectUpdates WHERE strftime('%W', updated_at) LIKE strftime('%W', ?) OR strftime('%W', updated_at) LIKE strftime('%W', ?) - 1",[req.params.date] , (err, row) =>{
         if(err){
             console.log(err);
         } else {
