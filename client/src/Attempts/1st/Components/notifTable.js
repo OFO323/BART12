@@ -8,11 +8,21 @@ import Table from 'react-bootstrap/Table';
 
 //table pulls data from DB [projectUpdates table]
 
-class notifTable extends Component{
+const ProjUpdates = item => (
+    <tr>
+        <td>{item.projectUpdates.assetID}</td>
+        <td>{item.projectUpdates.projID}</td>
+        <td>{item.projectUpdates.progress}</td>
+        <td>{item.projectUpdates.updated_at}</td>
+    </tr>
+)
+
+class NotifTable extends Component{
     
    constructor(props){
        super(props);
-       this.state = {          //specifiy notification type [danger, info, etc]
+       this.state = {  
+        //type : '',        //specifiy notification type [danger, info, etc]
         projectUpdates : []
     }
    }
@@ -22,6 +32,12 @@ class notifTable extends Component{
         this.getUpdates();
     }
 
+    UpdateList(){
+        return this.state.projectUpdates.map((curr, index) => {
+            return <ProjUpdates projectUpdates = {curr} key = {index} />
+        });
+    }
+
     //should just fetch from DB
     getUpdates = () => {
 
@@ -29,8 +45,8 @@ class notifTable extends Component{
         console.log(date)
 
         fetch(`http://localhost:4006/projUpdates/${date}`)
-            .then(response => response.json())
-            .then(response => this.setState({projectUpdates:response}))
+            .then(res => res.json())
+            .then(projectUpdates => this.setState({projectUpdates}))
             .catch(err => console.log(err))
     } 
 
@@ -44,23 +60,23 @@ class notifTable extends Component{
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Asset</th>
-                        <th>Project</th>
-                        <th>Description</th>
+                        <th>Asset ID</th>
+                        <th>Project ID</th>
+                        <th>Progress</th>
+                        <th>Updated At</th>
                     </tr>
-                    {projectUpdates.map ((item)=>{
-                            return(
-                                <tr>
-                                    <li>{item.assetID}</li>
-                                    <li>{item.projID}</li>
-                                    <li>{item.progress}</li>
-                                    <li>{item.updated_at}</li>
-                                </tr>
-                            )
-                        })}
                 </thead>
                 <tbody>
-                    {projectUpdates.length ? (
+                {this.UpdateList()}
+                </tbody>
+            </Table>
+        )
+
+    }
+}
+
+/*
+    {projectUpdates.length ? (
                         <div>
                             {projectUpdates.map((item) => {
                                 return (
@@ -77,11 +93,6 @@ class notifTable extends Component{
                         </div>
                     )
                     }
-                </tbody>
-            </Table>
-        )
+*/
 
-    }
-}
-
-export default notifTable;
+export default NotifTable;
