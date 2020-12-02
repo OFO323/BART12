@@ -10,6 +10,7 @@ class Asset extends Component{
             Meter: props.location.state.Meter
         }
         console.log(props)
+
     }
 
     render() {
