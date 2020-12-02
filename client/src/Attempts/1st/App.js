@@ -14,11 +14,9 @@ import Asset from './Components/Asset.js'
 class App1 extends Component{
     
     render(){
-    
         return(
         <Router>
             <div>
-                <h1>Project App1 Page</h1>
                 <Switch>
                     <Route exact path = '/' component = {Home}/>.
                     <Route path = '/Assets' component = {Assets} />

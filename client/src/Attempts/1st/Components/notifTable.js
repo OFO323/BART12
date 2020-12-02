@@ -2,29 +2,51 @@ import React, { Component } from 'react';
 //import {Link} from "react-router-dom";
 import '../styles.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import moment from 'moment'
 import Table from 'react-bootstrap/Table';
 
 
 //table pulls data from DB [projectUpdates table]
 
-class notifTable extends Component{
+const ProjUpdates = item => (
+    <tr>
+        <td>{item.projectUpdates.assetID}</td>
+        <td>{item.projectUpdates.projID}</td>
+        <td>{item.projectUpdates.progress}</td>
+        <td>{item.projectUpdates.updated_at}</td>
+    </tr>
+)
+
+class NotifTable extends Component{
     
-    state = {
-        type : '',          //specifiy notification type [danger, info, etc]
+   constructor(props){
+       super(props);
+       this.state = {  
+        //type : '',        //specifiy notification type [danger, info, etc]
         projectUpdates : []
     }
+   }
 
     //once compnent mounts data is pulled from DB
     componentDidMount(){
         this.getUpdates();
     }
 
+    UpdateList(){
+        return this.state.projectUpdates.map((curr, index) => {
+            return <ProjUpdates projectUpdates = {curr} key = {index} />
+        });
+    }
+
     //should just fetch from DB
-    getUpdates = _ => {
-        fetch('localhost:4006/projUpdates')
-            .then(response => response.json())
-            .then(response => this.setState({projectUpdates : response.data }))
+    getUpdates = () => {
+
+        var date = moment().utcOffset('0').format('YYYY-MM-DD');
+        console.log(date)
+
+        fetch(`http://localhost:4006/projUpdates/${date}`)
+            .then(res => res.json())
+            .then(projectUpdates => this.setState({projectUpdates}))
             .catch(err => console.log(err))
     } 
 
@@ -32,20 +54,45 @@ class notifTable extends Component{
 
     render(){
         const {projectUpdates} = this.state;
+        console.log(this.state)
 
         return(
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Project</th>
-                        <th>Description</th>
+                        <th>Asset ID</th>
+                        <th>Project ID</th>
+                        <th>Progress</th>
+                        <th>Updated At</th>
                     </tr>
                 </thead>
+                <tbody>
+                {this.UpdateList()}
+                </tbody>
             </Table>
         )
 
     }
 }
 
-export default notifTable;
+/*
+    {projectUpdates.length ? (
+                        <div>
+                            {projectUpdates.map((item) => {
+                                return (
+                                    <div>
+                                        <th className = "list-inline" ></th>
+                                            <td class="list-inline-item"> {}</td>
+                                            <td class="list-inline-item"> {props.dept} </td>
+                                            <td class="list-inline-item"> {props.meterName} </td>
+                                            <td class="list-inline-item"> {props.reading} </td>
+                                            <td class="list-inline-item"> {props.date} </td>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )
+                    }
+*/
+
+export default NotifTable;
