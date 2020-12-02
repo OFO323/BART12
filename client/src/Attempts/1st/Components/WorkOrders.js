@@ -39,9 +39,18 @@ class WorkOrders extends Component{
     constructor(props){
         super(props);
         this.state = {
+            search: '',
             workorders: []
         }
-     //   this.onClick = this.onClick.bind(this)
+     this.onClick = this.onClick.bind(this)
+     this.onChange = this.onChange.bind(this);
+
+    }
+
+    onChange(event){
+        this.setState({
+            [event.target.name]: [event.target.value]
+        })
     }
 
 
@@ -49,38 +58,27 @@ class WorkOrders extends Component{
         this.getWorkorders();
     }
 
+
     WOList(){
-        return this.state.workorders.map (function(current, i){
-            return <Workorders workorders = {current} key = {i} />
-        });
+            return this.state.workorders.map (function(current, i){
+                return <Workorders workorders = {current} key = {i} />
+            });
+        
     }
 
     getWorkorders(){
-        if(this.props.location.state){
-            fetch(`http://localhost:4006/woSearch/${this.props.location.state.workorder}`)
-                .then(res => res.json())
-                .then(workorders => this.setState({workorders}))
-        }
-        else{
             fetch('http://localhost:4006/Workorders')
                 .then(res => res.json())
-                .then(workorders => this.setState({workorders}))
-        }
+                .then(result => this.setState({workorders:result}))
     }
 
-    // onClick(data){
+    onClick(){
 
-    //     console.log(data);
-    // //     axios.get(`http://localhost:4006/Workorders/${data}`, (err, res)=>{
-    // //         if(err){
-    // //             console.log(err);
-    // //         }
-    // //         else{
-    // //             console.log(res);
-    // //         }
-    // //     })
+        fetch(`http://localhost:4006/woSearch/${this.state.search}`)
+                .then(res => res.json())
+                .then(result => this.setState({workorders:result}))
 
-    // }
+    }
 
     
 
@@ -98,8 +96,8 @@ class WorkOrders extends Component{
                             </Form.Label>
                         </Col>
                         <Col >
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-                            <Button variant = 'outline-info'>Search</Button>
+                            <FormControl name = 'search' type="text" placeholder="Search" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
+                            <Button onClick = {this.onClick} variant = 'outline-info'>Search</Button>
                         </Col>
                 </Form>
                 </Row>
