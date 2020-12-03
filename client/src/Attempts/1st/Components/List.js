@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
 
 const List = item => (
   <tr>
@@ -86,6 +87,9 @@ class Assets extends Component{
           <Fragment>
           <Navbar bg="dark" variant="dark">
           <Form inline>
+              <Nav.Link >
+                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
+              </Nav.Link>
               <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
               <p style = {{color:"grey", margin:1}}>Search Assets</p>
               </Form.Label>

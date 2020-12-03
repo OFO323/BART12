@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class CreateWO extends Component{
     constructor(props){
@@ -86,12 +91,22 @@ class CreateWO extends Component{
 
         
         return(
-            <div>
-                <h3>Create New WorkOrder</h3>
+            <Fragment>
+            <Navbar bg = 'dark' variant = 'dark'>
+            <Row>
+                <Form inline>
+                <Nav.Link >
+                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
+                </Nav.Link>
+                </Form>
+            </Row>
+            </Navbar>
+            <div class='bg-secondary'>
+                <h3 className = 'text-white'>Create New WorkOrder</h3>
                 <form onSubmit = {this.onSubmit}>
                     <div>
-                        <div className = 'form-group'>
-                            <label>Project Id: </label>
+                        <div className = 'form-group' style={{ width:'500px'}}>
+                            <label>Project Id</label>
                             <input 
                             type = 'text' 
                             className = 'form-control' 
@@ -101,8 +116,8 @@ class CreateWO extends Component{
                             {this.state.w_projectid}
                         </div>
 
-                        <div className = 'form-group'>
-                            <label>#WO</label>
+                        <div className = 'form-group' style={{ width:'500px'}}>
+                            <label>Work Order Number</label>
                             <input 
                             type = 'number' 
                             className = 'form-control' 
@@ -111,7 +126,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Description</label>
                             <input 
                             type = 'text' 
@@ -121,7 +136,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Status</label>
                             <input 
                             type = 'text' 
@@ -131,7 +146,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Report Date</label>
                             <input 
                             type = 'text' 
@@ -141,7 +156,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Location</label>
                             <input 
                             type = 'text' 
@@ -151,7 +166,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Type</label>
                             <input 
                             type = 'text' 
@@ -161,7 +176,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>TP Id</label>
                             <input 
                             type = 'text' 
@@ -171,7 +186,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Project</label>
                             <input 
                             type = 'text' 
@@ -181,7 +196,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Project Description</label>
                             <input 
                             type = 'text' 
@@ -191,7 +206,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>PS Activity</label>
                             <input 
                             type = 'text' 
@@ -201,7 +216,7 @@ class CreateWO extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Activity Description</label>
                             <input 
                             type = 'text' 
@@ -212,7 +227,7 @@ class CreateWO extends Component{
                         </div>
 
                         
-                            <input type = 'Submit' value = 'Create Workorder'/>
+                            <input type = 'Submit' value = 'Submit'/>
                         
 
                     </div>
@@ -221,6 +236,7 @@ class CreateWO extends Component{
 
                 </form>
             </div>
+            </Fragment>
         )
     }
 }

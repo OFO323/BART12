@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
                               
@@ -26,11 +27,7 @@ const Workorders = item => (
         <td>
             <Link to = {{pathname:"/editWorkorder",state :{
                 Workorder : [item.workorders.w_WOnum]
-            }}}>Edit</Link>/
-            <Link to = {{pathname:"deleteWorkorder", state:{
-                Workorder: [item.workorders.w_WOnum],
-            }}}>Delete</Link>
-            
+            }}}>Edit</Link>            
         </td>
     </tr>
 )
@@ -89,16 +86,14 @@ class WorkOrders extends Component{
             <Fragment>
             <Navbar bg = 'dark' variant = 'dark'>
             <Row>
+                <Nav.Link >
+                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
+                </Nav.Link>
                 <Form inline>
-                        <Col xl = {4}>
-                            <Form.Label className="my-1 mr-2 ml-5" htmlFor="inlineFormCustomSelectPref">
-                                <p style = {{color:"grey", margin:1 }}>Search Workorders</p>
-                            </Form.Label>
-                        </Col>
-                        <Col >
-                            <FormControl name = 'search' type="text" placeholder="Search" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
-                            <Button onClick = {this.onClick} variant = 'outline-info'>Search</Button>
-                        </Col>
+                    <Col >
+                        <FormControl type="text" placeholder="Search Workorders" className="mr-sm-2"/>
+                        <Button variant = 'outline-info'>Search</Button>
+                    </Col>
                 </Form>
                 </Row>
             </Navbar>

@@ -2,6 +2,8 @@ import React, { Component, useEffect } from 'react';
 import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
 
+import Table from 'react-bootstrap/Table';
+
 class Charts extends Component{
 
     constructor(props){
@@ -9,8 +11,7 @@ class Charts extends Component{
         this.state = {  
             data: []
         }
-        console.log(this.props)
-
+        //console.log(this.props)
     }
 
      componentDidMount(){
@@ -28,8 +29,6 @@ class Charts extends Component{
     render(){
 
         const {data} = this.state;
-
-
         //console.log(data)
         
         const Dates = []
@@ -64,8 +63,41 @@ class Charts extends Component{
         
         return (
             <div>
-                 <Line data = {dataSet} />
+                <div>
+                    <thead className = "AssetInfo" >
+                        <body>
+                            <p>ProjectId: </p>
+                            <p>Department: </p>
+                            <p>Meter Name: </p>
+                            <p>Meter Reading: </p>
+                            <p>Reading Date: </p>
+                            <p>Meter Description: </p>
+                            <p>Meter Units: </p>
+                            <p>Goal: </p>
+                            <p>Goal Group: </p>
+                        </body>
+                        {/* {data.map ((item)=> {
+                                return (
+                            <body>
+                                <p>{item.a_projectid}</p>
+                                <p>{item.a_dept}</p>
+                                <p>{item.a_metername}</p>
+                                <p>{item.a_meterreading}</p>
+                                <p>{item.a_readdate}</p>
+                                <p>{item.a_meterdesc}</p>
+                                <p>{item.a_meterunits}</p>
+                                <p>{item.a_goal}</p>
+                                <p>{item.a_goalgroup}</p>
+                            </body>
+                            )}
+                        )} */}
+                    </thead>
+                </div> 
+                <div>
+                    <Line data = {dataSet} />
+                </div>
             </div>
+            
         )
     }
     
