@@ -14,7 +14,6 @@ import Notification from './Components/notifTable.js'
 class App1 extends Component{
     
     render(){
-    
         return(
         <Router>
             <div>

@@ -25,9 +25,8 @@ const Workorders = item => (
         <td>{item.workorders.w_location}</td>
         <td>{item.workorders.w_type}</td>
         <td>
-            <Link to = {{pathname:"/editWorkorder",state :{
-                Workorder : [item.workorders.w_WOnum]
-            }}}>Edit</Link>            
+            <Link to = {"./EditWO" + item.workorders.w_WOnum}>Edit</Link>
+
         </td>
     </tr>
 )
@@ -107,7 +106,7 @@ class WorkOrders extends Component{
                         <th>Report Date</th>
                         <th>Workorder Location</th>
                         <th>Workorder type</th>
-                        <th>Edit/Delete</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
