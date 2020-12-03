@@ -14,7 +14,7 @@ class CreateWO extends Component{
         super(props);
         this.state = {
             'w_projectid': " ",
-            'w_WOnum': 0,
+            'w_WOnum': props.location.state.Workorder,
             'w_desc': '',
             'w_status': '',
             'w_reporteddate': 0,
@@ -26,6 +26,7 @@ class CreateWO extends Component{
             'w_PSActivity': '',
             'w_PSActDesc': ''
         }
+        console.log(this.props)
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);

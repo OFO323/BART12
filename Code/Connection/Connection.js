@@ -2,6 +2,32 @@ import sqlite3 from 'sqlite3';
 import Data from './actualConnection.js'
 
 
+//used for the search bar in asset page and main page
+export const AssetSearch = (req, res) => {
+    Data.serialize( () => {
+
+        Data.all("SELECT * FROM Assets WHERE a_metername = ?", [req.params.a_metername], (err, row)=>{
+            if(err){
+                console.log(err);
+            }else {
+                res.send(row);
+            }
+        })
+    })
+}
+
+//used for the search bar in WO page and main page 
+export const WOSearch = (req, res) => {
+    Data.serialize( () => {
+        Data.all("SELECT * FROM Workorder WHERE w_WOnum = ?", [req.params.w_WOnum], (err, row)=>{
+            if(err){
+                console.log(err);
+            }else {
+                res.send(row);
+            }
+        })
+    })
+}
 
 export const Assets = (req, res)=>{
 Data.all("Select * from Assets", (err, row)=>{
@@ -26,10 +52,22 @@ export const WorkOrders = (req, res) =>{
 
 //for data requests for updates [used for notifTable component] -  working 
 export const Updates = (req, res) => {
-    Data.all("SELECT * FROM projectsUpdates", (err, row) =>{
+    Data.all("SELECT * FROM projectUpdates", (err, row) =>{
         if(err){
             console.log(err);
         } else {
+            //console.log(row);
+            res.send(JSON.stringify(row));
+        }
+    })
+}
+
+export const Updates2 = (req, res) => {
+    Data.all("SELECT * FROM projectUpdates WHERE strftime('%W', updated_at) LIKE strftime('%W', ?) OR strftime('%W', updated_at) LIKE strftime('%W', ?) - 1",[req.params.date] , (err, row) =>{
+        if(err){
+            console.log(err);
+        } else {
+            //console.log(row);
             res.send(row);
         }
     })
@@ -60,6 +98,29 @@ export const AssetNum = (req, res)=>{
                 //console.log(JSON.stringify(row))
                 res.send(row)
 
+        })
+    })
+}
+
+export const DeptName = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                //console.log(row)
+                res.send(row)
+        } )
+    })
+}
+
+export const MName = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) AND a_metername LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept, req.params.Ameter], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                res.send(row)
         })
     })
 }

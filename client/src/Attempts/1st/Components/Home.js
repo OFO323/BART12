@@ -19,6 +19,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import notifTable from './notifTable';
+import NotifTable from './notifTable';
 
 class Home extends Component{
 
@@ -68,6 +70,7 @@ class Home extends Component{
                             <Link to = {'/createWorkorder'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
                         <Form inline>
+
                             <Dropdown>
                                 <Dropdown.Toggle  id="dropdown-custom-components" variant ="info">
                                 Filter
@@ -77,12 +80,14 @@ class Home extends Component{
                                 <Dropdown.Item ><Link to = {{pathname : '/Assets', state: {
                                     assetID: this.state.search
                                 }}}>Assets</Link></Dropdown.Item>
+
                                 <Dropdown.Item ><Link to = {'/workorders/' + this.state.search}>Workorders</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <FormControl name = "search" type="text" placeholder="Search Database" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
                             <Button variant="outline-info">Search</Button>
+
                         </Form>
                     </Nav>
                 </Navbar>
@@ -96,22 +101,7 @@ class Home extends Component{
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey = '0'>
                             <Card.Body>
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Asset #</th>
-                                        <th>Project</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>615648</td>
-                                        <td>AC-23</td>
-                                        <td>PM</td>
-                                    </tr>
-                                </tbody>
-                            </Table>
+                                <NotifTable/>
                             </Card.Body>
                         </Accordion.Collapse>
                         <Accordion.Toggle as = {Card.Header} eventKey = "1">
@@ -119,15 +109,7 @@ class Home extends Component{
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey = '1'>
                             <Card.Body>
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Asset #</th>
-                                        <th>Project</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                            </Table>
+                                <NotifTable/>
                             </Card.Body>
                         </Accordion.Collapse>
                         <Accordion.Toggle as = {Card.Header} eventKey = "2">
@@ -136,13 +118,7 @@ class Home extends Component{
                         <Accordion.Collapse eventKey = '2'>
                             <Card.Body>
                             <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Asset #</th>
-                                        <th>Project</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
+                                <NotifTable/>
                             </Table>
                             </Card.Body>
                         </Accordion.Collapse>
@@ -152,13 +128,7 @@ class Home extends Component{
                         <Accordion.Collapse eventKey = '3'>
                             <Card.Body>
                             <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Asset #</th>
-                                        <th>Project</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
+                                <NotifTable/>
                             </Table>
                             </Card.Body>
                         </Accordion.Collapse>

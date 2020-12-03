@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
                               
@@ -25,6 +26,7 @@ const Workorders = item => (
         <td>{item.workorders.w_type}</td>
         <td>
             <Link to = {"./EditWO" + item.workorders.w_WOnum}>Edit</Link>
+
         </td>
     </tr>
 )
@@ -33,9 +35,18 @@ class WorkOrders extends Component{
     constructor(props){
         super(props);
         this.state = {
+            search: '',
             workorders: []
         }
-     //   this.onClick = this.onClick.bind(this)
+     this.onClick = this.onClick.bind(this)
+     this.onChange = this.onChange.bind(this);
+
+    }
+
+    onChange(event){
+        this.setState({
+            [event.target.name]: [event.target.value]
+        })
     }
 
 
@@ -43,51 +54,45 @@ class WorkOrders extends Component{
         this.getWorkorders();
     }
 
+
     WOList(){
-        return this.state.workorders.map (function(current, i){
-            return <Workorders workorders = {current} key = {i} />
-        });
+            return this.state.workorders.map (function(current, i){
+                return <Workorders workorders = {current} key = {i} />
+            });
+        
     }
 
     getWorkorders(){
-        fetch('http://localhost:4006/Workorders')
-        .then(res => res.json())
-        .then(workorders => this.setState({workorders}))
+            fetch('http://localhost:4006/Workorders')
+                .then(res => res.json())
+                .then(result => this.setState({workorders:result}))
     }
 
-    // onClick(data){
+    onClick(){
 
-    //     console.log(data);
-    // //     axios.get(`http://localhost:4006/Workorders/${data}`, (err, res)=>{
-    // //         if(err){
-    // //             console.log(err);
-    // //         }
-    // //         else{
-    // //             console.log(res);
-    // //         }
-    // //     })
+        fetch(`http://localhost:4006/woSearch/${this.state.search}`)
+                .then(res => res.json())
+                .then(result => this.setState({workorders:result}))
 
-    // }
+    }
 
     
 
     render(){
         const {workorders} = this.state
-        console.log(workorders);
+        //console.log(workorders);
         return(
             <Fragment>
             <Navbar bg = 'dark' variant = 'dark'>
             <Row>
+                <Nav.Link >
+                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
+                </Nav.Link>
                 <Form inline>
-                        <Col xl = {4}>
-                            <Form.Label className="my-1 mr-2 ml-5" htmlFor="inlineFormCustomSelectPref">
-                                <p style = {{color:"grey", margin:1 }}>Search Workorders</p>
-                            </Form.Label>
-                        </Col>
-                        <Col >
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
-                            <Button variant = 'outline-info'>Search</Button>
-                        </Col>
+                    <Col >
+                        <FormControl type="text" placeholder="Search Workorders" className="mr-sm-2"/>
+                        <Button variant = 'outline-info'>Search</Button>
+                    </Col>
                 </Form>
                 </Row>
             </Navbar>

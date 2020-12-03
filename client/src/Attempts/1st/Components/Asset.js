@@ -6,18 +6,18 @@ class Asset extends Component{
         super(props)
         this.state = {
             Asset: props.location.state.Asset,
-            Dates: [props.location.state.Days],
-            Readings: [props.location.state.Meter]
+            Dept: props.location.state.Department,
+            Meter: props.location.state.Meter
         }
-        console.log(props.location.state.Dates)
+        console.log(props)
+
     }
 
     render() {
         return (
              <div>
-                 {this.state.Readings}
                  <div>
-                     <Charts ReadDate = {this.state.Dates} Reading = {this.state.Readings} asset = {this.state.Asset} />
+                     <Charts asset = {this.state.Asset} dept = {this.state.Dept} meter = {this.state.Meter}/>
                  </div>
              </div>
         );
