@@ -36,9 +36,18 @@ class WorkOrders extends Component{
     constructor(props){
         super(props);
         this.state = {
+            search: '',
             workorders: []
         }
-     //   this.onClick = this.onClick.bind(this)
+     this.onClick = this.onClick.bind(this)
+     this.onChange = this.onChange.bind(this);
+
+    }
+
+    onChange(event){
+        this.setState({
+            [event.target.name]: [event.target.value]
+        })
     }
 
 
@@ -46,31 +55,27 @@ class WorkOrders extends Component{
         this.getWorkorders();
     }
 
+
     WOList(){
-        return this.state.workorders.map (function(current, i){
-            return <Workorders workorders = {current} key = {i} />
-        });
+            return this.state.workorders.map (function(current, i){
+                return <Workorders workorders = {current} key = {i} />
+            });
+        
     }
 
     getWorkorders(){
-        fetch('http://localhost:4006/Workorders')
-        .then(res => res.json())
-        .then(workorders => this.setState({workorders}))
+            fetch('http://localhost:4006/Workorders')
+                .then(res => res.json())
+                .then(result => this.setState({workorders:result}))
     }
 
-    // onClick(data){
+    onClick(){
 
-    //     console.log(data);
-    // //     axios.get(`http://localhost:4006/Workorders/${data}`, (err, res)=>{
-    // //         if(err){
-    // //             console.log(err);
-    // //         }
-    // //         else{
-    // //             console.log(res);
-    // //         }
-    // //     })
+        fetch(`http://localhost:4006/woSearch/${this.state.search}`)
+                .then(res => res.json())
+                .then(result => this.setState({workorders:result}))
 
-    // }
+    }
 
     
 

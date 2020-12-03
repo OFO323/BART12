@@ -81,12 +81,13 @@ class NotifTable extends Component{
                             {projectUpdates.map((item) => {
                                 return (
                                     <div>
-                                        <th className = "list-inline" ></th>
+                                        <th className = "list-inline" >
                                             <td class="list-inline-item"> {}</td>
                                             <td class="list-inline-item"> {props.dept} </td>
                                             <td class="list-inline-item"> {props.meterName} </td>
                                             <td class="list-inline-item"> {props.reading} </td>
                                             <td class="list-inline-item"> {props.date} </td>
+                                        </th>
                                     </div>
                                 )
                             })}

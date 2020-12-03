@@ -76,10 +76,12 @@ class Home extends Component{
                                 Filter
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu >
-                                <Dropdown.Item ><Link to = {{pathname :'/assets', state : {
-                                    asset : [this.state.search]
-                                } }}>Assets</Link></Dropdown.Item>
-                                <Dropdown.Item ><Link to = {'/workorders/' + this.state.search3}>Workorders</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link to = {{pathname : '/Assets', state: {
+                                    assetID: this.state.search
+                                }}}>Assets</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link to = {{pathname: '/workorders', state:{
+                                    workorder:this.state.search
+                                }}}>Workorders</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

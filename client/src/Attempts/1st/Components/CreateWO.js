@@ -41,10 +41,10 @@ class CreateWO extends Component{
 
 
     onSubmit(){
-        console.log("SUCCESSFULLY SUBMITTED FORM")
-        console.log(`WO ProjId: ${this.state.w_projectid}`)
-        console.log(`WO WOnum: ${this.state.w_WOnum}`)
-        console.log(`WO-desc: ${this.state.w_desc}`)
+        // console.log("SUCCESSFULLY SUBMITTED FORM")
+        // console.log(`WO ProjId: ${this.state.w_projectid}`)
+        // console.log(`WO WOnum: ${this.state.w_WOnum}`)
+        // console.log(`WO-desc: ${this.state.w_desc}`)
 
         const newWorkorder = {
            "w_projectid" : this.state.w_projectid,

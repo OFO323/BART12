@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../styles.css';
 import ARow from './AssetRow.js';
 
@@ -34,11 +34,18 @@ class Assets extends Component{
             search: '',
             list : []
         }
+        this.onClick = this.onClick.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     componentDidMount(){
         this.getList();
     }
+    onChange(event){
+      this.setState({
+          [event.target.name]: [event.target.value]
+      })
+  }
 
     AssetList(){
       return this.state.list.map (function(current, i){
@@ -47,11 +54,28 @@ class Assets extends Component{
   }
 
     getList = () => {
-        fetch('http://localhost:4006/Assets')
-          .then(res =>res.json())
-          .then(list => this.setState({list}))
+        if(this.props.location.state){
 
+          console.log(this.props.location.state)
+          console.log("Fetching with paramenter")
+          fetch(`http://localhost:4006/Assets/${this.props.location.state.assetID}`)
+            .then(res =>res.json())
+            .then(list => this.setState({list}))
+        }
+        else{
+          console.log("Normal Entry")
+          fetch('http://localhost:4006/Assets')
+            .then(res =>res.json())
+            .then(result => this.setState({list: result}))
+        }
     }
+
+    onClick(){
+      fetch(`http://localhost:4006/Assets/${this.state.search}`)
+              .then(res => res.json())
+              .then(result => this.setState({list:result}))
+
+  }
 
     render(){
 
@@ -63,11 +87,14 @@ class Assets extends Component{
           <Fragment>
           <Navbar bg="dark" variant="dark">
           <Form inline>
-            <Nav.Link >
+              <Nav.Link >
                     <Link to = {'/'} className = 'nav-link'>HOME</Link>
               </Nav.Link>
-              <FormControl type="text" placeholder="Search Assets" className="mr-sm-2"/>
-              <Button variant="outline-info">Search</Button>
+              <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+              <p style = {{color:"grey", margin:1}}>Search Assets</p>
+              </Form.Label>
+              <FormControl name = 'search' type="text" placeholder="Search" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
+              <Button onClick = {this.onClick} variant="outline-info">Search</Button>
           </Form>
           </Navbar>
           <Table className = "table table-striped" variant = 'dark'>

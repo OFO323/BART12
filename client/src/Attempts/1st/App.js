@@ -27,7 +27,6 @@ class App1 extends Component{
                     <Route path = '/alertMessage' component = {AlertMessage}/>
                     <Route path = '/chart' component = {Chart} />
                     <Route path = '/Asset' component = {Asset} />
-                    <Route path = '/:A_id' children = {Asset} />
                     <Route path = '/updates' component = {Notification}/>
                 </Switch>
             </div>
