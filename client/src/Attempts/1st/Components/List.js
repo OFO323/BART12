@@ -109,7 +109,7 @@ class Assets extends Component{
               </thead>
               <tbody>
                 {this.AssetList()}
-                {/* {list.length ? (
+                {list.length ? (
                     <div>
                       {list.map ((item)=> {
                         return (
@@ -125,7 +125,7 @@ class Assets extends Component{
                     </div>
                   ):(<div>
                     Loading...
-                  </div>) } */}
+                  </div>) }
               </tbody>
           </Table>
             </Fragment>
