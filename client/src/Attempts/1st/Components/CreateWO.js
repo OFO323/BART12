@@ -41,10 +41,10 @@ class CreateWO extends Component{
 
 
     onSubmit(){
-        // console.log("SUCCESSFULLY SUBMITTED FORM")
-        // console.log(`WO ProjId: ${this.state.w_projectid}`)
-        // console.log(`WO WOnum: ${this.state.w_WOnum}`)
-        // console.log(`WO-desc: ${this.state.w_desc}`)
+        console.log("SUCCESSFULLY SUBMITTED FORM")
+        console.log(`WO ProjId: ${this.state.w_projectid}`)
+        console.log(`WO WOnum: ${this.state.w_WOnum}`)
+        console.log(`WO-desc: ${this.state.w_desc}`)
 
         const newWorkorder = {
            "w_projectid" : this.state.w_projectid,
@@ -101,8 +101,8 @@ class CreateWO extends Component{
                 </Form>
             </Row>
             </Navbar>
-            <div class='bg-secondary'>
-                <h3 className = 'text-white'>Create New WorkOrder</h3>
+            <div class='bg-light'>
+                <h3>Create New WorkOrder</h3>
                 <form onSubmit = {this.onSubmit}>
                     <div>
                         <div className = 'form-group' style={{ width:'500px'}}>
@@ -113,7 +113,7 @@ class CreateWO extends Component{
                             name = 'w_projectid' 
                             value = {this.state.w_projectid}
                             onChange = {this.onChange} />
-                            {this.state.w_projectid}
+
                         </div>
 
                         <div className = 'form-group' style={{ width:'500px'}}>
@@ -236,6 +236,9 @@ class CreateWO extends Component{
 
                 </form>
             </div>
+            <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
+                    <p></p>
+            </Navbar>
             </Fragment>
         )
     }

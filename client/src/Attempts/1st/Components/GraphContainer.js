@@ -1,10 +1,14 @@
 import React, { Component, useEffect } from 'react';
 import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
-
+import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/esm/Col';
+import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class Charts extends Component{
 
@@ -31,7 +35,7 @@ class Charts extends Component{
     render(){
 
         const {data} = this.state;
-        console.log(data)
+        //console.log(data)
         
         const Dates = []
         const Readings = []
@@ -51,77 +55,65 @@ class Charts extends Component{
                 {
                     label: 'Meter Reading',
                     data: Readings,
-                    fill: true,
-                    lineTension: 0.5,
-                    backgroundColor: "rgba(248, 231, , .9)",
-                    borderColor: "rgb(205, 130, 158)",
-                    borderCapStyle: "butt",
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: "miter",
-                    pointBorderColor: "rgb(205, 130,1 58)",
-                    pointBackgroundColor: "rgb(255, 255, 255)",
-                    pointBorderWidth: 10,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                    pointHoverBorderColor: "rgba(220, 220, 220,1)",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10
+                    fill: true,                    
                 },
                 {
                     label: 'Goal',
                     data: Goal,
-                    fill: true,
-                    lineTension: 0.5,
-                    backgroundColor: "rgba(0, 0, 220, .3)",
-                    borderColor: "rgb(35, 26, 136)",
-                    borderCapStyle: "butt",
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: "miter",
-                    pointBorderColor: "rgb(35, 26, 136)",
-                    pointBackgroundColor: "rgb(255, 255, 255)",
-                    pointBorderWidth: 10,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                    pointHoverBorderColor: "rgba(220, 220, 220, 1)",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
+                    fill: false,
                 }
 
             ]
         };
-
-                           
+        
         
         return (
             <div>
                 <div>
-                {data.map ((item)=>{
-                    return(
-                    <Table className = 'table table-striped' bordered responsive bg = 'dark' fluid = 'md' variant = 'dark'>
-                        <Row bg = 'dark' >
-                            <Col>Project Id: {item.a_projectid}</Col>
-                            <Col>Meter Name: {item.a_metername}</Col>
-                        </Row>
-                        <Row bg = 'dark' variant = 'dark'>
-                            <Col>Department: {item.a_dept}</Col>
-                            <Col>Meter Description: {item.a_meterdesc}</Col>
-                            <Col>Units: {item.a_meterunits}</Col>
-                        </Row>
-                        <Row bg = 'dark'>
-                            <Col>Goal Group: {item.a_goalgroup}</Col>
-                        </Row>
-                    </Table>
-                 ) })}
+                <Navbar bg = 'dark' variant = 'dark'>
+                <Row>
+                    <Nav.Link >
+                        <Link to = {'/'} className = 'nav-link'>HOME</Link>
+                    </Nav.Link>
+                    </Row>
+                </Navbar>
+                    <thead className = "AssetInfo" >
+                        <body>
+                            <p>ProjectId: </p>
+                            <p>Department: </p>
+                            <p>Meter Name: </p>
+                            <p>Meter Reading: </p>
+                            <p>Reading Date: </p>
+                            <p>Meter Description: </p>
+                            <p>Meter Units: </p>
+                            <p>Goal: </p>
+                            <p>Goal Group: </p>
+                        </body>
+                        {/* {data.map ((item)=> {
+                                return (
+                            <body>
+                                <p>{item.a_projectid}</p>
+                                <p>{item.a_dept}</p>
+                                <p>{item.a_metername}</p>
+                                <p>{item.a_meterreading}</p>
+                                <p>{item.a_readdate}</p>
+                                <p>{item.a_meterdesc}</p>
+                                <p>{item.a_meterunits}</p>
+                                <p>{item.a_goal}</p>
+                                <p>{item.a_goalgroup}</p>
+                            </body>
+                            )}
+                        )} */}
+                    </thead>
                 </div> 
                 <div>
                     <Line data = {dataSet} />
                 </div>
+                <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
+                    <p></p>
+                </Navbar>
             </div>
-            
+          
         )
     }
     

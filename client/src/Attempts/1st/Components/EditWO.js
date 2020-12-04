@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class CreateWO extends Component{
+class editWorkorders extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -237,9 +237,12 @@ class CreateWO extends Component{
 
                 </form>
             </div>
+            <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
+                    <p></p>
+            </Navbar>
             </Fragment>
         )
     }
 }
 
-export default CreateWO;
+export default editWorkorders;
