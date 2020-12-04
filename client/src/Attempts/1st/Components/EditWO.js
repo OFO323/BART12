@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component, Fragment } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-class editWorkorders extends Component{
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class CreateWO extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -31,25 +38,36 @@ class editWorkorders extends Component{
         })
     }
 
+    //The code needs to be added which is responsible for resding the data of the new todo element to the back-end is the onSubmit method.body
+
+
     onSubmit(){
+        console.log("SUCCESSFULLY SUBMITTED FORM")
+        console.log(`WO ProjId: ${this.state.w_projectid}`)
+        console.log(`WO WOnum: ${this.state.w_WOnum}`)
+        console.log(`WO-desc: ${this.state.w_desc}`)
 
-        const editWorkorder= {
-            "Workorder.w_projectid" : this.state.w_projectid,
-            "Workorder.w_WOnum": this.state.w_WOnum,
-            "Workorder.w_desc": this.state.w_desc,
-            "Workorder.w_status": this.state.w_status,
-            "Workorder.w_reporteddate": this.state.w_reporteddate,
-            "Workorder.w_location": this.state.w_location,
-            "Workorder.w_type": this.state.w_type,
-            "Workorder.w_TPID": this.state.w_TPID,
-            "Workorder.w_PSProject": this.state.w_PSProject,
-            "Workorder.w_PSProjDesc": this.state.w_PSProjDesc,
-            "Workorder.w_PSActivity": this.state.w_PSActivity,
-            "Workorder.w_PSActDesc": this.state.w_PSActDesc
-         }
+        const newWorkorder = {
+           "w_projectid" : this.state.w_projectid,
+           "w_WOnum": this.state.w_WOnum,
+           "w_desc": this.state.w_desc,
+           "w_status": this.state.w_status,
+           "w_reporteddate": this.state.w_reporteddate,
+           "w_location": this.state.w_location,
+           "w_type": this.state.w_type,
+           "w_TPID": this.state.w_TPID,
+           "w_PSProject": this.state.w_PSProject,
+           "w_PSProjDesc": this.state.w_PSProjDesc,
+           "w_PSActivity": this.state.w_PSActivity,
+           "w_PSActDesc": this.state.w_PSActDesc
+        }
 
-         axios.put('http://localhost:4006/edit', editWorkorder)
+        axios.post('http://localhost:4006/create', newWorkorder)
             .then(res => console.log(res.data))
+
+        if(this.state.w_WOnum == 10){
+            this.props.history.push('/alertMessage'); 
+        }
 
             this.setState({
                'w_projectid' : '',
@@ -65,15 +83,31 @@ class editWorkorders extends Component{
                'w_PSActivity': '',
                'w_PSActDesc': ''
             })
+
+           
     }
 
     render(){
+        const {w_WOnum} = this.state.w_WOnum
+
+        
         return(
-            <div>
+            <Fragment>
+            <Navbar bg = 'dark' variant = 'dark'>
+            <Row>
+                <Form inline>
+                <Nav.Link >
+                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
+                </Nav.Link>
+                </Form>
+            </Row>
+            </Navbar>
+            <div class='bg-secondary'>
+                <h3 className = 'text-white'>Create New WorkOrder</h3>
                 <form onSubmit = {this.onSubmit}>
                     <div>
-                        <div className = 'form-group'>
-                            <label>Project Id: </label>
+                        <div className = 'form-group' style={{ width:'500px'}}>
+                            <label>Project Id</label>
                             <input 
                             type = 'text' 
                             className = 'form-control' 
@@ -83,8 +117,8 @@ class editWorkorders extends Component{
                             {this.state.w_projectid}
                         </div>
 
-                        <div className = 'form-group'>
-                            <label>#WO</label>
+                        <div className = 'form-group' style={{ width:'500px'}}>
+                            <label>Work Order Number</label>
                             <input 
                             type = 'number' 
                             className = 'form-control' 
@@ -93,7 +127,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Description</label>
                             <input 
                             type = 'text' 
@@ -103,7 +137,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Status</label>
                             <input 
                             type = 'text' 
@@ -113,7 +147,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Report Date</label>
                             <input 
                             type = 'text' 
@@ -123,7 +157,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Location</label>
                             <input 
                             type = 'text' 
@@ -133,7 +167,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Type</label>
                             <input 
                             type = 'text' 
@@ -143,7 +177,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>TP Id</label>
                             <input 
                             type = 'text' 
@@ -153,7 +187,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Project</label>
                             <input 
                             type = 'text' 
@@ -163,7 +197,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Project Description</label>
                             <input 
                             type = 'text' 
@@ -173,7 +207,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>PS Activity</label>
                             <input 
                             type = 'text' 
@@ -183,7 +217,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group'>
+                        <div className = 'form-group' style={{ width:'500px'}}>
                             <label>Activity Description</label>
                             <input 
                             type = 'text' 
@@ -193,7 +227,9 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <input type = 'Submit' value = 'Edit Workorder'/>
+                        
+                            <input type = 'Submit' value = 'Submit'/>
+                        
 
                     </div>
                         
@@ -201,8 +237,9 @@ class editWorkorders extends Component{
 
                 </form>
             </div>
+            </Fragment>
         )
     }
 }
 
-export default editWorkorders;
+export default CreateWO;

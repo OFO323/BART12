@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../styles.css';
 import ARow from './AssetRow.js';
-
+import Nav from 'react-bootstrap/Nav';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -85,18 +85,17 @@ class Assets extends Component{
 
         return (
           <Fragment>
-          <Navbar bg="dark" variant="dark">
-          <Form inline>
-              <Nav.Link >
+
+            <Navbar bg="dark" variant="dark">
+            <Form inline>
+                <Nav.Link >
                     <Link to = {'/'} className = 'nav-link'>HOME</Link>
-              </Nav.Link>
-              <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-              <p style = {{color:"grey", margin:1}}>Search Assets</p>
-              </Form.Label>
-              <FormControl name = 'search' type="text" placeholder="Search" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
-              <Button onClick = {this.onClick} variant="outline-info">Search</Button>
-          </Form>
-          </Navbar>
+                </Nav.Link>
+                <FormControl type="text" placeholder="Search Assets" className="mr-sm-2"/>
+                <Button variant="outline-info">Search</Button>
+            </Form>
+            </Navbar>
+
           <Table className = "table table-striped" variant = 'dark'>
               <thead>
                   <tr class="text-primary">
@@ -109,23 +108,7 @@ class Assets extends Component{
               </thead>
               <tbody>
                 {this.AssetList()}
-                {list.length ? (
-                    <div>
-                      {list.map ((item)=> {
-                        return (
-                          <tr>
-                            <Link to = {{ pathname : `/Asset`, state :{
-                              Department : [item.a_dept],   
-                              Meter: [item.a_metername],
-                              Asset : [item.a_projectid]
-                            }}} > <ARow projectId = {item.a_projectid} dept = {item.a_dept} meterName = {item.a_metername} reading = {item.a_meterreading} date = {item.a_readdate} /> </Link>
-                          </tr>
-                        )
-                      })}
-                    </div>
-                  ):(<div>
-                    Loading...
-                  </div>) }
+
               </tbody>
           </Table>
             </Fragment>

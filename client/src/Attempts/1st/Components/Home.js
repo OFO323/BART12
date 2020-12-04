@@ -70,21 +70,24 @@ class Home extends Component{
                             <Link to = {'/createWorkorder'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
                         <Form inline>
-                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
+
                             <Dropdown>
                                 <Dropdown.Toggle  id="dropdown-custom-components" variant ="info">
                                 Filter
                                 </Dropdown.Toggle>
+
                                 <Dropdown.Menu >
                                 <Dropdown.Item ><Link to = {{pathname : '/Assets', state: {
                                     assetID: this.state.search
                                 }}}>Assets</Link></Dropdown.Item>
-                                <Dropdown.Item ><Link to = {{pathname: '/workorders', state:{
-                                    workorder:this.state.search
-                                }}}>Workorders</Link></Dropdown.Item>
+
+                                <Dropdown.Item ><Link to = {'/workorders/' + this.state.search}>Workorders</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+                            <FormControl name = "search" type="text" placeholder="Search Database" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
+                            <Button variant="outline-info">Search</Button>
+
                         </Form>
                     </Nav>
                 </Navbar>
