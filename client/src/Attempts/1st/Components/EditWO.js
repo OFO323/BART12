@@ -13,18 +13,18 @@ class CreateWO extends Component{
     constructor(props){
         super(props);
         this.state = {
-            'w_projectid': " ",
+            'w_projectid': props.location.state.Project,
             'w_WOnum': props.location.state.Workorder,
-            'w_desc': '',
-            'w_status': '',
-            'w_reporteddate': 0,
-            'w_location': '',
-            'w_type': '',
-            'w_TPID': 0,
-            'w_PSProject': '',
-            'w_PSProjDesc': '',
-            'w_PSActivity': '',
-            'w_PSActDesc': ''
+            'w_desc': props.location.state.Description,
+            'w_status': props.location.state.Status,
+            'w_reporteddate': props.location.state.Date,
+            'w_location': props.location.state.Location,
+            'w_type': props.location.state.Type,
+            'w_TPID': props.location.state.TPID,
+            'w_PSProject': props.location.state.PSProject,
+            'w_PSProjDesc': props.location.state.ProjDesc,
+            'w_PSActivity': props.location.state.Activity,
+            'w_PSActDesc': props.location.state.ActDesc
         }
         console.log(this.props)
 
