@@ -26,7 +26,18 @@ const Workorders = item => (
         <td>{item.workorders.w_type}</td>
         <td>
             <Link to = {{pathname:"/editWorkorder",state :{
-                Workorder : [item.workorders.w_WOnum]
+                Project: [item.workorders.w_projectid],
+                Workorder : [item.workorders.w_WOnum],
+                Description: [item.workorders.w_desc],
+                Status : [item.workorders.w_status],
+                Date: [item.workorders.w_reporteddate],    
+                Location: [item.workorders.w_location],
+                Type: [item.workorders.w_type],
+                TPID: [item.workorders.w_TPID],
+                PSProject : [item.workorders.w_PSProject],
+                ProjDesc: [item.workorders.w_PSProjDesc],
+                Activity : [item.workorders.w_PSActivity],
+                ActDesc : [item.workorders.w_PSActDesc]
             }}}>Edit</Link>            
         </td>
     </tr>
