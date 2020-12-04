@@ -19,8 +19,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import notifTable from './notifTable';
-import NotifTable from './notifTable';
+import UpdateTable from './updateTable';
+import Notifications from './notificationTable';
 
 class Home extends Component{
 
@@ -101,34 +101,30 @@ class Home extends Component{
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey = '0'>
                             <Card.Body>
-                                <NotifTable/>
+                                {/*<NotifTable/>*/}
+                                <Notifications type = {"alert"} />
                             </Card.Body>
                         </Accordion.Collapse>
                         <Accordion.Toggle as = {Card.Header} eventKey = "1">
-                            Info<Badge variant = 'info'>Value</Badge>
+                            Success<Badge variant = 'success'>Value</Badge>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey = '1'>
                             <Card.Body>
-                                <NotifTable/>
+                            <Table striped bordered hover>
+                                {/*<NotifTable/>*/}
+                                <Notifications type = {"success"} />
+
+                            </Table>
                             </Card.Body>
                         </Accordion.Collapse>
                         <Accordion.Toggle as = {Card.Header} eventKey = "2">
-                            Success<Badge variant = 'success'>Value</Badge>
+                            Progress<Badge variant = 'primary'>Value</Badge>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey = '2'>
                             <Card.Body>
                             <Table striped bordered hover>
-                                <NotifTable/>
-                            </Table>
-                            </Card.Body>
-                        </Accordion.Collapse>
-                        <Accordion.Toggle as = {Card.Header} eventKey = "3">
-                            Progress<Badge variant = 'primary'>Value</Badge>
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey = '3'>
-                            <Card.Body>
-                            <Table striped bordered hover>
-                                <NotifTable/>
+                                {/*<NotifTable/>*/}
+                                <Notifications type = {"progress"} />
                             </Table>
                             </Card.Body>
                         </Accordion.Collapse>
@@ -136,42 +132,7 @@ class Home extends Component{
                 <Card  style = {{textAlign : 'left'}}>
                     <h2><u>Recent Updates</u></h2>
                 </Card>
-                <table className="table table-striped table-dark">
-                    <thead>
-                        <tr>
-                        <th scope="col-lg-5">Workorders</th>
-                        <th scope="col-lg-5">Involved Asset</th>
-                        <th scope="col-lg-2">PM/CM</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>615648</td>
-                            <td>AC-23</td>
-                            <td>PM</td>
-                        </tr>
-                        <tr>
-                            <td>614568 [UPDATED]</td>
-                            <td>TC-65</td>
-                            <td>CM</td>
-                        </tr>
-                        <tr>
-                            <td>614568</td>
-                            <td>TC-65</td>
-                            <td>CM</td>
-                        </tr>
-                        <tr>
-                            <td>615646</td>
-                            <td>MB-13</td>
-                            <td>PM</td>
-                        </tr>
-                        <tr>
-                            <td>615876</td>
-                            <td>AD-47</td>
-                            <td>CM</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <UpdateTable />
             
         </Fragment>
         </div>
