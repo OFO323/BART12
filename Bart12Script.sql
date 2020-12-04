@@ -141,29 +141,39 @@ INSERT INTO projectManagers(d_Num, name) VALUES (0802856, 'Small,Kathy U');
 INSERT INTO projectManagers(d_Num, name) VALUES (0802845, 'Wu,Victor W');
 INSERT INTO projectManagers(d_Num, name) VALUES (0802820, 'Dietrich,Steven D');
 
-CREATE TABLE projectsUpdates(name CHAR NOT NULL, projID CHAR NOT NULL, phase CHAR NOT NULL, task CHAR, activName CHAR NOT NULL, baseline_date DATE NOT NULL, days_aheadBehind_baseline INTEGER NOT NULL);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('Repair & Maintenance of Cathodic Protection System', '09DJ004', 'Contract 09DJ-140A [CLOSED]', 'Construction', 'NTP - Repair & Maintenance of Cathodic Proc (09DJ-140A)', 2021-03-11, 0);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('TBT Cathodic Protection -', '09DJ005', 'Closeout', 'Maintenance Operation', 'Maintenance Acceptance and Maximo Updated', 2020-04-01, 146);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('Replacement of TBT Emergency Doors', '09AF002', 'Closeout', NULL, 'Maintenance Acceptance / Maximo Updated', 2020-08-18, 0);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('TBT CP System Assessment', '09DJ007', 'Closeout', 'BART Maintenance (Turn Over / Acceptance)', 'Maximo Updated', 2021-04-09, 0);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09EK300', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Procurement', 'NTP', 2022-05-24, 1541);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09EK300', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Construction', 'Substantial Completion', 2022-08-19, 0);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09EK300', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Closeout', 'Maintenance Acceptance & Maximo updated', 2022-12-30, 0);
-INSERT INTO projectsUpdates(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09EK300', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Closeout', 'Project Completion', 2023-03-08, 0);
+DROP TABLE projNotifcations;
+
+CREATE TABLE projNotifcations(name CHAR NOT NULL, projID CHAR NOT NULL, phase CHAR NOT NULL, task CHAR, activName CHAR NOT NULL, baseline_date DATE NOT NULL, days_aheadBehind_baseline INTEGER NOT NULL, notifType VARCHAR(4), created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Repair & Maintenance of Cathodic Protection System', '09AF002', 'Contract 09DJ-140A [CLOSED]', 'Construction', 'NTP - Repair & Maintenance of Cathodic Proc (09DJ-140A)', 2021-03-11, 0, 'progress');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('TBT Cathodic Protection -', '09AF002', 'Closeout', 'Maintenance Operation', 'Maintenance Acceptance and Maximo Updated', 2020-04-01, 146, 'success');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Replacement of TBT Emergency Doors', '09AF002', 'Closeout', NULL, 'Maintenance Acceptance / Maximo Updated', 2020-08-18, 0, 'success');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('TBT CP System Assessment', '09AF002', 'Closeout', 'BART Maintenance (Turn Over / Acceptance)', 'Maximo Updated', 2021-04-09, 0, 'success');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Procurement', 'NTP', 2022-05-24, 1541, 'progress');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Construction', 'Substantial Completion', 2022-08-19, 0, 'progress');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Closeout', 'Maintenance Acceptance & Maximo updated', 2022-12-30, 0, 'succcess');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Closeout', 'Project Completion', 2023-03-08, 0, 'succcess');
 
 -- TABLE : Projects
 CREATE TABLE Projects(name VARCHAR(50) NOT NULL, id_num VARCHAR(10) NOT NULL, manager DECIMAL(7,0) NOT NULL, dept_ID DECIMAL(7,0) NOT NULL, progress VARCHAR(100) NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 
-
 INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Replacement of TBT Emergency Doors', "09AF002", 0802881, 0802847, "Nearly Finsished");
 INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Removal of TBT Emergency Doors', "09AF002",0802847 , 0802847, "There has been a set back");
 
-SELECT name, id_num, manager, dept_ID, progress, datetime(created_at, 'localtime') as updated_at FROM Projects;
+--SELECT name, id_num, manager, dept_ID, progress, datetime(created_at, 'localtime') as updated_at FROM Projects;
  
 -- TABLE : projAssets
 -- 'type' could be either PM or CM
 CREATE TABLE projAssets(assetID VARCHAR(25) NOT NULL, projID VAR(25) NOT NULL, type CHAR(2) NOT NULL);
 INSERT INTO projAssets VALUES ('A1 EDGE 2', '09AF002', 'PM');
+
+DROP VIEW notifUpdates;
+
+CREATE VIEW notifUpdates(projID, name, phase, notifType, time_at) AS
+    SELECT  projNotifcations.projID, projNotifcations.name, projNotifcations.phase, projNotifcations.notifType, projNotifcations.created_at
+    FROM    Projects, projNotifcations, Department, projectManagers
+    WHERE   projID LIKE id_num
+    AND dep_Num = dept_ID
+    AND d_Num = manager
 
 CREATE VIEW projectUpdates(assetID, projID, progress, updated_at, department, manager) AS 
     SELECT assetID, projID, progress, date(created_at, 'localtime'), dep_Name, projectManagers.name
