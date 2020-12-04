@@ -62,6 +62,9 @@ INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreadin
 INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('A65', 'TP CONS', 'T2-T-RAIL', 'A-Line Third Rail Replacement Project on Track 2', 930, '6-Sep-20', 'Feet', 1250, 'T2-T-RAIL');
 INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('A65', 'TP CONS', 'T2-T-RAIL', 'A-Line Third Rail Replacement Project on Track 2', 930, '6-Sep-20', 'Feet', 1250, 'T2-T-RAIL');
 INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('A65', 'TP CONS', 'T2-T-RAIL', 'A-Line Third Rail Replacement Project on Track 2', 540, '7-Sep-20', 'Feet', 1250, 'T2-T-RAIL');
+INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('C25', 'POWER', 'BHT-C1 L', 'BHT C1 Lighting Replacement (Goal = 338 Lights))', 134, '3-Jun-20', '# of lights', 338, 'BHT C1 L,BHT C2 L');
+INSERT INTO Assets (a_projectid, a_dept, a_metername, a_meterdesc, a_meterreading, a_readdate, a_meterunits, a_goal, a_goalgroup) VALUES ('C25', 'POWER', 'BHT-C2 L', 'BHT C2 Lighting Replacement (Goal = 338 Lights))', 40, '4-Jun-20', '# of lights', 338, 'BHT C1 L,BHT C2 L');
+
 
 -- Table: Workorder
 CREATE TABLE Workorder (w_projectid BOOLEAN NOT NULL, w_WOnum BOOLEAN NOT NULL, w_desc CHAR NOT NULL, w_status CHAR NOT NULL, w_reporteddate BOOLEAN NOT NULL, w_location CHAR NOT NULL, w_type CHAR NOT NULL, w_TPID BOOLEAN NOT NULL, w_PSProject CHAR NOT NULL, w_PSProjDesc CHAR NOT NULL, w_PSActivity CHAR NOT NULL, w_PSActDesc CHAR NOT NULL);
@@ -98,7 +101,7 @@ INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17025343, 'TP-Maintenance DAY: Replacing Parking Lot Lighting at A60', 'INPRG', 44011, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17025343, 'TP-Maintenance DAY: Replacing Parking Lot Lighting at A60', 'INPRG', 44011, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17025343, 'TP-Maintenance DAY: Replacing Parking Lot Lighting at A60', 'INPRG', 44011, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
-INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17258130, 'TP-Maintenance�GRAVE:�Replacing�Parking�Lot�Lighting�at�A60', 'WSCHED', 44069, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
+INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17258130, 'TP-Maintenance GRAVE: Replacing Parking Lot Lighting at A60', 'WSCHED', 44069, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17208607, 'A60-TP-Maintenance SWING: Concourse, Platform Level Lighting Replacement at A60', 'COMP', 44056, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17208607, 'A60-TP-Maintenance SWING: Concourse, Platform Level Lighting Replacement at A60', 'COMP', 44056, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 17208607, 'A60-TP-Maintenance SWING: Concourse, Platform Level Lighting Replacement at A60', 'COMP', 44056, 'A60', 'CAP', 1000003627, '15TK000', 'M*E CAPITALIZED MAINTENANCE', 'CONST', 'Constructn,Fabricatn,Instalatn');
@@ -119,6 +122,67 @@ INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 16621791, 'TP-Cons: A-Line Third Rail Replacement Phase 3-(15ELRR3)', 'WSCHED', 43916, 'A-LINE', 'PRJ', 1000003069, '54RR004', 'M&E Line Rail EQP', 'FDSTR', 'FD-Third Rail Replacement');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 16621791, 'TP-Cons: A-Line Third Rail Replacement Phase 3-(15ELRR3)', 'WSCHED', 43916, 'A-LINE', 'PRJ', 1000003069, '54RR004', 'M&E Line Rail EQP', 'FDSTR', 'FD-Third Rail Replacement');
 INSERT INTO Workorder (w_projectid, w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc) VALUES ('A65', 16621791, 'TP-Cons: A-Line Third Rail Replacement Phase 3-(15ELRR3)', 'WSCHED', 43916, 'A-LINE', 'PRJ', 1000003069, '54RR004', 'M&E Line Rail EQP', 'FDSTR', 'FD-Third Rail Replacement');
+
+-- TABLE : Department
+CREATE TABLE Department(dep_Num DECIMAL(7,0) NOT NULL, dep_Name CHAR NOT NULL);
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802847, 'Operating & Capital Programs');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802881, 'Power & Mechanical Engineering');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802856, 'Integration Engineering');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802845, 'Civil/Structural Eng & Constru');
+INSERT INTO Department(dep_Num, dep_Name) VALUES (0802820, 'Systems Engineering');
+
+
+--TABLE : Project Managers
+--need to search data for other reports where each project managers is involved to find other useful needed attributes for this table 
+CREATE TABLE projectManagers(d_Num DECIMAL(7,0) NOT NULL, name CHAR NOT NULL);
+INSERT INTO projectManagers(d_Num, name) VALUES (0802847, 'Fields,Bryant');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802881, 'Sims,Steven M');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802856, 'Small,Kathy U');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802845, 'Wu,Victor W');
+INSERT INTO projectManagers(d_Num, name) VALUES (0802820, 'Dietrich,Steven D');
+
+DROP TABLE projNotifcations;
+
+CREATE TABLE projNotifcations(name CHAR NOT NULL, projID CHAR NOT NULL, phase CHAR NOT NULL, task CHAR, activName CHAR NOT NULL, baseline_date DATE NOT NULL, days_aheadBehind_baseline INTEGER NOT NULL, notifType VARCHAR(4), created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Repair & Maintenance of Cathodic Protection System', '09AF002', 'Contract 09DJ-140A [CLOSED]', 'Construction', 'NTP - Repair & Maintenance of Cathodic Proc (09DJ-140A)', 2021-03-11, 0, 'progress');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('TBT Cathodic Protection -', '09AF002', 'Closeout', 'Maintenance Operation', 'Maintenance Acceptance and Maximo Updated', 2020-04-01, 146, 'success');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Replacement of TBT Emergency Doors', '09AF002', 'Closeout', NULL, 'Maintenance Acceptance / Maximo Updated', 2020-08-18, 0, 'success');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('TBT CP System Assessment', '09AF002', 'Closeout', 'BART Maintenance (Turn Over / Acceptance)', 'Maximo Updated', 2021-04-09, 0, 'success');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Procurement', 'NTP', 2022-05-24, 1541, 'progress');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Construction', 'Substantial Completion', 2022-08-19, 0, 'progress');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Closeout', 'Maintenance Acceptance & Maximo updated', 2022-12-30, 0, 'succcess');
+INSERT INTO projNotifcations(name, projID, phase, task, activName, baseline_date, days_aheadBehind_baseline, notifType) VALUES ('Transbay Tube 480V Switchgear Replacement, XF Pads', '09AF002', 'TransBay Tube 480V Switchgear Replacement, XF, pads', 'Closeout', 'Project Completion', 2023-03-08, 0, 'succcess');
+
+-- TABLE : Projects
+CREATE TABLE Projects(name VARCHAR(50) NOT NULL, id_num VARCHAR(10) NOT NULL, manager DECIMAL(7,0) NOT NULL, dept_ID DECIMAL(7,0) NOT NULL, progress VARCHAR(100) NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+
+INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Replacement of TBT Emergency Doors', "09AF002", 0802881, 0802847, "Nearly Finsished");
+INSERT INTO Projects (name, id_num, manager, dept_ID, progress) VALUES ('Removal of TBT Emergency Doors', "09AF002",0802847 , 0802847, "There has been a set back");
+
+--SELECT name, id_num, manager, dept_ID, progress, datetime(created_at, 'localtime') as updated_at FROM Projects;
+ 
+-- TABLE : projAssets
+-- 'type' could be either PM or CM
+CREATE TABLE projAssets(assetID VARCHAR(25) NOT NULL, projID VAR(25) NOT NULL, type CHAR(2) NOT NULL);
+INSERT INTO projAssets VALUES ('A1 EDGE 2', '09AF002', 'PM');
+
+DROP VIEW notifUpdates;
+
+CREATE VIEW notifUpdates(projID, name, phase, notifType, time_at) AS
+    SELECT  projNotifcations.projID, projNotifcations.name, projNotifcations.phase, projNotifcations.notifType, projNotifcations.created_at
+    FROM    Projects, projNotifcations, Department, projectManagers
+    WHERE   projID LIKE id_num
+    AND dep_Num = dept_ID
+    AND d_Num = manager
+
+CREATE VIEW projectUpdates(assetID, projID, progress, updated_at, department, manager) AS 
+    SELECT assetID, projID, progress, date(created_at, 'localtime'), dep_Name, projectManagers.name
+    FROM Projects, projAssets, Department, projectManagers
+    WHERE id_num LIKE projID
+    AND dep_Num = dept_ID
+    AND d_Num = manager
+
+DROP VIEW projectUpdates
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
