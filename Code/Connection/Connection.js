@@ -2,6 +2,34 @@ import sqlite3 from 'sqlite3';
 import Data from './actualConnection.js'
 
 
+
+//pull up specific notif type
+export const notifSearch_type = (req, res) => {
+    Data.serialize( () => {
+        Data.all("SELECT projID, name, phase, time_at FROM notifUpdates WHERE notifType = ? AND strftime('%W', time_at) LIKE strftime('%W', ?) OR strftime('%W', time_at) LIKE strftime('%W', ?) - 1",[req.params.type, req.params.date,req.params.date] , (err, row) =>{
+            if(err){
+                console.log(err);
+            } else {
+                //console.log(row);
+                res.send(JSON.stringify(row));
+            }
+        })
+
+    })
+}
+
+//pull all notifications 
+export const notifSearch = (req, res) => {
+    Data.all("SELECT * FROM notifUpdates", (err, row) =>{
+        if(err){
+            console.log(err);
+        } else {
+            //console.log(row);
+            res.send(JSON.stringify(row));
+        }
+    })
+}
+
 //used for the search bar in asset page and main page
 export const AssetSearch = (req, res) => {
     Data.serialize( () => {
