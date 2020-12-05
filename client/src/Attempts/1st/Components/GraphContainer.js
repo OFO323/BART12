@@ -1,8 +1,10 @@
 import React, { Component, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
+
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -69,42 +71,42 @@ class Charts extends Component{
         
         return (
             <div>
+            <Navbar bg="dark" variant="dark">
+                <Nav.Link >
+                <Link to = {'/Assets'} className = 'nav-link'>Back</Link>
+                </Nav.Link>
+            </Navbar>
                 <div>
-                <Navbar bg = 'dark' variant = 'dark'>
-                <Row>
-                    <Nav.Link >
-                        <Link to = {'/'} className = 'nav-link'>HOME</Link>
-                    </Nav.Link>
-                    </Row>
-                </Navbar>
-                    <thead className = "AssetInfo" >
-                        <body>
-                            <p>ProjectId: </p>
-                            <p>Department: </p>
-                            <p>Meter Name: </p>
-                            <p>Meter Reading: </p>
-                            <p>Reading Date: </p>
-                            <p>Meter Description: </p>
-                            <p>Meter Units: </p>
-                            <p>Goal: </p>
-                            <p>Goal Group: </p>
-                        </body>
-                        {/* {data.map ((item)=> {
-                                return (
+                {data.map ((item)=>{
+                         return(
                             <body>
-                                <p>{item.a_projectid}</p>
-                                <p>{item.a_dept}</p>
-                                <p>{item.a_metername}</p>
-                                <p>{item.a_meterreading}</p>
-                                <p>{item.a_readdate}</p>
-                                <p>{item.a_meterdesc}</p>
-                                <p>{item.a_meterunits}</p>
-                                <p>{item.a_goal}</p>
-                                <p>{item.a_goalgroup}</p>
-                            </body>
-                            )}
-                        )} */}
-                    </thead>
+                            <p>Project Id: {item.a_projectid}</p>
+                            <p>Meter Name: {item.a_metername}</p>
+                            <p>Department: {item.a_dept}</p>
+                            <p>Meter Description: {item.a_meterdesc}</p>
+                            <p>Meter Reading: {item.a_meterreading}</p>
+                            <p>Meter Units: {item.a_meterunits}</p>
+                            <p>Read Date: {item.a_readdate}</p>
+                            <p>Group: {item.a_group}</p>
+                            <p>Goal Group: {item.a_goalgroup}</p>
+                        </body>
+            
+                            // <Table className = 'table table-striped' bordered responsive bg = 'dark' fluid = 'md' variant = 'dark'>
+                            //     <Row bg = 'dark' >
+                            //         <Col>Project Id: {item.a_projectid}</Col>
+                            //         <Col>Meter Name: {item.a_metername}</Col>
+                            //     </Row>
+                            //     <Row bg = 'dark' variant = 'dark'>
+                            //         <Col>Department: {item.a_dept}</Col>
+                            //         <Col>Meter Description: {item.a_meterdesc}</Col>
+                            //         <Col>Units: {item.a_meterunits}</Col>
+                            //     </Row>
+                            //     <Row bg = 'dark'>
+                            //         <Col>Goal Group: {item.a_goalgroup}</Col>
+                            //     </Row>
+                            // </Table>
+                 ) })}
+
                 </div> 
                 <div>
                     <Line data = {dataSet} />
