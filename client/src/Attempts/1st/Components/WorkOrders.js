@@ -24,35 +24,28 @@ const Workorders = item => (
         <td>{item.workorders.w_reporteddate}</td>
         <td>{item.workorders.w_location}</td>
         <td>{item.workorders.w_type}</td>
-        <td>
-
-            <Link to = {{pathname:"/editWorkorder",state :{
-                Project: [item.workorders.w_projectid],
-                Workorder : [item.workorders.w_WOnum],
-                Description: [item.workorders.w_desc],
-                Status : [item.workorders.w_status],
-                Date: [item.workorders.w_reporteddate],    
-                Location: [item.workorders.w_location],
-                Type: [item.workorders.w_type],
-                TPID: [item.workorders.w_TPID],
-                PSProject : [item.workorders.w_PSProject],
-                ProjDesc: [item.workorders.w_PSProjDesc],
-                Activity : [item.workorders.w_PSActivity],
-                ActDesc : [item.workorders.w_PSActDesc]
-            }}}>Edit</Link>
-
-
+        <td>    
+            <Link to = {{pathname:`/editWorkorder/${item.workorders.w_projectid}/${item.workorders.w_WOnum}/${item.workorders.w_desc}/${item.workorders.w_status}/${item.workorders.w_reporteddate}/${item.workorders.w_location}/${item.workorders.w_type}/${item.workorders.w_TPID}/${item.workorders.w_PSProject}/${item.workorders.w_PSProjDesc}/${item.workorders.w_PSActivity}/${item.workorders.w_PSActDesc}`}}>Edit</Link>
         </td>
     </tr>
 )
 
 class WorkOrders extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            search: '',
-            workorders: []
+    constructor({match}){
+        super(match);
+        if(match){
+            this.state = {
+                search: match.params.id,
+                workorders: []
+            }
         }
+        else{
+            this.state = {
+                search: '',
+                workorders: []
+            }
+        }
+    //console.log(match)
      this.onClick = this.onClick.bind(this)
      this.onChange = this.onChange.bind(this);
 
@@ -78,9 +71,16 @@ class WorkOrders extends Component{
     }
 
     getWorkorders(){
+        if(this.state.search !== ''){
+            fetch(`http://localhost:4006/woSearch/${this.state.search}`)
+                .then(res => res.json())
+                .then(result => this.setState({workorders:result}))
+        }
+        else{
             fetch('http://localhost:4006/Workorders')
                 .then(res => res.json())
                 .then(result => this.setState({workorders:result}))
+        }
     }
 
     onClick(){
@@ -105,8 +105,8 @@ class WorkOrders extends Component{
                 </Nav.Link>
                 <Form inline>
                     <Col >
-                        <FormControl type="text" placeholder="Search Workorders" className="mr-sm-2"/>
-                        <Button variant = 'outline-info'>Search</Button>
+                        <FormControl name = 'search' value = {this.state.search} onChange = {this.onChange} type="text" placeholder="Search Workorders" className="mr-sm-2"/>
+                        <Button  onClick = {this.onClick} variant = 'outline-info'>Search</Button>
                     </Col>
                 </Form>
                 </Row>

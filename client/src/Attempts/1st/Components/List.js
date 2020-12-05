@@ -28,17 +28,34 @@ const List = item => (
 )
 
 class Assets extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            search: '',
-            list : []
+    constructor({match}){
+        super(match)
+        if(match){
+            this.state = {
+              search: match.params.Aid,
+              list : []
+          }
         }
+        else{
+            this.state = {
+              search: '',
+              list : []
+          }
+        }
+        this.onClick = this.onClick.bind(this);
+        this.onChange = this.onChange.bind(this);
+        console.log(match)
     }
 
     componentDidMount(){
         this.getList();
     }
+
+    onChange(event){
+      this.setState({
+          [event.target.name]: [event.target.value]
+      })
+  }
 
     AssetList(){
       return this.state.list.map (function(current, i){
@@ -47,11 +64,24 @@ class Assets extends Component{
   }
 
     getList = () => {
-        fetch('http://localhost:4006/Assets')
+      if(this.state.search !== ''){
+         fetch(`http://localhost:4006/Assets/${this.state.search}`)
           .then(res =>res.json())
-          .then(list => this.setState({list}))
+          .then(result => this.setState({list: result}))
+      }
+      else{
+        fetch('http://localhost:4006/Assets')
+        .then(res =>res.json())
+        .then(result => this.setState({list: result}))
+        }
 
-    }
+  }
+
+      onClick(){
+        fetch(`http://localhost:4006/Assets/${this.state.search}`)
+        .then(res =>res.json())
+        .then(result => this.setState({list: result}))
+      }
 
     render(){
 
@@ -66,8 +96,8 @@ class Assets extends Component{
             <Nav.Link >
                     <Link to = {'/'} className = 'nav-link'>HOME</Link>
               </Nav.Link>
-              <FormControl type="text" placeholder="Search Assets" className="mr-sm-2"/>
-              <Button variant="outline-info">Search</Button>
+              <FormControl name = 'search' type="text" placeholder="Search" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
+              <Button onClick = {this.onClick} variant="outline-info">Search</Button>
           </Form>
           </Navbar>
           <Table className = "table table-striped" variant = 'dark'>
