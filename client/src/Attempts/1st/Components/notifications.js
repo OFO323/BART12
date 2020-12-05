@@ -6,14 +6,13 @@ import moment from 'moment'
 import Table from 'react-bootstrap/Table';
 
 
-//table pulls data from DB [projectUpdates table]
 
-const ProjUpdates = item => (
+const ProjNotifications = item => (
     <tr>
-        <td>{item.projectUpdates.assetID}</td>
-        <td>{item.projectUpdates.projID}</td>
-        <td>{item.projectUpdates.progress}</td>
-        <td>{item.projectUpdates.updated_at}</td>
+        <td>{item.projectNotifs.projID}</td>
+        <td>{item.projectNotifs.name}</td>
+        <td>{item.projectNotifs.phase}</td>
+        <td>{item.projectNotifs.time_at}</td>
     </tr>
 )
 
@@ -22,52 +21,51 @@ class NotifTable extends Component{
    constructor(props){
        super(props);
        this.state = {  
-        //type : '',        //specifiy notification type [danger, info, etc]
-        projectUpdates : []
+        type : '',        //specifiy notification type [danger, info, etc]
+        projectNotifs : []
     }
    }
 
     //once compnent mounts data is pulled from DB
     componentDidMount(){
-        this.getUpdates();
+        this.getNotifs();
     }
 
-    UpdateList(){
-        return this.state.projectUpdates.map((curr, index) => {
-            return <ProjUpdates projectUpdates = {curr} key = {index} />
+    NotifList(){
+        return this.state.projectNotifs.map((curr, index) => {
+            return <ProjNotifications projectNotifs = {curr} key = {index} />
         });
     }
 
     //should just fetch from DB
-    getUpdates = () => {
+    getNotifs = () => {
 
         var date = moment().utcOffset('0').format('YYYY-MM-DD');
         console.log(date)
 
-        fetch(`http://localhost:4006/projUpdates/${date}`)
+        fetch(`http://localhost:4006/projNotification/${date}/${this.state.type}`)
             .then(res => res.json())
-            .then(projectUpdates => this.setState({projectUpdates}))
+            .then(projectNotifs => this.setState({projectNotifs}))
             .catch(err => console.log(err))
     } 
 
 
 
     render(){
-        const {projectUpdates} = this.state;
         console.log(this.state)
 
         return(
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Asset ID</th>
                         <th>Project ID</th>
-                        <th>Progress</th>
+                        <th>Name</th>
+                        <th>Phase</th>
                         <th>Updated At</th>
                     </tr>
                 </thead>
                 <tbody>
-                {this.UpdateList()}
+                {this.NotifList()}
                 </tbody>
             </Table>
         )

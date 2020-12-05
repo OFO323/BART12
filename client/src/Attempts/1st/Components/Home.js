@@ -5,22 +5,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import BackgroundTrain from './backgroundTrain.png'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-//import Col from 'react-bootstrap/Col';
+import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 //import ListGroup from 'react-bootstrap/ListGroup';
 import Accordion from 'react-bootstrap/Accordion';
-import Badge from 'react-bootstrap/Badge';
+
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import Dropdown from 'react-bootstrap/Dropdown'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import notifTable from './notifTable';
-import NotifTable from './notifTable';
+import Image from 'react-bootstrap/Image';
+import img from './backgroundTrain.png';
+
+import NotifTable from './notifications';
+import UpdateTable from './updateTable';
 
 class Home extends Component{
 
@@ -72,15 +74,24 @@ class Home extends Component{
                         </Form>
                     </Nav>
                 </Navbar>
-                <Jumbotron className = "bg-white"style={{ backgroundImage: `url(${BackgroundTrain})`, backgroundSize: 'cover' }}>
-                    <Container fluid>
-                        <Row>
-                            <h1><strong>Bay Area Rapid Transit</strong></h1>
+                <Container fluid style ={{background:"grey"}} >
+                        <Row fluid style= {{paddingTop:"0px"}}>
+                            <Col md = {{span:8}} style= {{paddingLeft:"0px", paddingTop:"0px"}}>
+                                <Image src = {img} style = {{maxWidth: "100%", height:"auto"}}/>
+                            </Col>    
+                            <Col md>
+                                <Row>
+                                    <h1><strong>Bay Area Rapid Transit</strong></h1>
+                                </Row>
+                                <Row>
+                                    <h4><small>Capital Project Managment Database</small></h4>
+                                </Row>  
+                                <Row style = {{alignContent:"center"}}>
+                                    <p>abstract</p>
+                                </Row>     
+                            </Col>
                         </Row>
-                        <Row>
-                            <h4><small>Capital Project Managment Database</small></h4>
-                        </Row>                
-                    </Container>
+                </Container>
                 <div class = "container">
                     <div class = "row">
                         <div class = 'col'>
@@ -93,7 +104,7 @@ class Home extends Component{
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey = '0'>
                                 <Card.Body>
-                                    <NotifTable/>
+                                    <NotifTable type = 'progress'/>
                                 </Card.Body>
                             </Accordion.Collapse>
                             {/* <Accordion.Toggle as = {Card.Header} eventKey = "1">
@@ -120,7 +131,7 @@ class Home extends Component{
                             <Accordion.Collapse eventKey = '3'>
                                 <Card.Body>
                                 <Table striped bordered hover>
-                                    <NotifTable/>
+                                    <NotifTable type = "progress"/>
                                 </Table>
                                 </Card.Body>
                             </Accordion.Collapse>
@@ -130,71 +141,11 @@ class Home extends Component{
                         <Card  style = {{textAlign : 'left', border : '0'}}>
                             <h2><u>Recent Updates</u></h2>
                         </Card>
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                <th scope="col-lg-5">Workorders</th>
-                                <th scope="col-lg-5">Involved Asset</th>
-                                <th scope="col-lg-2">PM/CM</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>615648</td>
-                                    <td>AC-23</td>
-                                    <td>PM</td>
-                                </tr>
-                                <tr>
-                                    <td>614568 [UPDATED]</td>
-                                    <td>TC-65</td>
-                                    <td>CM</td>
-                                </tr>
-                                <tr>
-                                    <td>614568</td>
-                                    <td>TC-65</td>
-                                    <td>CM</td>
-                                </tr>
-                                <tr>
-                                    <td>615646</td>
-                                    <td>MB-13</td>
-                                    <td>PM</td>
-                                </tr>
-                                <tr>
-                                    <td>615876</td>
-                                    <td>AD-47</td>
-                                    <td>CM</td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>
+                        <UpdateTable />
+                        
+                    </div>
                     </div>
                 </div>
-                </Jumbotron>
                 <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark' width = '20px'>
                     <p></p>
                 </Navbar>
