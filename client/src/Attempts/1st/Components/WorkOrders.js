@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Workorder from './WorkOrder.js';
+// import Workorder from './WorkOrder.js';
 
 import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -35,7 +34,7 @@ const Workorders = item => (
                 Location: [item.workorders.w_location],
                 Type: [item.workorders.w_type],
                 TPID: [item.workorders.w_TPID],
-                PSProject : [item.workorders.w_PSProject],
+                PSProject : [item.workorders.PSProject],
                 ProjDesc: [item.workorders.w_PSProjDesc],
                 Activity : [item.workorders.w_PSActivity],
                 ActDesc : [item.workorders.w_PSActDesc]
@@ -98,17 +97,20 @@ class WorkOrders extends Component{
         //console.log(workorders);
         return(
             <Fragment>
+             <div className = 'bg-dark'>
             <Navbar bg = 'dark' variant = 'dark'>
             <Row>
                 <Nav.Link >
                     <Link to = {'/'} className = 'nav-link'>HOME</Link>
                 </Nav.Link>
+                
                 <Form inline>
                     <Col >
                         <FormControl type="text" placeholder="Search Workorders" className="mr-sm-2"/>
-                        <Button variant = 'outline-info'>Search</Button>
+                        <Button variant = 'info'>Search</Button>
                     </Col>
                 </Form>
+              
                 </Row>
             </Navbar>
             <Table className = "table table-striped" variant = 'dark' bordered responsive>
@@ -131,6 +133,7 @@ class WorkOrders extends Component{
             <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
                     <p></p>
                 </Navbar>
+            </div>
             </Fragment>
             
         )

@@ -93,7 +93,8 @@ class editWorkorders extends Component{
         
         return(
             <Fragment>
-            <Navbar bg = 'dark' variant = 'dark'>
+            <div style = {{backgroundColor: '#E7F7F7'}}>
+            <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
             <Row>
                 <Form inline>
                 <Nav.Link >
@@ -102,11 +103,16 @@ class editWorkorders extends Component{
                 </Form>
             </Row>
             </Navbar>
-            <div class='bg-secondary'>
-                <h3 className = 'text-white'>Create New WorkOrder</h3>
+        
+         <div className = "container">
+            <div className = 'py-3 my-3'>
+                <h1><strong>Edit Work Order</strong></h1>
+            </div>
+    
+            <div>
                 <form onSubmit = {this.onSubmit}>
-                    <div>
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                    <div className = "form-group row">
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Project Id</label>
                             <input 
                             type = 'text' 
@@ -114,10 +120,8 @@ class editWorkorders extends Component{
                             name = 'w_projectid' 
                             value = {this.state.w_projectid}
                             onChange = {this.onChange} />
-                            {this.state.w_projectid}
                         </div>
-
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                        <div className = 'col px-2' style = {{textAlign: 'left'}}>
                             <label>Work Order Number</label>
                             <input 
                             type = 'number' 
@@ -125,9 +129,22 @@ class editWorkorders extends Component{
                             name = 'w_WOnum' 
                             value = {this.state.w_WOnum}
                             onChange = {this.onChange} />
+
+                        </div>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
+                                <label>Status</label>
+                                <input 
+                                type = 'text' 
+                                className = 'form-control' 
+                                name = 'w_status' 
+                                value = {this.state.w_status}
+                                onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                     </div>
+
+                     <div className = 'form-group row'>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Description</label>
                             <input 
                             type = 'text' 
@@ -136,28 +153,11 @@ class editWorkorders extends Component{
                             value = {this.state.w_desc}
                             onChange = {this.onChange} />
                         </div>
-
-                        <div className = 'form-group' style={{ width:'500px'}}>
-                            <label>Status</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_status' 
-                            value = {this.state.w_status}
-                            onChange = {this.onChange} />
-                        </div>
-
-                        <div className = 'form-group' style={{ width:'500px'}}>
-                            <label>Report Date</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_reporteddate' 
-                            value = {this.state.w_reporteddate}
-                            onChange = {this.onChange} />
-                        </div>
-
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                    </div>
+                    
+                
+                <div className = 'form-group row'>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Location</label>
                             <input 
                             type = 'text' 
@@ -167,7 +167,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Type</label>
                             <input 
                             type = 'text' 
@@ -176,8 +176,19 @@ class editWorkorders extends Component{
                             value = {this.state.w_type}
                             onChange = {this.onChange} />
                         </div>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
+                            <label>Reported Date </label> 
+                            <input 
+                            type = 'text' 
+                            className = 'form-control' 
+                            name = 'w_reporteddate' 
+                            value = {this.state.w_reporteddate}
+                            onChange = {this.onChange} />
+                        </div>
+                    </div>
 
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                    <div className = 'form-group row'>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>TP Id</label>
                             <input 
                             type = 'text' 
@@ -187,7 +198,7 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Project</label>
                             <input 
                             type = 'text' 
@@ -196,18 +207,7 @@ class editWorkorders extends Component{
                             value = {this.state.w_PSProject}
                             onChange = {this.onChange} />
                         </div>
-
-                        <div className = 'form-group' style={{ width:'500px'}}>
-                            <label>Project Description</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_PSProjDesc' 
-                            value = {this.state.w_PSProjDesc}
-                            onChange = {this.onChange} />
-                        </div>
-
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                        <div className = 'col px-2' style = {{textAlign: 'left'}}>
                             <label>PS Activity</label>
                             <input 
                             type = 'text' 
@@ -217,7 +217,21 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        <div className = 'form-group' style={{ width:'500px'}}>
+                    </div>
+
+                    <div className = 'form-group row'>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
+                            <label>Project Description</label>
+                            <input 
+                            type = 'text' 
+                            className = 'form-control' 
+                            name = 'w_PSProjDesc' 
+                            value = {this.state.w_PSProjDesc}
+                            onChange = {this.onChange} />
+                        </div>
+                    </div>
+                    <div className = 'form-group row'>
+                        <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Activity Description</label>
                             <input 
                             type = 'text' 
@@ -227,15 +241,15 @@ class editWorkorders extends Component{
                             onChange = {this.onChange} />
                         </div>
 
-                        
-                            <input type = 'Submit' value = 'Submit'/>
-                        
-
                     </div>
-                        
+                    
+                    <div className ='py-3'>
+                        <input type = 'Submit' value = 'Submit' class = 'btn btn-info'/>            
+                    </div>         
                    
-
                 </form>
+            </div>
+            </div>
             </div>
             <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
                     <p></p>
