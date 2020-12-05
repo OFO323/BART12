@@ -21,14 +21,15 @@ class App1 extends Component{
             <div>
                 <Switch>
                     <Route exact path = '/' component = {Home}/>.
-                    <Route path = '/Assets' component = {Assets} />
-                    <Route path = '/workorders' component = {WorkOrders} />
+                    <Route path = '/Assets' exact component = {Assets} />
+                    <Route path = '/workorders' exact component = {WorkOrders} />
                     <Route path = '/createWorkorder' component = {CreateWO} />
-                    <Route path = '/editWorkorder' component = {EditWO} />
+                    <Route path = '/editWorkorder/:Proj/:WO/:Desc/:Status/:Date/:Loc/:Type/:TPID/:PSProj/:PSDesc/:Act/:ActDesc'  component = {EditWO} />
                     <Route path = '/alertMessage' component = {AlertMessage}/>
                     <Route path = '/chart' component = {Chart} />
-                    <Route path = '/Asset' component = {Asset} />
-                    <Route path = '/:A_id' children = {Asset} />
+                    <Route path = '/Asset' exact component = {Asset} />
+                    <Route path = '/Assets/:Aid' component = {Assets} />
+                    <Route path = '/workorders/:id' component = {WorkOrders} />
                     <Route path = '/updates' component = {UpdateTable}/>
                     <Route path = '/notifications' component = {NotifTable}/>
                 </Switch>

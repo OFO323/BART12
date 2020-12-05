@@ -208,7 +208,7 @@ export const update = (req, res)=>{
     const sql = `UPDATE Workorder SET w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc = (${req.body['Workorder.w_WOnum']}, ${req.body['Workorder.w_desc']}, ${req.body['Workorder.w_status']}, ${req.body['Workorder.w_reporteddate']}, ${req.body['Workorder.w_location']}, ${req.body['Workorder.w_type']}, ${req.body['Workorder.w_TPID']}, ${req.body['Workorder.w_PSProject']}, ${req.body['Workorder.w_PSProjDesc']}, ${req.body['Workorder.w_PSActivity']}, ${req.body['Workorder.w_PSActDesc']}) WHERE w_projectid = (${req.body['Workorder.w_projectid']})`;
     
     const values = [
-        req.body['Workorder.w_WOnum'],
+        req.body['w_WOnum'],
         req.body['Workorder.w_desc'],
         req.body['Workorder.w_status'],
         req.body['Workorder.w_repoerteddated'],
@@ -221,13 +221,14 @@ export const update = (req, res)=>{
         req.body['Workorder.w_PSActDesc'],
         req.body['Workorder.w_projectid']
     ]
+    //console.log(values)
 
     // console.log(`$2`);
 
-    const sql2 = `UPDATE Workorder SET w_WOnum = ?, w_desc = ?, w_status = ?, w_reporteddate = ?, w_location = ?, w_type = ?, w_TPID = ?, W_PSProject = ?, w_PSProjDesc = ?, w_PSActivity = ?, w_PSActDesc = ?  WHERE w_projectid LIKE ?`
+    const sql2 = `UPDATE Workorder SET w_projectid = ?, w_desc = ?, w_status = ?, w_reporteddate = ?, w_location = ?, w_type = ?, w_TPID = ?, W_PSProject = ?, w_PSProjDesc = ?, w_PSActivity = ?, w_PSActDesc = ?  WHERE w_WOnum = ?`
    // const user = [req.body]
 Data.serialize(()=>{
-    Data.run( sql2, [req.body['Workorder.w_WOnum'], req.body['Workorder.w_desc'], req.body['Workorder.w_status'], req.body['Workorder.w_reporteddate'], req.body['Workorder.w_location'], req.body['Workorder.w_type'], req.body['Workorder.w_TPID'], req.body['Workorder.w_PSProject'], req.body['Workorder.w_PSProjDesc'], req.body['Workorder.w_PSActivity'], req.body['Workorder.w_PSActDesc'], req.body['Workorder.w_projectid']], (err, row)=>{
+    Data.run( sql2, [req.body['w_projectid'], req.body['w_desc'], req.body['w_status'], req.body['w_reporteddate'], req.body['w_location'], req.body['w_type'], req.body['w_TPID'], req.body['w_PSProject'], req.body['w_PSProjDesc'], req.body['w_PSActivity'], req.body['w_PSActDesc'], req.body['w_WOnum']], (err, row)=>{
         //console.log(`$1`);
         if(err)
             console.log(err)

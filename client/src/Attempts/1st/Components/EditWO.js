@@ -10,23 +10,23 @@ import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class editWorkorders extends Component{
-    constructor(props){
-        super(props);
+    constructor({match}){
+        super(match);
         this.state = {
-            'w_projectid': props.location.state.Project,
-            'w_WOnum': props.location.state.Workorder,
-            'w_desc': props.location.state.Description,
-            'w_status': props.location.state.Status,
-            'w_reporteddate': props.location.state.Date,
-            'w_location': props.location.state.Location,
-            'w_type': props.location.state.Type,
-            'w_TPID': props.location.state.TPID,
-            'w_PSProject': props.location.state.PSProject,
-            'w_PSProjDesc': props.location.state.ProjDesc,
-            'w_PSActivity': props.location.state.Activity,
-            'w_PSActDesc': props.location.state.ActDesc
+            w_projectid: match.params.Proj,
+            w_WOnum: match.params.WO,
+            w_desc: match.params.Desc,
+            w_status: match.params.Status,
+            w_reporteddate: match.params.Date,
+            w_location: match.params.Loc,
+            w_type: match.params.Type,
+            w_TPID: match.params.TPID,
+            w_PSProject: match.params.PSProj,
+            w_PSProjDesc: match.params.PSDesc,
+            w_PSActivity: match.params.Act,
+            w_PSActDesc: match.params.ActDesc
         }
-        console.log(this.props)
+        console.log(match)
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -62,7 +62,9 @@ class editWorkorders extends Component{
            "w_PSActDesc": this.state.w_PSActDesc
         }
 
-        axios.post('http://localhost:4006/create', newWorkorder)
+        console.log(newWorkorder)
+
+        axios.put('http://localhost:4006/edit', newWorkorder)
             .then(res => console.log(res.data))
 
         if(this.state.w_WOnum == 10){
@@ -88,8 +90,6 @@ class editWorkorders extends Component{
     }
 
     render(){
-        const {w_WOnum} = this.state.w_WOnum
-
         
         return(
             <Fragment>
@@ -103,6 +103,7 @@ class editWorkorders extends Component{
                 </Form>
             </Row>
             </Navbar>
+
         
          <div className = "container">
             <div className = 'py-3 my-3'>
@@ -110,6 +111,7 @@ class editWorkorders extends Component{
             </div>
     
             <div>
+
                 <form onSubmit = {this.onSubmit}>
                     <div className = "form-group row">
                         <div className = 'col' style = {{textAlign: 'left'}}>
@@ -200,6 +202,7 @@ class editWorkorders extends Component{
 
                         <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Project</label>
+
                             <input 
                             type = 'text' 
                             className = 'form-control' 
@@ -207,8 +210,10 @@ class editWorkorders extends Component{
                             value = {this.state.w_PSProject}
                             onChange = {this.onChange} />
                         </div>
+
                         <div className = 'col px-2' style = {{textAlign: 'left'}}>
                             <label>PS Activity</label>
+
                             <input 
                             type = 'text' 
                             className = 'form-control' 
