@@ -104,7 +104,7 @@ class Home extends Component{
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey = '0'>
                                 <Card.Body>
-                                    <NotifTable type = 'progress'/>
+                                    <NotifTable type = 'alert'/>
                                 </Card.Body>
                             </Accordion.Collapse>
                             {/* <Accordion.Toggle as = {Card.Header} eventKey = "1">
@@ -121,7 +121,7 @@ class Home extends Component{
                             <Accordion.Collapse eventKey = '2'>
                                 <Card.Body>
                                 <Table striped bordered hover>
-                                    <NotifTable/>
+                                    <NotifTable type = 'success'/>
                                 </Table>
                                 </Card.Body>
                             </Accordion.Collapse>

@@ -21,9 +21,10 @@ class NotifTable extends Component{
    constructor(props){
        super(props);
        this.state = {  
-        type : '',        //specifiy notification type [danger, info, etc]
+        type : this.props.type,        //specifiy notification type [danger, info, etc]
         projectNotifs : []
     }
+    console.log(props)
    }
 
     //once compnent mounts data is pulled from DB
