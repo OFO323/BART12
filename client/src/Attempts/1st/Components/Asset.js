@@ -9,8 +9,6 @@ class Asset extends Component{
             Dept: props.location.state.Department,
             Meter: props.location.state.Meter
         }
-        console.log(props)
-
     }
 
     render() {

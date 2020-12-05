@@ -39,9 +39,7 @@ const Workorders = item => (
                 ProjDesc: [item.workorders.w_PSProjDesc],
                 Activity : [item.workorders.w_PSActivity],
                 ActDesc : [item.workorders.w_PSActDesc]
-            }}}>Edit</Link>            
-
-            <Link to = {"./EditWO" + item.workorders.w_WOnum}>Edit</Link>
+            }}}>Edit</Link>
 
 
         </td>
@@ -113,7 +111,7 @@ class WorkOrders extends Component{
                 </Form>
                 </Row>
             </Navbar>
-            <Table className = "table table-striped" variant = 'dark' bordered responsive >
+            <Table className = "table table-striped" variant = 'dark' bordered responsive>
                 <thead className = "WOtitles" >
                     <tr class="text-primary">
                         <th>Project Id</th>
@@ -128,24 +126,13 @@ class WorkOrders extends Component{
                 </thead>
                 <tbody>
                   {this.WOList()}
-                       {/*    <div>
-                            {workorders.map ((item)=>{
-                                return(
-                                <tr className = "Workorder"> 
-                                    <Workorder  w_projectid = {item.w_projectid} w_WOnum = {item.w_WOnum} w_desc = {item.w_desc}  w_status = {item.w_status} w_reportdate = {item.w_reportdate} w_location = {item.w_location} w_type = {item.w_type} w_TPID = {item.w_TPID} w_PSProject = {item.w_PSProject} w_PSProjDesc = {item.w_PSProjDesc} w_PSActivity = {item.w_PSActivity} w_PSActDesc = {item.w_PSActDesc}/>
-                                    
-                                </tr>
-                                )
-                            })}
-                        </div> */}
-                        {/* ): (
-                            <div>
-                                Loading ...
-                            </div>
-                        )} */}
-                    </tbody>
+                </tbody>
             </Table>
+            <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
+                    <p></p>
+                </Navbar>
             </Fragment>
+            
         )
     }
 }

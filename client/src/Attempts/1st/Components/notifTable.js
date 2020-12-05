@@ -17,11 +17,12 @@ const ProjUpdates = item => (
     </tr>
 )
 
-class UpdateTable extends Component{
+class NotifTable extends Component{
     
    constructor(props){
        super(props);
        this.state = {  
+        //type : '',        //specifiy notification type [danger, info, etc]
         projectUpdates : []
     }
    }
@@ -52,10 +53,11 @@ class UpdateTable extends Component{
 
 
     render(){
-        //console.log(this.state)
+        const {projectUpdates} = this.state;
+        console.log(this.state)
 
         return(
-            <Table striped bordered hover variant = "dark">
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Asset ID</th>
@@ -73,6 +75,4 @@ class UpdateTable extends Component{
     }
 }
 
-
-export default UpdateTable;
-
+export default NotifTable;

@@ -9,12 +9,12 @@ import EditWO from './Components/EditWO.js';
 import AlertMessage from './Components/AlertEmail.js';
 import Chart from './Components/GraphContainer.js';
 import Asset from './Components/Asset.js'
-import UpdateTable from './Components/updateTable.js';
-import Notifications from './Components/notificationTable'
+import Notification from './Components/notifTable.js'
 
 class App1 extends Component{
     
     render(){
+    
         return(
         <Router>
             <div>
@@ -27,8 +27,8 @@ class App1 extends Component{
                     <Route path = '/alertMessage' component = {AlertMessage}/>
                     <Route path = '/chart' component = {Chart} />
                     <Route path = '/Asset' component = {Asset} />
-                    <Route path = '/updates' component = {UpdateTable}/>
-                    <Route path = '/notifications'component = {Notifications} />
+                    <Route path = '/:A_id' children = {Asset} />
+                    <Route path = '/updates' component = {Notification}/>
                 </Switch>
             </div>
         </Router>

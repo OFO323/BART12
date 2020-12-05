@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {Link} from "react-router-dom";
 import '../styles.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import BackgroundTrain from './backgroundTrain.png'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 //import Col from 'react-bootstrap/Col';
@@ -17,10 +17,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import Dropdown from 'react-bootstrap/Dropdown'
-
+import Jumbotron from 'react-bootstrap/Jumbotron'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UpdateTable from './updateTable';
-import Notifications from './notificationTable';
+import notifTable from './notifTable';
+import NotifTable from './notifTable';
 
 class Home extends Component{
 
@@ -40,26 +40,12 @@ class Home extends Component{
     render(){
         return(
         <div>
-           
             <Fragment>
-                <Container fluid>
-                    <Row>
-                        <h1><strong>Bay Area Rapid Transit</strong></h1>
-                    </Row>
-                    <Row>
-                        <h4><small>Capital Project Managment Database</small></h4>
-                    </Row>
-                </Container>
+            {/* <img src="/backgroundTrain.png" className="img-fluid" alt="TrainBg"></img>     */}
                 <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
-                    {/* <Navbar.Brand>
-                        <img src = './train.png' alt = "BART" width = '30' height = '30'></img>
-                    </Navbar.Brand> */}
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
-                    <Nav className = 'mr-auto'>
-                        <Nav.Link >
-                            <Link to = {'/'} className = 'nav-link'>HOME</Link>
-                        </Nav.Link>
+                    {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse> */}
+                    <Nav className = 'ml-auto'>
                         <Nav.Link >
                             <Link to = {'/Assets'} className = 'nav-link'>Assets</Link>
                         </Nav.Link>
@@ -70,70 +56,148 @@ class Home extends Component{
                             <Link to = {'/createWorkorder'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
                         <Form inline>
-
-                            <Dropdown>
-                                <Dropdown.Toggle  id="dropdown-custom-components" variant ="info">
+                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
+                            <Dropdown class='ml-auto'>
+                                <Dropdown.Toggle id="dropdown-custom-components" variant ="info">
                                 Filter
                                 </Dropdown.Toggle>
-
                                 <Dropdown.Menu >
-                                <Dropdown.Item ><Link to = {{pathname : '/Assets', state: {
-                                    assetID: this.state.search
-                                }}}>Assets</Link></Dropdown.Item>
-
-                                <Dropdown.Item ><Link to = {'/workorders/' + this.state.search}>Workorders</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link to = {{pathname :'/assets', state : {
+                                    asset : [this.state.search]
+                                } }}>Assets</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link to = {'/workorders/' + this.state.search3}>Workorders</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <FormControl name = "search" type="text" placeholder="Search Database" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
-                            <Button variant="outline-info">Search</Button>
-
                         </Form>
                     </Nav>
                 </Navbar>
-
-                <Card style= {{textAlign : "left", bg : 'lightgrey'}}>
-                    <h2><u>Notifications</u></h2>
-                </Card>
-                <Accordion>  
-                        <Accordion.Toggle as = {Card.Header} eventKey = "0">
-                            Alert <Badge variant = 'danger'>Value</Badge>
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey = '0'>
-                            <Card.Body>
-                                {/*<NotifTable/>*/}
-                                <Notifications type = {"alert"} />
-                            </Card.Body>
-                        </Accordion.Collapse>
-                        <Accordion.Toggle as = {Card.Header} eventKey = "1">
-                            Success<Badge variant = 'success'>Value</Badge>
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey = '1'>
-                            <Card.Body>
-                            <Table striped bordered hover>
-                                {/*<NotifTable/>*/}
-                                <Notifications type = {"success"} />
-
-                            </Table>
-                            </Card.Body>
-                        </Accordion.Collapse>
-                        <Accordion.Toggle as = {Card.Header} eventKey = "2">
-                            Progress<Badge variant = 'primary'>Value</Badge>
-                        </Accordion.Toggle>
-                        <Accordion.Collapse eventKey = '2'>
-                            <Card.Body>
-                            <Table striped bordered hover>
-                                {/*<NotifTable/>*/}
-                                <Notifications type = {"progress"} />
-                            </Table>
-                            </Card.Body>
-                        </Accordion.Collapse>
-                </Accordion>
-                <Card  style = {{textAlign : 'left'}}>
-                    <h2><u>Recent Updates</u></h2>
-                </Card>
-                <UpdateTable />
-            
+                <Jumbotron className = "bg-white"style={{ backgroundImage: `url(${BackgroundTrain})`, backgroundSize: 'cover' }}>
+                    <Container fluid>
+                        <Row>
+                            <h1><strong>Bay Area Rapid Transit</strong></h1>
+                        </Row>
+                        <Row>
+                            <h4><small>Capital Project Managment Database</small></h4>
+                        </Row>                
+                    </Container>
+                <div class = "container">
+                    <div class = "row">
+                        <div class = 'col'>
+                        <Card style= {{textAlign : "left", border : '0'}}>
+                            <h2><u>Notifications</u></h2>
+                        </Card>
+                        <Accordion>  
+                            <Accordion.Toggle as = {Card.Header} eventKey = "0"> Alert
+                                {/* <Badge variant = 'danger'>Value</Badge> */}
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey = '0'>
+                                <Card.Body>
+                                    <NotifTable/>
+                                </Card.Body>
+                            </Accordion.Collapse>
+                            {/* <Accordion.Toggle as = {Card.Header} eventKey = "1">
+                                Info<Badge variant = 'info'>Value</Badge>
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey = '1'>
+                                <Card.Body>
+                                    <NotifTable/>
+                                </Card.Body>
+                            </Accordion.Collapse> */}
+                            <Accordion.Toggle as = {Card.Header} eventKey = "2"> Success
+                                {/* <Badge variant = 'success'>Value</Badge> */}
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey = '2'>
+                                <Card.Body>
+                                <Table striped bordered hover>
+                                    <NotifTable/>
+                                </Table>
+                                </Card.Body>
+                            </Accordion.Collapse>
+                            <Accordion.Toggle as = {Card.Header} eventKey = "3"> Progress
+                                {/* <Badge variant = 'primary'>Value</Badge> */}
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey = '3'>
+                                <Card.Body>
+                                <Table striped bordered hover>
+                                    <NotifTable/>
+                                </Table>
+                                </Card.Body>
+                            </Accordion.Collapse>
+                    </Accordion>
+                    </div>
+                    <div class = 'col'>
+                        <Card  style = {{textAlign : 'left', border : '0'}}>
+                            <h2><u>Recent Updates</u></h2>
+                        </Card>
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col-lg-5">Workorders</th>
+                                <th scope="col-lg-5">Involved Asset</th>
+                                <th scope="col-lg-2">PM/CM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>615648</td>
+                                    <td>AC-23</td>
+                                    <td>PM</td>
+                                </tr>
+                                <tr>
+                                    <td>614568 [UPDATED]</td>
+                                    <td>TC-65</td>
+                                    <td>CM</td>
+                                </tr>
+                                <tr>
+                                    <td>614568</td>
+                                    <td>TC-65</td>
+                                    <td>CM</td>
+                                </tr>
+                                <tr>
+                                    <td>615646</td>
+                                    <td>MB-13</td>
+                                    <td>PM</td>
+                                </tr>
+                                <tr>
+                                    <td>615876</td>
+                                    <td>AD-47</td>
+                                    <td>CM</td>
+                                </tr>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+                </Jumbotron>
+                <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark' width = '20px'>
+                    <p></p>
+                </Navbar>
         </Fragment>
         </div>
         )
