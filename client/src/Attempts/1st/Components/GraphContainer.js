@@ -4,10 +4,6 @@ import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
-
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +12,8 @@ class Charts extends Component{
 
     constructor(props){
         super(props);
-        this.state = {  
+        this.state = { 
+            single: [], 
             data: []
         }
         //console.log(this.props)
@@ -30,20 +27,24 @@ class Charts extends Component{
         // console.log(this.props)
        fetch(`http://localhost:4006/Assets/${this.props.asset}/${this.props.dept}/${this.props.meter}`)
        .then(res => res.json())
-       .then(data => this.setState({data}))       
+       .then(result => this.setState({data: result}))
+
+       fetch(`http://localhost:4006/Assets2.0/${this.props.asset}/${this.props.dept}/${this.props.meter}`)
+       .then(res => res.json())
+       .then(result => this.setState({single: result}))        
         
     }
 
     render(){
 
-        const {data} = this.state;
+        const {data} = this.state.data;
         //console.log(data)
         
         const Dates = []
         const Readings = []
         const Goal = []
 
-        {data.map ((item)=>{
+        {this.state.data.map ((item)=>{
             Dates.push(item.a_readdate)
             Readings.push(item.a_meterreading)
             Goal.push(item.a_goal)
@@ -77,7 +78,7 @@ class Charts extends Component{
                 </Nav.Link>
             </Navbar>
                 <div>
-                {data.map ((item)=>{
+                {this.state.single.map ((item)=>{
                          return(
                             <body>
                             <p>Project Id: {item.a_projectid}</p>

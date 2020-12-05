@@ -153,6 +153,17 @@ export const MName = (req, res)=>{
     })
 }
 
+export const Single = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) AND a_metername LIKE (?) GROUP BY a_metername ORDER BY a_readdate ", [req.params.Anum, req.params.Adept, req.params.Ameter], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                res.send(row)
+        })
+    })
+}
+
 export const create = (req, res)=>{
 
     console.log(req.body);
