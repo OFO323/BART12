@@ -58,7 +58,7 @@ export const WOSearch = (req, res) => {
 }
 
 export const Assets = (req, res)=>{
-Data.all("Select * from Assets", (err, row)=>{
+Data.all("Select * from Assets ORDER BY a_readdate DESC", (err, row)=>{
     if(err)
         console.log(err);
     else    
@@ -145,6 +145,17 @@ export const DeptName = (req, res)=>{
 export const MName = (req, res)=>{
     Data.serialize( ()=>{
         Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) AND a_metername LIKE (?) ORDER BY a_readdate", [req.params.Anum, req.params.Adept, req.params.Ameter], (err, row)=>{
+            if(err)
+                console.log(err)
+            else
+                res.send(row)
+        })
+    })
+}
+
+export const Single = (req, res)=>{
+    Data.serialize( ()=>{
+        Data.all("SELECT * FROM Assets WHERE a_projectid LIKE (?) AND a_dept LIKE (?) AND a_metername LIKE (?) GROUP BY a_metername ORDER BY a_readdate ", [req.params.Anum, req.params.Adept, req.params.Ameter], (err, row)=>{
             if(err)
                 console.log(err)
             else

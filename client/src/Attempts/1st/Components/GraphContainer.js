@@ -4,19 +4,18 @@ import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
-
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 class Charts extends Component{
 
     constructor(props){
         super(props);
-        this.state = {  
+        this.state = { 
+            single: [], 
             data: []
         }
         //console.log(this.props)
@@ -30,20 +29,24 @@ class Charts extends Component{
         // console.log(this.props)
        fetch(`http://localhost:4006/Assets/${this.props.asset}/${this.props.dept}/${this.props.meter}`)
        .then(res => res.json())
-       .then(data => this.setState({data}))       
+       .then(result => this.setState({data: result}))
+
+       fetch(`http://localhost:4006/Assets2.0/${this.props.asset}/${this.props.dept}/${this.props.meter}`)
+       .then(res => res.json())
+       .then(result => this.setState({single: result}))        
         
     }
 
     render(){
 
-        const {data} = this.state;
+        const {data} = this.state.data;
         //console.log(data)
         
         const Dates = []
         const Readings = []
         const Goal = []
 
-        {data.map ((item)=>{
+        {this.state.data.map ((item)=>{
             Dates.push(item.a_readdate)
             Readings.push(item.a_meterreading)
             Goal.push(item.a_goal)
@@ -57,12 +60,44 @@ class Charts extends Component{
                 {
                     label: 'Meter Reading',
                     data: Readings,
-                    fill: true,                    
+                    fill: true,
+                    lineTension: 0.5,
+                    backgroundColor: "rgba(248, 231, 0, .9)",
+                    borderColor: "rgb(205, 130, 158)",
+                    borderCapStyle: "butt",
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: "miter",
+                    pointBorderColor: "rgb(205, 130,1 58)",
+                    pointBackgroundColor: "rgb(255, 255, 255)",
+                    pointBorderWidth: 10,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgb(0, 0, 0)",
+                    pointHoverBorderColor: "rgba(220, 220, 220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10                    
                 },
                 {
                     label: 'Goal',
                     data: Goal,
-                    fill: false,
+                    fill: true,
+                    lineTension: 0.5,
+                    backgroundColor: "rgba(0, 0, 220, .3)",
+                    borderColor: "rgb(35, 26, 136)",
+                    borderCapStyle: "butt",
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: "miter",
+                    pointBorderColor: "rgb(35, 26, 136)",
+                    pointBackgroundColor: "rgb(255, 255, 255)",
+                    pointBorderWidth: 10,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgb(0, 0, 0)",
+                    pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
                 }
 
             ]
@@ -77,39 +112,28 @@ class Charts extends Component{
                 </Nav.Link>
             </Navbar>
                 <div>
-                {data.map ((item)=>{
+                {this.state.single.map ((item)=>{
                          return(
-                            <body>
-                            <p>Project Id: {item.a_projectid}</p>
-                            <p>Meter Name: {item.a_metername}</p>
-                            <p>Department: {item.a_dept}</p>
-                            <p>Meter Description: {item.a_meterdesc}</p>
-                            <p>Meter Reading: {item.a_meterreading}</p>
-                            <p>Meter Units: {item.a_meterunits}</p>
-                            <p>Read Date: {item.a_readdate}</p>
-                            <p>Group: {item.a_group}</p>
-                            <p>Goal Group: {item.a_goalgroup}</p>
-                        </body>
             
-                            // <Table className = 'table table-striped' bordered responsive bg = 'dark' fluid = 'md' variant = 'dark'>
-                            //     <Row bg = 'dark' >
-                            //         <Col>Project Id: {item.a_projectid}</Col>
-                            //         <Col>Meter Name: {item.a_metername}</Col>
-                            //     </Row>
-                            //     <Row bg = 'dark' variant = 'dark'>
-                            //         <Col>Department: {item.a_dept}</Col>
-                            //         <Col>Meter Description: {item.a_meterdesc}</Col>
-                            //         <Col>Units: {item.a_meterunits}</Col>
-                            //     </Row>
-                            //     <Row bg = 'dark'>
-                            //         <Col>Goal Group: {item.a_goalgroup}</Col>
-                            //     </Row>
-                            // </Table>
+                            <Table className = 'table table-striped' bordered responsive bg = 'dark' fluid = 'md' variant = 'dark'>
+                                <Row bg = 'dark' >
+                                    <Col>Project Id: {item.a_projectid}</Col>
+                                    <Col>Meter Name: {item.a_metername}</Col>
+                                </Row>
+                                <Row bg = 'dark' variant = 'dark'>
+                                    <Col>Department: {item.a_dept}</Col>
+                                    <Col>Meter Description: {item.a_meterdesc}</Col>
+                                    <Col>Units: {item.a_meterunits}</Col>
+                                </Row>
+                                <Row bg = 'dark'>
+                                    <Col>Goal Group: {item.a_goalgroup}</Col>
+                                </Row>
+                            </Table>
                  ) })}
 
                 </div> 
-                <div>
-                    <Line data = {dataSet} />
+                <div >
+                    <Line style = {{height:50}} data = {dataSet} />
                 </div>
                 <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
                     <p></p>

@@ -1,6 +1,6 @@
 import express from 'express';
 import {Assets, WorkOrders, MName,DeptName, firstFilter, AssetNum, create, update, remove} from '../Connection/Connection.js';
-import {Updates, Updates2} from '../Connection/Connection.js';
+import {Updates, Updates2, Single} from '../Connection/Connection.js';
 import {AssetSearch, WOSearch} from '../Connection/Connection.js';
 import {notifSearch_type, notifSearch} from '../Connection/Connection.js';
 import sqlite3 from 'sqlite3';
@@ -31,6 +31,7 @@ routes.get('/Assets/:Anum', AssetNum);
 routes.get('/Assets/:Anum/:Adept', DeptName);
 
 routes.get('/Assets/:Anum/:Adept/:Ameter', MName);
+routes.get('/Assets2.0/:Anum/:Adept/:Ameter', Single);
 
 routes.delete('/:projectid/:WOnum', remove);
 
