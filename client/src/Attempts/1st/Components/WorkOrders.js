@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Workorder from './WorkOrder.js';
+// import Workorder from './WorkOrder.js';
 
 import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -98,17 +97,22 @@ class WorkOrders extends Component{
         //console.log(workorders);
         return(
             <Fragment>
+             <div className = 'bg-dark'>
             <Navbar bg = 'dark' variant = 'dark'>
             <Row>
                 <Nav.Link >
                     <Link to = {'/'} className = 'nav-link'>HOME</Link>
                 </Nav.Link>
+                
                 <Form inline>
                     <Col >
+
                         <FormControl name = 'search' value = {this.state.search} onChange = {this.onChange} type="text" placeholder="Search Workorders" className="mr-sm-2"/>
                         <Button  onClick = {this.onClick} variant = 'outline-info'>Search</Button>
+
                     </Col>
                 </Form>
+              
                 </Row>
             </Navbar>
             <Table className = "table table-striped" variant = 'dark' bordered responsive>
@@ -131,6 +135,7 @@ class WorkOrders extends Component{
             <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
                     <p></p>
                 </Navbar>
+            </div>
             </Fragment>
             
         )

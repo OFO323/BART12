@@ -1,15 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles.css';
-import ARow from './AssetRow.js';
 
 import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
-import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 
 const List = item => (
@@ -91,13 +88,16 @@ class Assets extends Component{
 
         return (
           <Fragment>
+          <div class='bg-dark'>
           <Navbar bg="dark" variant="dark">
           <Form inline>
             <Nav.Link >
                     <Link to = {'/'} className = 'nav-link'>HOME</Link>
               </Nav.Link>
-              <FormControl name = 'search' type="text" placeholder="Search" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
+
+              <FormControl name = 'search' type="text" placeholder="Search Assets" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
               <Button onClick = {this.onClick} variant="outline-info">Search</Button>
+
           </Form>
           </Navbar>
           <Table className = "table table-striped" variant = 'dark'>
@@ -117,6 +117,7 @@ class Assets extends Component{
           <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark' width = '20px'>
                     <p></p>
             </Navbar>
+          </div>
             </Fragment>
           );
 
