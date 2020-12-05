@@ -34,7 +34,7 @@ const Workorders = item => (
                 Location: [item.workorders.w_location],
                 Type: [item.workorders.w_type],
                 TPID: [item.workorders.w_TPID],
-                PSProject : [item.workorders.PSProject],
+                PSProject : [item.workorders.w_PSProject],
                 ProjDesc: [item.workorders.w_PSProjDesc],
                 Activity : [item.workorders.w_PSActivity],
                 ActDesc : [item.workorders.w_PSActDesc]
