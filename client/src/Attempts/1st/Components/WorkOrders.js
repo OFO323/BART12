@@ -76,7 +76,7 @@ class WorkOrders extends Component{
                 .then(res => res.json())
                 .then(result => this.setState({workorders:result}))
         }
-        else{
+        if(this.state.search !== ''){
             fetch('http://localhost:4006/Workorders')
                 .then(res => res.json())
                 .then(result => this.setState({workorders:result}))

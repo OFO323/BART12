@@ -69,7 +69,7 @@ class Assets extends Component{
           .then(res =>res.json())
           .then(result => this.setState({list: result}))
       }
-      else{
+      if(this.state.search !== ''){
         fetch('http://localhost:4006/Assets')
         .then(res =>res.json())
         .then(result => this.setState({list: result}))
