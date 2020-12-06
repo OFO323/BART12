@@ -58,8 +58,7 @@ class Home extends Component{
                             <Link to = {'/createWorkorder'} className = 'nav-link'>Create Workorder</Link>
                         </Nav.Link>
                         <Form inline>
-                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
-                            <Dropdown class='ml-auto'>
+                        <Dropdown class='ml-auto'>
                                 <Dropdown.Toggle id="dropdown-custom-components" variant ="info">
                                 Filter
                                 </Dropdown.Toggle>
@@ -69,6 +68,7 @@ class Home extends Component{
                                 <Dropdown.Item ><Link to = {''}> Projects</Link></Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+                            <FormControl name = "search" type="text" placeholder="Search" className="mr-sm-2" onChange = {this.onChange} value = {this.state.search}/>
                         </Form>
                     </Nav>
                 </Navbar>
