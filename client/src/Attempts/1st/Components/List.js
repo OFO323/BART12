@@ -21,6 +21,7 @@ const List = item => (
       <td>{item.list.a_metername}</td>
       <td>{item.list.a_meterreading}</td>
       <td>{item.list.a_readdate}</td>
+      <td>{item.list.a_meterunits}</td>
   </tr>
 )
 
@@ -108,6 +109,7 @@ class Assets extends Component{
                     <th>Metername</th>
                     <th>Meter Reading</th>
                     <th>Reading Date</th>
+                    <th>Meter Units</th>
                   </tr>
               </thead>
               <tbody>
