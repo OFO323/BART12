@@ -57,7 +57,8 @@ class UpdateTable extends Component{
         console.log(this.state)
 
         return(
-            <Table striped bordered hover>
+            <div className = 'table-striped table-light'>
+            <Table bordered hover>
                 <thead>
                     <tr>
                         <th>Asset ID</th>
@@ -70,6 +71,7 @@ class UpdateTable extends Component{
                 {this.UpdateList()}
                 </tbody>
             </Table>
+            </div>
         )
 
     }

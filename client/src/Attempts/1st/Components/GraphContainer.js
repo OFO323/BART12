@@ -105,6 +105,7 @@ class Charts extends Component{
         
         
         return (
+            <div style = {{backgroundColor: '#E7F7F7'}}>
             <div>
             <Navbar bg="dark" variant="dark">
                 <Nav.Link >
@@ -114,19 +115,26 @@ class Charts extends Component{
                 <div>
                 {this.state.single.map ((item)=>{
                          return(
-            
-                            <Table className = 'table table-striped' bordered responsive bg = 'dark' fluid = 'md' variant = 'dark'>
+                           
+                            <Table>
                                 <Row bg = 'dark' >
-                                    <Col>Project Id: {item.a_projectid}</Col>
-                                    <Col>Meter Name: {item.a_metername}</Col>
-                                </Row>
-                                <Row bg = 'dark' variant = 'dark'>
-                                    <Col>Department: {item.a_dept}</Col>
-                                    <Col>Meter Description: {item.a_meterdesc}</Col>
-                                    <Col>Units: {item.a_meterunits}</Col>
-                                </Row>
-                                <Row bg = 'dark'>
-                                    <Col>Goal Group: {item.a_goalgroup}</Col>
+                                <Col bg = 'dark' >
+                                    <div style = {{textAlign: 'left', paddingLeft: '30px', paddingTop: '10px'}}>
+                                        <p>Project Id: {item.a_projectid}</p>
+                                        <p>Meter Name: {item.a_metername}</p>
+                                        <p>Meter Description: {item.a_meterdesc}</p>
+                                        <p>Meter Reading: {item.a_meterreading}</p>
+                                        <p>Department: {item.a_dept}</p>
+                                    </div>
+                                </Col>
+                                <Col bg = 'dark' variant = 'dark'>
+                                <div style = {{textAlign: 'left', paddingRight: '100px', paddingTop: '10px'}}>
+                                    <p>Read Date: {item.a_readdate}</p>
+                                    <p>Units: {item.a_meterunits}</p>
+                                    <p>Goal: {item.a_goal}</p>
+                                    <p>Goal Group: {item.a_goalgroup}</p>
+                                    </div>
+                                </Col>
                                 </Row>
                             </Table>
                  ) })}
@@ -139,7 +147,7 @@ class Charts extends Component{
                     <p></p>
                 </Navbar>
             </div>
-          
+          </div>
         )
     }
     
