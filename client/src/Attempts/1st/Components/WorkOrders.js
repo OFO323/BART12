@@ -70,7 +70,7 @@ class WorkOrders extends Component{
     }
 
     getWorkorders(){
-        if(this.state.search !== ''){
+        if(this.match){
             fetch(`http://localhost:4006/woSearch/${this.state.search}`)
                 .then(res => res.json())
                 .then(result => this.setState({workorders:result}))

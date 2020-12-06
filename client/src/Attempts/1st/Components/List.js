@@ -61,7 +61,7 @@ class Assets extends Component{
   }
 
     getList = () => {
-      if(this.state.search !== ''){
+      if(this.match){
          fetch(`http://localhost:4006/Assets/${this.state.search}`)
           .then(res =>res.json())
           .then(result => this.setState({list: result}))
