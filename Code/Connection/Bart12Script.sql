@@ -182,6 +182,7 @@ CREATE VIEW projectUpdates(assetID, projID, progress, updated_at, department, ma
     AND dep_Num = dept_ID
     AND d_Num = manager
 
+
 DROP VIEW projectUpdates
 
 COMMIT TRANSACTION;

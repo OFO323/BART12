@@ -62,10 +62,12 @@ class CreateWO extends Component{
            "w_PSActDesc": this.state.w_PSActDesc
         }
 
+        console.log(newWorkorder);
+
         axios.post('http://localhost:4006/create', newWorkorder)
             .then(res => console.log(res.data))
 
-        if(this.state.w_WOnum == 10){
+        if(this.state.w_WOnum === 10){
             this.props.history.push('/alertMessage'); 
         }
 
