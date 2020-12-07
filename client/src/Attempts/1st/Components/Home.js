@@ -41,7 +41,7 @@ class Home extends Component{
     }
     render(){
         return(
-        <div>
+        <div style = {{backgroundColor: '#E7F7F7'}}>
             <Fragment>
             {/* <img src="/backgroundTrain.png" className="img-fluid" alt="TrainBg"></img>     */}
                 <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
@@ -72,30 +72,38 @@ class Home extends Component{
                         </Form>
                     </Nav>
                 </Navbar>
-                <Container fluid style ={{background:"grey"}} >
+                <Container fluid style ={{background:"#90a7a7"}} >
                         <Row fluid style= {{paddingTop:"0px"}}>
                             <Col md = {{span:8}} style= {{paddingLeft:"0px", paddingTop:"0px"}}>
                                 <Image src = {img} style = {{maxWidth: "100%", height:"auto"}}/>
                             </Col>    
                             <Col md>
                                 <Row>
-                                    <h1><strong>Bay Area Rapid Transit</strong></h1>
+                                    <h1 fluid style= {{paddingRight:"50px", paddingTop:"50px"}}><strong>Bay Area Rapid Transit</strong></h1>
                                 </Row>
                                 <Row>
-                                    <h4><small>Capital Project Managment Database</small></h4>
+                                    <div class = 'bg-gradient-secondary'>
+                                    <h4 style= {{paddingRight:"50px"}}><small>Capital Project Managment Database</small></h4>
+                                    </div>
                                 </Row>  
-                                <Row style = {{alignContent:"center"}}>
-                                    <p>abstract</p>
+                                <Row style = {{textAlign:"left", paddingRight:"50px"}}>
+                                    <p>BART currently employs many different reports on crucial 
+                                    information related to capital projects. Our app strives to 
+                                    consolidate all useful reporting data into easy-to-use 
+                                    business data analytics tools that notify the user of 
+                                    important report updates, analyze asset data history, 
+                                    and create new or edit current work orders.</p>
                                 </Row>     
                             </Col>
                         </Row>
                 </Container>
                 <div class = "container">
                     <div class = "row">
-                        <div class = 'col'>
-                        <Card style= {{textAlign : "left", border : '0'}}>
-                            <h2><u>Notifications</u></h2>
+                        <div class = 'col py-3'>
+                        <Card style= {{textAlign : "left", border : '0', backgroundColor: '#E7F7F7'}}>
+                            <h2 class = 'pb-3'><u>Notifications</u></h2>
                         </Card>
+                        <div class = 'accordian-light table-light'>
                         <Accordion>  
                             <Accordion.Toggle as = {Card.Header} eventKey = "0"> Alert
                                 {/* <Badge variant = 'danger'>Value</Badge> */}
@@ -135,9 +143,10 @@ class Home extends Component{
                             </Accordion.Collapse>
                     </Accordion>
                     </div>
-                    <div class = 'col'>
-                        <Card  style = {{textAlign : 'left', border : '0'}}>
-                            <h2><u>Recent Updates</u></h2>
+                    </div>
+                    <div class = 'col pt-3 pb-4'>
+                        <Card  style = {{textAlign : 'left', border : '0', backgroundColor: '#E7F7F7'}}>
+                            <h2 class = 'pb-3'><u>Recent Updates</u></h2>
                         </Card>
                         <UpdateTable />
                         
