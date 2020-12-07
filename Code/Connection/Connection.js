@@ -166,44 +166,42 @@ export const Single = (req, res)=>{
 
 export const create = (req, res)=>{
 
-    console.log(req.body);
+    console.log(req.body['w_WOnum']);
 
-    const user = [req.body]
+    const user = {
+        "w_projectid": req.body['w_projectid'][0],
+        "w_WOnum": req.body['w_WOnum'][0],
+        "w_desc": req.body['w_desc'][0],
+        "w_status": req.body['w_status'][0],
+        "w_reporteddate": req.body['w_reporteddate'][0],
+        "w_location": req.body['w_location'][0],
+        "w_type": req.body['w_type'][0],
+        "w_TPID": req.body['w_TPID'][0],
+        "w_PSProject": req.body['w_PSProject'][0],
+        "w_PSProjDesc": req.body['w_PSProjDesc'][0],
+        "w_PSActivity": req.body['w_PSActivity'][0],
+        "w_PSActDesc": req.body['w_PSActDesc'][0]
+    }
 
-    // const user = {
-    //     "Workorder.w_projectid":"A65",
-    //     "Workorder.w_WOnum": 17112036,
-    //     "Workorder.w_desc":"A1 Aerial Pier Drainage Weekends 1 & 2",
-    //     "Workorder.w_status":"INPRG",
-    //     "Workorder.w_reporteddate":44032,
-    //     "Workorder.w_location":"A-LINE",
-    //     "Workorder.w_type":"CAP",
-    //     "Workorder.w_TPID":1000003627,
-    //     "Workorder.w_PSProject":"15CQ011",
-    //     "Workorder.w_PSProjDesc":"A65/A75 Interlocking(Replacem",
-    //     "Workorder.w_PSActivity":"CONST",
-    //     "Workorder.w_PSActDesc":"Constructn,Fabricatn,Instalatn"
-    // }
-
-    // console.log(user)
+    console.log(user['w_projectid'])
 Data.serialize(()=>{
     
-    Data.run("INSERT INTO Workorder VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",  req.body['Workorder.w_projectid'], req.body['Workorder.w_WOnum'], req.body['Workorder.w_desc'], req.body['Workorder.w_status'], req.body['Workorder.w_reporteddate'], req.body['Workorder.w_location'], req.body['Workorder.w_type'], req.body['Workorder.w_TPID'], req.body['Workorder.w_PSProject'], req.body['Workorder.w_PSProjDesc'], req.body['Workorder.w_PSActivity'], req.body['Workorder.w_PSActDesc'], (err, row)=>{
+    Data.run("INSERT INTO Workorder VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",  user["w_projectid"], user["w_WOnum"], user["w_desc"], user["w_status"], user["w_reporteddate"], user["w_location"], user["w_type"], user["w_TPID"], user["w_PSProject"], user["w_PSProjDesc"], user["w_PSActivity"], user["w_PSActDesc"], (err, row)=>{
         if(err)
             console.log(err);
             //res.send(err);
         else
-            console.log(JSON.stringify(row));
-            //res.send(row);
+            // console.log(JSON.stringify(row));
+            res.send(row);
     })
 })
 };
 
 
 export const update = (req, res)=>{
-    console.log(req.body)
-    console.log(`${req.body['Workorder.w_projectid']}`)
-    console.log(req.body["Workorder.w_WOnum"])
+    // console.log(req.body)
+    // console.log(`${req.body['Workorder.w_projectid']}`)
+    // console.log(req.body["Workorder.w_WOnum"])
 
     const sql = `UPDATE Workorder SET w_WOnum, w_desc, w_status, w_reporteddate, w_location, w_type, w_TPID, w_PSProject, w_PSProjDesc, w_PSActivity, w_PSActDesc = (${req.body['Workorder.w_WOnum']}, ${req.body['Workorder.w_desc']}, ${req.body['Workorder.w_status']}, ${req.body['Workorder.w_reporteddate']}, ${req.body['Workorder.w_location']}, ${req.body['Workorder.w_type']}, ${req.body['Workorder.w_TPID']}, ${req.body['Workorder.w_PSProject']}, ${req.body['Workorder.w_PSProjDesc']}, ${req.body['Workorder.w_PSActivity']}, ${req.body['Workorder.w_PSActDesc']}) WHERE w_projectid = (${req.body['Workorder.w_projectid']})`;
     
