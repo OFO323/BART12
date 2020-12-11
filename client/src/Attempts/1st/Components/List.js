@@ -62,12 +62,14 @@ class Assets extends Component{
   }
 
     getList = () => {
-      if(this.match){
+      if(this.state !== ''){
+        console.log("Using alternate route")
          fetch(`http://localhost:4006/Assets/${this.state.search}`)
           .then(res =>res.json())
           .then(result => this.setState({list: result}))
       }
       else{
+        console.log("Using normal path")
         fetch('http://localhost:4006/Assets')
         .then(res =>res.json())
         .then(result => this.setState({list: result}))
