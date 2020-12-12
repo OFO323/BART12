@@ -28,7 +28,7 @@ const List = item => (
 class Assets extends Component{
     constructor({match}){
         super(match)
-        if(match){
+        if(this.match){
             this.state = {
               search: match.params.Aid,
               list : []
@@ -62,7 +62,7 @@ class Assets extends Component{
   }
 
     getList = () => {
-      if(this.state !== ''){
+      if(this.match){
         console.log("Using alternate route")
          fetch(`http://localhost:4006/Assets/${this.state.search}`)
           .then(res =>res.json())

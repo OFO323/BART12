@@ -54,7 +54,7 @@ class UpdateTable extends Component{
 
     render(){
         const {projectUpdates} = this.state;
-        console.log(this.state)
+        //console.log(this.state)
 
         return(
             <div className = 'table-striped table-light'>

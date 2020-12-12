@@ -184,5 +184,7 @@ CREATE VIEW projectUpdates(assetID, projID, progress, updated_at, department, ma
 
 DROP VIEW projectUpdates
 
+SELECT * FROM projectUpdates WHERE strftime('%W', updated_at) LIKE strftime('%W', 2020) OR strftime('%W', updated_at) LIKE strftime('%W', 11) - 1
+
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
