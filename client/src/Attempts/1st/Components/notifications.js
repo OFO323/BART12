@@ -1,77 +1,128 @@
-import React, { Component } from 'react';
-//import {Link} from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import moment from 'moment'
+
 import Table from 'react-bootstrap/Table';
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+import Nav from 'react-bootstrap/Nav';
 
-
-
-const ProjNotifications = item => (
-    <tr>
-        <td>{item.projectNotifs.projID}</td>
-        <td>{item.projectNotifs.name}</td>
-        <td>{item.projectNotifs.phase}</td>
-        <td>{item.projectNotifs.time_at}</td>
-    </tr>
+const List = item => (
+  <tr>
+      <Link to = {{ pathname : `/Asset`, state :{
+                              Department : [item.list.a_dept],   
+                              Meter: [item.list.a_metername],
+                              Asset : [item.list.a_projectid]
+                            }}} >
+      <td>{item.list.a_projectid}</td></Link>
+      <td>{item.list.a_dept}</td>
+      <td>{item.list.a_metername}</td>
+      <td>{item.list.a_meterreading}</td>
+      <td>{item.list.a_readdate}</td>
+  </tr>
 )
 
-class NotifTable extends Component{
-    
-   constructor(props){
-       super(props);
-       this.state = {  
-        type : this.props.type,        //specifiy notification type [danger, info, etc]
-        projectNotifs : []
+class Assets extends Component{
+    constructor({match}){
+        super(match)
+        if(match){
+            this.state = {
+              search: match.params.Aid,
+              list : []
+          }
+        }
+        else{
+            this.state = {
+              search: '',
+              list : []
+          }
+        }
+        this.onClick = this.onClick.bind(this);
+        this.onChange = this.onChange.bind(this);
+        console.log(match)
     }
-    console.log(props)
-   }
 
-    //once compnent mounts data is pulled from DB
     componentDidMount(){
-        this.getNotifs();
+        this.getList();
     }
 
-    NotifList(){
-        return this.state.projectNotifs.map((curr, index) => {
-            return <ProjNotifications projectNotifs = {curr} key = {index} />
-        });
-    }
+    onChange(event){
+      this.setState({
+          [event.target.name]: [event.target.value]
+      })
+  }
 
-    //should just fetch from DB
-    getNotifs = () => {
+    AssetList(){
+      return this.state.list.map (function(current, i){
+          return <List list = {current} key = {i} />
+      });
+  }
 
-        var date = moment().utcOffset('0').format('YYYY-MM-DD');
-        console.log(date)
+    getList = () => {
+      if(this.match){
+         fetch(`http://localhost:4006/Assets/${this.state.search}`)
+          .then(res =>res.json())
+          .then(result => this.setState({list: result}))
+      }
+      else{
+        fetch('http://localhost:4006/Assets')
+        .then(res =>res.json())
+        .then(result => this.setState({list: result}))
+        }
 
-        fetch(`http://localhost:4006/projNotification/${date}/${this.state.type}`)
-            .then(res => res.json())
-            .then(projectNotifs => this.setState({projectNotifs}))
-            .catch(err => console.log(err))
-    } 
+  }
 
-
+      onClick(){
+        fetch(`http://localhost:4006/Assets/${this.state.search}`)
+        .then(res =>res.json())
+        .then(result => this.setState({list: result}))
+      }
 
     render(){
-        console.log(this.state)
 
-        return(
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Project ID</th>
-                        <th>Name</th>
-                        <th>Phase</th>
-                        <th>Updated At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {this.NotifList()}
-                </tbody>
-            </Table>
-        )
+        const {list} = this.state;
 
-    }
+        //console.log(this.state);
+
+        return (
+          <Fragment>
+          <div class='bg-dark'>
+          <Navbar bg="dark" variant="dark">
+          <Form inline>
+            <Nav.Link >
+                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
+              </Nav.Link>
+
+              <FormControl name = 'search' type="text" placeholder="Search Assets" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
+              <Button onClick = {this.onClick} variant="info">Search</Button>
+
+          </Form>
+          </Navbar>
+          <Table className = "table table-striped" variant = 'dark'>
+              <thead>
+                  <tr class="text-primary">
+                    <th>ProjectId</th>
+                    <th>Department</th>
+                    <th>Metername</th>
+                    <th>Meter Reading</th>
+                    <th>Reading Date</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {this.AssetList()}
+              </tbody>
+          </Table>
+          <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark' width = '20px'>
+                    <p></p>
+            </Navbar>
+          </div>
+            </Fragment>
+          );
+
+        }
+            
 }
 
-export default NotifTable;
+export default Assets;

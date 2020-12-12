@@ -1,7 +1,6 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
 import {Line} from 'react-chartjs-2';
-import Chart from 'chart.js';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
 import Nav from 'react-bootstrap/Nav';
@@ -47,9 +46,11 @@ class Charts extends Component{
         const Goal = []
 
         {this.state.data.map ((item)=>{
-            Dates.push(item.a_readdate)
-            Readings.push(item.a_meterreading)
-            Goal.push(item.a_goal)
+            return(
+                Dates.push(item.a_readdate),
+                Readings.push(item.a_meterreading),
+                Goal.push(item.a_goal)
+            )
         })}
 
         //console.log(Dates, Readings)
@@ -109,30 +110,34 @@ class Charts extends Component{
             <div>
             <Navbar bg="dark" variant="dark">
                 <Nav.Link >
-                <Link to = {'/Assets'} className = 'nav-link'>Back</Link>
+                <Link to = {'/Assets'} className = 'nav-link'>BACK</Link>
                 </Nav.Link>
             </Navbar>
-                <div>
+            <div style ={{background:"#90a7a7"}}>
+                <div class = "container" style = {{paddingTop: '10px', paddingBottom: '10px'}}>
+                <div className = 'py-3 pl-3 my-1 text-left'>
+                    <h2><strong>Asset Details</strong></h2>
+                </div>
                 {this.state.single.map ((item)=>{
                          return(
                            
                             <Table>
                                 <Row bg = 'dark' >
-                                <Col bg = 'dark' >
-                                    <div style = {{textAlign: 'left', paddingLeft: '30px', paddingTop: '10px'}}>
-                                        <p>Project Id: {item.a_projectid}</p>
-                                        <p>Meter Name: {item.a_metername}</p>
-                                        <p>Meter Description: {item.a_meterdesc}</p>
-                                        <p>Meter Reading: {item.a_meterreading}</p>
-                                        <p>Department: {item.a_dept}</p>
+                                <Col bg = 'dark'>
+                                    <div style = {{textAlign: 'left', paddingLeft: "100px", paddingRight: "50px"}}>
+                                        <p><b>Project Id: </b> {item.a_projectid}</p>
+                                        <p><b>Meter Name: </b> {item.a_metername}</p>
+                                        <p><b>Meter Description: </b> {item.a_meterdesc}</p>
+                                        <p><b>Meter Reading: </b> {item.a_meterreading}</p>
+                                        <p><b>Department: </b> {item.a_dept}</p>
                                     </div>
                                 </Col>
                                 <Col bg = 'dark' variant = 'dark'>
-                                <div style = {{textAlign: 'left', paddingRight: '100px', paddingTop: '10px'}}>
-                                    <p>Read Date: {item.a_readdate}</p>
-                                    <p>Units: {item.a_meterunits}</p>
-                                    <p>Goal: {item.a_goal}</p>
-                                    <p>Goal Group: {item.a_goalgroup}</p>
+                                <div style = {{textAlign: 'left', paddingLeft: "100px"}}>
+                                    <p><b>Read Date: </b> {item.a_readdate}</p>
+                                    <p><b>Units: </b> {item.a_meterunits}</p>
+                                    <p><b>Goal: </b> {item.a_goal}</p>
+                                    <p><b>Goal Group: </b> {item.a_goalgroup}</p>
                                     </div>
                                 </Col>
                                 </Row>
@@ -140,8 +145,12 @@ class Charts extends Component{
                  ) })}
 
                 </div> 
-                <div >
-                    <Line style = {{height:50}} data = {dataSet} />
+                </div>
+
+                <div class = "container">
+                    <div style = {{paddingTop: '30px', paddingBottom: '30px'}}>
+                        <Line style = {{height:50}} data = {dataSet} />
+                    </div>
                 </div>
                 <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
                     <p></p>
