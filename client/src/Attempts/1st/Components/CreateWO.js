@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import { Link, Button } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
@@ -96,6 +95,7 @@ class CreateWO extends Component{
         return(
             <Fragment>
             <div style = {{backgroundColor: '#E7F7F7'}}>
+            <div style ={{background:"#90a7a7"}}>
             <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
             <Row>
                 <Form inline>
@@ -106,12 +106,15 @@ class CreateWO extends Component{
             </Row>
             </Navbar>
         
-         <div className = "container">
-            <div className = 'py-3 my-3'>
-                <h1><strong>Create New Work Order</strong></h1>
-            </div>
-    
-            <div>
+                <div className = "container">
+                        <div className = 'py-3 my-3'>
+                            <h2><strong>Create New Work Order</strong></h2>
+                        </div>
+                    </div>
+                </div>
+
+            <div class = "container">
+            <div class = 'py-2'>
                 <form onSubmit = {this.onSubmit}>
                     <div className = "form-group row">
                         <div className = 'col' style = {{textAlign: 'left'}}>

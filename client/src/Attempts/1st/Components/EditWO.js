@@ -26,8 +26,7 @@ class editWorkorders extends Component{
             w_PSActivity: match.params.Act,
             w_PSActDesc: match.params.ActDesc
         }
-        console.log(match)
-
+   
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -67,7 +66,7 @@ class editWorkorders extends Component{
         axios.put('http://localhost:4006/edit', newWorkorder)
             .then(res => console.log(res.data))
 
-        if(this.state.w_WOnum == 10){
+        if(this.state.w_WOnum === 10){
             this.props.history.push('/alertMessage'); 
         }
 
@@ -94,167 +93,170 @@ class editWorkorders extends Component{
         return(
             <Fragment>
             <div style = {{backgroundColor: '#E7F7F7'}}>
-            <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
-            <Row>
-                <Form inline>
-                <Nav.Link >
-                    <Link to = {'/'} className = 'nav-link'>HOME</Link>
-                </Nav.Link>
-                </Form>
-            </Row>
-            </Navbar>
+            <div style ={{background:"#90a7a7"}}>
+                <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
+                <Row>
+                    <Form inline>
+                    <Nav.Link >
+                        <Link to = {'/'} className = 'nav-link'>BACK</Link>
+                    </Nav.Link>
+                    </Form>
+                </Row>
+                </Navbar>
 
-        
-         <div className = "container">
-            <div className = 'py-3 my-3'>
-                <h1><strong>Edit Work Order</strong></h1>
-            </div>
-    
-            <div>
-
-                <form onSubmit = {this.onSubmit}>
-                    <div className = "form-group row">
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Project Id</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_projectid' 
-                            value = {this.state.w_projectid}
-                            onChange = {this.onChange} />
-                        </div>
-                        <div className = 'col px-2' style = {{textAlign: 'left'}}>
-                            <label>Work Order Number</label>
-                            <input 
-                            type = 'number' 
-                            className = 'form-control' 
-                            name = 'w_WOnum' 
-                            value = {this.state.w_WOnum}
-                            onChange = {this.onChange} />
-
-                        </div>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                                <label>Status</label>
-                                <input 
-                                type = 'text' 
-                                className = 'form-control' 
-                                name = 'w_status' 
-                                value = {this.state.w_status}
-                                onChange = {this.onChange} />
-                        </div>
-
-                     </div>
-
-                     <div className = 'form-group row'>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Description</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_desc' 
-                            value = {this.state.w_desc}
-                            onChange = {this.onChange} />
-                        </div>
-                    </div>
-                    
                 
-                <div className = 'form-group row'>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Location</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_location' 
-                            value = {this.state.w_location}
-                            onChange = {this.onChange} />
-                        </div>
-
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Type</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_type' 
-                            value = {this.state.w_type}
-                            onChange = {this.onChange} />
-                        </div>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Reported Date </label> 
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_reporteddate' 
-                            value = {this.state.w_reporteddate}
-                            onChange = {this.onChange} />
+                    <div className = "container">
+                        <div className = 'py-3 my-3'>
+                            <h2><strong>Edit Work Order</strong></h2>
                         </div>
                     </div>
+                </div>
 
-                    <div className = 'form-group row'>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>TP Id</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_TPID' 
-                            value = {this.state.w_TPID}
-                            onChange = {this.onChange} />
-                        </div>
+                <div class = "container">
+                    <div class = 'py-2'>
+                        <form onSubmit = {this.onSubmit}>
+                            <div className = "form-group row">
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Project Id</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_projectid' 
+                                    value = {this.state.w_projectid}
+                                    onChange = {this.onChange} />
+                                </div>
+                                <div className = 'col px-2' style = {{textAlign: 'left'}}>
+                                    <label>Work Order Number</label>
+                                    <input 
+                                    type = 'number' 
+                                    className = 'form-control' 
+                                    name = 'w_WOnum' 
+                                    value = {this.state.w_WOnum}
+                                    onChange = {this.onChange} />
 
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Project</label>
+                                </div>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                        <label>Status</label>
+                                        <input 
+                                        type = 'text' 
+                                        className = 'form-control' 
+                                        name = 'w_status' 
+                                        value = {this.state.w_status}
+                                        onChange = {this.onChange} />
+                                </div>
 
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_PSProject' 
-                            value = {this.state.w_PSProject}
-                            onChange = {this.onChange} />
-                        </div>
+                            </div>
 
-                        <div className = 'col px-2' style = {{textAlign: 'left'}}>
-                            <label>PS Activity</label>
+                            <div className = 'form-group row'>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Description</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_desc' 
+                                    value = {this.state.w_desc}
+                                    onChange = {this.onChange} />
+                                </div>
+                            </div>
+                            
+                        
+                        <div className = 'form-group row'>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Location</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_location' 
+                                    value = {this.state.w_location}
+                                    onChange = {this.onChange} />
+                                </div>
 
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_PSActivity' 
-                            value = {this.state.w_PSActivity}
-                            onChange = {this.onChange} />
-                        </div>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Type</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_type' 
+                                    value = {this.state.w_type}
+                                    onChange = {this.onChange} />
+                                </div>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Reported Date </label> 
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_reporteddate' 
+                                    value = {this.state.w_reporteddate}
+                                    onChange = {this.onChange} />
+                                </div>
+                            </div>
 
-                    </div>
+                            <div className = 'form-group row'>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>TP Id</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_TPID' 
+                                    value = {this.state.w_TPID}
+                                    onChange = {this.onChange} />
+                                </div>
 
-                    <div className = 'form-group row'>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Project Description</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_PSProjDesc' 
-                            value = {this.state.w_PSProjDesc}
-                            onChange = {this.onChange} />
-                        </div>
-                    </div>
-                    <div className = 'form-group row'>
-                        <div className = 'col' style = {{textAlign: 'left'}}>
-                            <label>Activity Description</label>
-                            <input 
-                            type = 'text' 
-                            className = 'form-control' 
-                            name = 'w_PSActDesc' 
-                            value = {this.state.w_PSActDesc}
-                            onChange = {this.onChange} />
-                        </div>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Project</label>
 
-                    </div>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_PSProject' 
+                                    value = {this.state.w_PSProject}
+                                    onChange = {this.onChange} />
+                                </div>
+
+                                <div className = 'col px-2' style = {{textAlign: 'left'}}>
+                                    <label>PS Activity</label>
+
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_PSActivity' 
+                                    value = {this.state.w_PSActivity}
+                                    onChange = {this.onChange} />
+                                </div>
+
+                            </div>
                     
-                    <div className ='py-3'>
-                        <input type = 'Submit' value = 'Submit' class = 'btn btn-info'/>            
-                    </div>         
-                   
-                </form>
-            </div>
-            </div>
+                            <div className = 'form-group row'>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Project Description</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_PSProjDesc' 
+                                    value = {this.state.w_PSProjDesc}
+                                    onChange = {this.onChange} />
+                                </div>
+                            </div>
+                            <div className = 'form-group row'>
+                                <div className = 'col' style = {{textAlign: 'left'}}>
+                                    <label>Activity Description</label>
+                                    <input 
+                                    type = 'text' 
+                                    className = 'form-control' 
+                                    name = 'w_PSActDesc' 
+                                    value = {this.state.w_PSActDesc}
+                                    onChange = {this.onChange} />
+                                </div>
+
+                            </div>
+                            
+                            <div className ='py-3'>
+                                <input type = 'Submit' value = 'Submit' class = 'btn btn-info'/>            
+                            </div>         
+                        
+                        </form>
+                    </div>
+                </div>
             </div>
             <Navbar class = "navbar fixed-bottom" expand = 'lg' sticky = 'bottom' bg = 'dark'>
                     <p></p>
