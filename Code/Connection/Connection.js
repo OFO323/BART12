@@ -166,7 +166,7 @@ export const Single = (req, res)=>{
 
 export const create = (req, res)=>{
 
-    console.log(req.body['w_WOnum']);
+    console.log(req.body);
 
     const user = {
         "w_projectid": req.body['w_projectid'][0],
@@ -250,8 +250,8 @@ export const remove = (req, res)=>{
             if(err)
                 console.log(err);
             else
-                console.log("Delete Successful")    
-                //res.send(res.row);
+                //console.log("Delete Successful")    
+                res.send(res.row);
     
         })
     })
