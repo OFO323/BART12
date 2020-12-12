@@ -21,7 +21,6 @@ const List = item => (
       <td>{item.list.a_metername}</td>
       <td>{item.list.a_meterreading}</td>
       <td>{item.list.a_readdate}</td>
-      <td>{item.list.a_meterunits}</td>
   </tr>
 )
 
@@ -97,7 +96,7 @@ class Assets extends Component{
               </Nav.Link>
 
               <FormControl name = 'search' type="text" placeholder="Search Assets" className="mr-sm-2" value = {this.state.search} onChange = {this.onChange}/>
-              <Button onClick = {this.onClick} variant="outline-info">Search</Button>
+              <Button onClick = {this.onClick} variant="info">Search</Button>
 
           </Form>
           </Navbar>
@@ -109,7 +108,6 @@ class Assets extends Component{
                     <th>Metername</th>
                     <th>Meter Reading</th>
                     <th>Reading Date</th>
-                    <th>Meter Units</th>
                   </tr>
               </thead>
               <tbody>

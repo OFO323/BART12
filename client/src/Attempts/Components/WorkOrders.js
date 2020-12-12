@@ -108,7 +108,7 @@ class WorkOrders extends Component{
                     <Col >
 
                         <FormControl name = 'search' value = {this.state.search} onChange = {this.onChange} type="text" placeholder="Search Workorders" className="mr-sm-2"/>
-                        <Button  onClick = {this.onClick} variant = 'outline-info'>Search</Button>
+                        <Button  onClick = {this.onClick} variant = 'info'>Search</Button>
 
                     </Col>
                 </Form>

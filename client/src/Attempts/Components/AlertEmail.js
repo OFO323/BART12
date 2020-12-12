@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import * as emailjs from 'emailjs-com';
 import {Link} from "react-router-dom";
 

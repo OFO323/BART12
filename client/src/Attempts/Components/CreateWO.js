@@ -9,24 +9,23 @@ import Row from 'react-bootstrap/Row';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class editWorkorders extends Component{
-    constructor({match}){
-        super(match);
+class CreateWO extends Component{
+    constructor(props){
+        super(props);
         this.state = {
-            w_projectid: match.params.Proj,
-            w_WOnum: match.params.WO,
-            w_desc: match.params.Desc,
-            w_status: match.params.Status,
-            w_reporteddate: match.params.Date,
-            w_location: match.params.Loc,
-            w_type: match.params.Type,
-            w_TPID: match.params.TPID,
-            w_PSProject: match.params.PSProj,
-            w_PSProjDesc: match.params.PSDesc,
-            w_PSActivity: match.params.Act,
-            w_PSActDesc: match.params.ActDesc
+            'w_projectid': " ",
+            'w_WOnum': 0,
+            'w_desc': '',
+            'w_status': '',
+            'w_reporteddate': 0,
+            'w_location': '',
+            'w_type': '',
+            'w_TPID': 0,
+            'w_PSProject': '',
+            'w_PSProjDesc': '',
+            'w_PSActivity': '',
+            'w_PSActDesc': ''
         }
-        console.log(match)
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -62,12 +61,12 @@ class editWorkorders extends Component{
            "w_PSActDesc": this.state.w_PSActDesc
         }
 
-        console.log(newWorkorder)
+        console.log(newWorkorder);
 
-        axios.put('http://localhost:4006/edit', newWorkorder)
+        axios.post('http://localhost:4006/create', newWorkorder)
             .then(res => console.log(res.data))
 
-        if(this.state.w_WOnum == 10){
+        if(this.state.w_WOnum === 10){
             this.props.history.push('/alertMessage'); 
         }
 
@@ -90,10 +89,13 @@ class editWorkorders extends Component{
     }
 
     render(){
+        const {w_WOnum} = this.state.w_WOnum
+
         
         return(
             <Fragment>
             <div style = {{backgroundColor: '#E7F7F7'}}>
+            <div style ={{background:"#90a7a7"}}>
             <Navbar expand = 'lg' sticky = 'top' bg = 'dark' variant = 'dark'>
             <Row>
                 <Form inline>
@@ -103,15 +105,16 @@ class editWorkorders extends Component{
                 </Form>
             </Row>
             </Navbar>
-
         
-         <div className = "container">
-            <div className = 'py-3 my-3'>
-                <h1><strong>Edit Work Order</strong></h1>
-            </div>
-    
-            <div>
+                <div className = "container">
+                        <div className = 'py-3 my-3'>
+                            <h2><strong>Create New Work Order</strong></h2>
+                        </div>
+                    </div>
+                </div>
 
+            <div class = "container">
+            <div class = 'py-2'>
                 <form onSubmit = {this.onSubmit}>
                     <div className = "form-group row">
                         <div className = 'col' style = {{textAlign: 'left'}}>
@@ -202,7 +205,6 @@ class editWorkorders extends Component{
 
                         <div className = 'col' style = {{textAlign: 'left'}}>
                             <label>Project</label>
-
                             <input 
                             type = 'text' 
                             className = 'form-control' 
@@ -210,10 +212,8 @@ class editWorkorders extends Component{
                             value = {this.state.w_PSProject}
                             onChange = {this.onChange} />
                         </div>
-
                         <div className = 'col px-2' style = {{textAlign: 'left'}}>
                             <label>PS Activity</label>
-
                             <input 
                             type = 'text' 
                             className = 'form-control' 
@@ -264,4 +264,4 @@ class editWorkorders extends Component{
     }
 }
 
-export default editWorkorders;
+export default CreateWO;
