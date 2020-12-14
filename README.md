@@ -9,12 +9,14 @@
 
 * [Introduction](#introduction)
 * [Project Description](#project-description)
-* [Technology Used](#technology-used)
-* [Packages Used](#packages-used)
-* [Installation](#installation)
-* [Description of the Pages](#description-of-the-pages)
-* [Description of the Connections](#description-of-the-connections)
-* [About the Database](#about-the-database)
+* [Technology](#technology)
+  * [Tools Used](#tools-used)
+  * [Packages Used](#packages-used)
+  * [Installation](#installation)
+* [Detailed Application Description](#detailed-application-description)
+  * [About the Front-end](#about-the-front-end)
+  * [Back-end Connections](#back-end-connections)
+  * [About the Database](#about-the-database)
 
 
 ## Introduction
@@ -25,12 +27,14 @@ BART currently employs many different reports on crucial information related to 
 
 The web application displays several main pages including the home page, asset page, work order page, and create work order page. On the home page, the user can see a notification table (alerts, success, and progress) and recent updates table. In the asset page, the list of assets can be seen with each row having a link to an individual asset page featuring a graph of the meter readings and more details on the asset. In the work order page, a list of work orders can be seen with each row having a link to an edit work order page. The create work order page will require all spaces to be filled out to create a new work order. The search bar requires information from the asset or work order table to be inputted and upon hitting submit, the corresponding rows in the asset or work order table with the information will be displayed. 
 
-## Technology Used
+## Technology
+
+###Tools Used
 
 * Languages: SQL, Javascript, HTML, CSS
 * Software: Visual Studio Code
 
-## Packages Used
+### Packages Used
 
 Client folder:
 * react: 17.0.1
@@ -58,9 +62,9 @@ Code folder:
 * sqlite3: 5.0.0
 
 
-## Installation
+### Installation
 
-To run the program, you will need to download the latest version of Node.js from https://nodejs.org/en/.
+Prerequisites: Node.js `^15.3.0`, npm `^6.14.9`.
 
 To install the program into your local system, in your teminal, run: 
 ```
@@ -99,9 +103,11 @@ Starting the development server...
 ```
 The web application should automatically pop-up afterwards with a few yellow warnings, which can be ignored.
 
-## Description of the Pages
+## Detailed Application Description 
 
-## Description of the Connections
+### About the Front-end
+
+### Back-end Connections
 
 Our product contains 2 main connections that make it possible for the user to interact with the database. Each of the connections is of great importance as they make it possible for the user to be able to interact with the database in a convenient and easy-to-understand manner. 
 
@@ -110,7 +116,7 @@ The first connection is our link from the back-end server to the database. This 
 The second connection involves connecting our back-end, with prepared routes, to our frontend which will be using said routes to make requests to the back-end. For this connection to be possible there must first a front-end server for the back-end to connect with. The front-end server is created by adding in “ReactJS” libraries that allow us to create a client website server where we can functionalities which will serve to create requests. Since “ReactJS” only contains a fetch function, which serves to only receive data from the database we used another tool, ‘axios’, to make the request for updating and deleting from our database by making a request using our back-end server routes. 
 
 
-## About the Database
+### About the Database
 
 Our database contains several data tables starting with our Asset table. This table stores the location, the meter names, meter readings, different read dates and the department in charge of the asset. Our next table is for the Work orders this table contains the identification of the work order, as well as the project, status, and report date that the work order is created for. We have also created a Department table that contains departments in charge of projects with their unique identification numbers. Along with the Department table we have created a “projManager” data table where we have mapped the different possible managers there can be and given them each their own identification number. Next is our Project data table, this table contains the identification number given to projects when they are created, the manager as well as the department in charge of the project. We have a table, “projAssets”, that is used to link projects to their respective assets. Our final datatable contains information about recent activity involving projects and assets and assigned them a type, “progress”, ‘success’,  ‘alert’  which is determined by the progress of the project. 
 
