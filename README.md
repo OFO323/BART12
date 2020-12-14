@@ -6,8 +6,8 @@ CSE 120 Project
 * Goal: Provide new database functionalities to BART's transporation system such as maintanence, alerts, and requests 
 
 ## Table of Contents
-* [Packages Used] (#packages-used)
-* [Installation] (#installation)
+* [Packages Used](https://github.com/OFO323/BART12#packages-used)
+* [Installation](https://github.com/OFO323/BART12#installation)
 
 ## Packages Used
 Client folder:
