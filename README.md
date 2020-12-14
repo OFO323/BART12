@@ -1,13 +1,17 @@
-# BART12
+# Business Applications for a Public Agency
 
+* Members: Rodolfo Higuera, Sarah Lee, Alvin Lim, Denylson Fuentes.
+* Goal: Provide new database functionalities to BART's transporation system such as maintanence, alerts, and requests.
+* Fall 2020 CSE 120 Project
+* Team 12: Titanuim Turtles
 
-CSE 120 Project 
-* Members: Rodolfo Higuera, Sarah Lee, Alvin Lim, Denylson Fuentes 
-* Goal: Provide new database functionalities to BART's transporation system such as maintanence, alerts, and requests 
 
 ## Table of Contents
+* [Description](https://github.com/OFO323/BART12#description)
 * [Packages Used](https://github.com/OFO323/BART12#packages-used)
 * [Installation](https://github.com/OFO323/BART12#installation)
+
+## Description
 
 ## Packages Used
 Client folder:
