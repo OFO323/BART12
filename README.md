@@ -23,7 +23,7 @@ BART currently employs many different reports on crucial information related to 
 
 ## Project Description
 
-The web application displays several main pages including the home page, asset page, work order page, and create work order page. On the home page, the user can see a notification table (alerts, success, and progress) and recent updates table. In the asset page, the list of assets can be seen with each row having a link to an individual asset page featuring a graph of the meter readings and more details on the asset. In the work order page, a list of work orders can be seen with each row having a link to an edit work order page. The create work order page will require all spaces to be filled out to create a new work order.
+The web application displays several main pages including the home page, asset page, work order page, and create work order page. On the home page, the user can see a notification table (alerts, success, and progress) and recent updates table. In the asset page, the list of assets can be seen with each row having a link to an individual asset page featuring a graph of the meter readings and more details on the asset. In the work order page, a list of work orders can be seen with each row having a link to an edit work order page. The create work order page will require all spaces to be filled out to create a new work order. The search bar requires information from the asset or work order table to be inputted and upon hitting submit, the corresponding rows in the asset or work order table with the information will be displayed. 
 
 ## Technology Used
 
