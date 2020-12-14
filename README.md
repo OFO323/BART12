@@ -29,7 +29,7 @@ The web application displays several main pages including the home page, asset p
 
 ## Technology
 
-###Tools Used
+### Tools Used
 
 * Languages: SQL, Javascript, HTML, CSS
 * Software: Visual Studio Code
