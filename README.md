@@ -1,6 +1,6 @@
 # Business Applications for a Public Agency
 
-* Members: Rodolfo Higuera, Sarah Lee, Alvin Lim, Denylson Fuentes.
+* Members: Rodolfo Higuera, Sarah Lee, Alvin Lim, Denylson Fuentes
 * Fall 2020 CSE 120 Project
 * Team 12: Titanuim Turtles
 
@@ -74,13 +74,13 @@ $ git clone https://github.com/OFO323/BART12
 
 2. For the project to be able to launch and configure locally you have the latest version of npm installed into your system.
 ```
-$npm install npm@latest -g
+$ npm install npm@latest -g
 ```
 
 3. To run the web application, run the following in the terminal:
 ```
-$cd Code
-$npm start
+$ cd Code
+$ npm start
 ```
 The terminal should now show the output:
 ```
@@ -93,8 +93,8 @@ Success
 4. Open a new terminal without closing the other terminal. Enter the following:
 
 ```
-$cd client
-$npm start
+$ cd client
+$ npm start
 ```
 The terminal should now show the output:
 ```
@@ -131,4 +131,4 @@ Our database contains several data tables starting with our Asset table. This ta
 
 # Quesions
 
-For any questions, you can [create a new issue](https://github.com/OFO323/BART12/issues)
+For any questions, you can [create a new issue](https://github.com/OFO323/BART12/issues).
