@@ -10,6 +10,7 @@
 * [Description](https://github.com/OFO323/BART12#description)
 * [Packages Used](https://github.com/OFO323/BART12#packages-used)
 * [Installation](https://github.com/OFO323/BART12#installation)
+* [About the Database](https://github.com/OFO323/BART12#about-the-database)
 
 ## Description
 
@@ -42,9 +43,19 @@ Code folder:
 
 ## Installation
 
-Download the code in the repository. To run the program, you will need to download Node.js from https://nodejs.org/en/.
+To run the program, you will need to download the latest version of Node.js from https://nodejs.org/en/.
 
-In the terminal, run the following:
+To install the program into your local system, in your teminal, run: 
+```
+$ git clone https://github.com/OFO323/BART12
+```
+
+For the project to be able to launch and configure locally you have the latest version of npm installed into your system.
+```
+$npm install npm@latest -g
+```
+
+To run the web application, run the following in the terminal:
 ```
 $cd Code
 $npm start
@@ -69,5 +80,6 @@ The terminal should now show the output:
 > react-scripts start
 Starting the development server...
 ```
-The web application should automatically pop-up afterwards.
+The web application should automatically pop-up afterwards with a few yellow warnings, which can be ignored.
 
+## About the Database
