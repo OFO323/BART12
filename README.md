@@ -107,6 +107,14 @@ The web application should automatically pop-up afterwards with a few yellow war
 
 ## About the Front-end
 
+We have created several React components to achieve the current front end functionality for this web application.
+
+Firstly, the home page is itself a component that utilizes the ‘notifications’ and ‘updatesTable’ components that each fetch the appropriate data from the database. These data fetches may utilize React’s ‘props’ to communicate data from component to component and pull the correct information.
+
+The Assets page uses the ‘Lists’ component to fetch, structure, and display a list of all the assets and its data with a connection to its own asset page. The use of props allowed us to link each listed asset with its own page dynamically and pull the appropriate data from the database and display all its database information along with a meter reading history graph. 
+
+Similar to the Assets’ page, the Workorders page lists out all the work order data pulled from the database so far. Each Workorder is linked to its own ‘Edit’ component that takes in all the data filled into the input boxes and sends an update query to the backend and updates the correct tuple with the new user input. The “createWO” component works similarly to the “editWO” but sends a new data insert statement to the backend that adds the user input as its own tuple to the appropriate datatable. Submitting a new work order or editing an existing one may utilize the “AlertEmail” component to generate an email to be sent to the project manager and other employees directly involved in the work order in question.  
+
 ## Back-end Connections
 
 Our product contains 2 main connections that make it possible for the user to interact with the database. Each of the connections is of great importance as they make it possible for the user to be able to interact with the database in a convenient and easy-to-understand manner. 
