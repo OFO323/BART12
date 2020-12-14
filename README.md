@@ -1,21 +1,34 @@
 # Business Applications for a Public Agency
 
 * Members: Rodolfo Higuera, Sarah Lee, Alvin Lim, Denylson Fuentes.
-* Goal: Provide new database functionalities to BART's transporation system such as maintanence, alerts, and requests.
 * Fall 2020 CSE 120 Project
 * Team 12: Titanuim Turtles
 
 
 ## Table of Contents
+
 * [Introduction](#introduction)
+* [Project Description](#project-description)
+* [Technology Used](#technology-used)
 * [Packages Used](#packages-used)
 * [Installation](#installation)
-* [Detailed Description of the Connections](#detailed-description-of-the-connections)
+* [Description of the Pages](#description-of-the-pages)
+* [Description of the Connections](#description-of-the-connections)
 * [About the Database](#about-the-database)
 
 
 ## Introduction
 
+BART currently employs many different reports on crucial information related to capital projects. Our app strives to consolidate all useful reporting data into easy-to-use business data analytics tools that notify the user of important report updates, analyze asset data history, and create new or edit current work orders.
+
+## Project Description
+
+The web application displays several main pages including the home page, asset page, work order page, and create work order page. On the home page, the user can see a notification table (alerts, success, and progress) and recent updates table. In the asset page, the list of assets can be seen with each row having a link to an individual asset page featuring a graph of the meter readings and more details on the asset. In the work order page, a list of work orders can be seen with each row having a link to an edit work order page. The create work order page will require all spaces to be filled out to create a new work order.
+
+## Technology Used
+
+* Languages: SQL, Javascript, HTML, CSS
+* Software: Visual Studio Code
 
 ## Packages Used
 
@@ -86,7 +99,9 @@ Starting the development server...
 ```
 The web application should automatically pop-up afterwards with a few yellow warnings, which can be ignored.
 
-## Detailed Description of the Connections
+## Description of the Pages
+
+## Description of the Connections
 
 Our product contains 2 main connections that make it possible for the user to interact with the database. Each of the connections is of great importance as they make it possible for the user to be able to interact with the database in a convenient and easy-to-understand manner. 
 
