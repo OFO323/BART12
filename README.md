@@ -7,10 +7,12 @@
 
 
 ## Table of Contents
-* [Description](https://github.com/OFO323/BART12#description)
-* [Packages Used](https://github.com/OFO323/BART12#packages-used)
-* [Installation](https://github.com/OFO323/BART12#installation)
-* [About the Database](https://github.com/OFO323/BART12#about-the-database)
+* [Description](#description)
+* [Packages Used](#packages-used)
+* [Installation](#installation)
+* [Detailed Description of the Database Connection](#detailed-description-of-the-database-connection)
+* [About the Database](#about-the-database)
+
 
 ## Description
 
@@ -81,5 +83,14 @@ The terminal should now show the output:
 Starting the development server...
 ```
 The web application should automatically pop-up afterwards with a few yellow warnings, which can be ignored.
+
+## Detailed Description of the Database Connection
+
+Our product contains 2 main connections that make it possible for the user to interact with the database. Each of the connections is of great importance as they make it possible for the user to be able to interact with the database in a convenient and easy-to-understand manner. 
+
+The first connection is our link from the back-end server to the database. This connection valuable as it the one that will be able to let us make a request to the database using a backend server that can give us the data in a more structured format using what is javascript object notation. For this connection to be possible we were first to gather the necessary tools for not only the backend server but also for the database. Using the library express and node from javascript we are able to launch a backend server. For the connection to the database, we used a javascript library ‘sqlite3’  that is able to let us choose what type of connection we would like, and in this case, we wanted the connection to let us read and write into the database. Once a connection was established multiple functions were needed to be created as they would serve the purpose of either fetching, updating, or deleting from the database. However, with the multiple functions being created not all were accessible to the backend server yet, this is why another library from javascript was needed. Using a ‘routes’ library we were able to map all the different functions with their individual address. With this final step once the backend server is launched, we are able to make different requests to the database and receive a response. 
+
+The second connection involves connecting our back-end, with prepared routes, to our frontend which will be using said routes to make requests to the back-end. For this connection to be possible there must first a front-end server for the back-end to connect with. The front-end server is created by adding in “ReactJS” libraries that allow us to create a client website server where we can functionalities which will serve to create requests. Since “ReactJS” only contains a fetch function, which serves to only receive data from the database we used another tool, ‘axios’, to make the request for updating and deleting from our database by making a request using our back-end server routes. 
+
 
 ## About the Database
