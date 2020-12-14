@@ -7,16 +7,18 @@
 
 
 ## Table of Contents
-* [Description](#description)
+* [Introduction](#introduction)
 * [Packages Used](#packages-used)
 * [Installation](#installation)
-* [Detailed Description of the Database Connection](#detailed-description-of-the-database-connection)
+* [Detailed Description of the Connections](#detailed-description-of-the-connections)
 * [About the Database](#about-the-database)
 
 
-## Description
+## Introduction
+
 
 ## Packages Used
+
 Client folder:
 * react: 17.0.1
 * bootstrap 4: 4.5.3
@@ -84,7 +86,7 @@ Starting the development server...
 ```
 The web application should automatically pop-up afterwards with a few yellow warnings, which can be ignored.
 
-## Detailed Description of the Database Connection
+## Detailed Description of the Connections
 
 Our product contains 2 main connections that make it possible for the user to interact with the database. Each of the connections is of great importance as they make it possible for the user to be able to interact with the database in a convenient and easy-to-understand manner. 
 
@@ -94,3 +96,6 @@ The second connection involves connecting our back-end, with prepared routes, to
 
 
 ## About the Database
+
+Our database contains several data tables starting with our Asset table. This table stores the location, the meter names, meter readings, different read dates and the department in charge of the asset. Our next table is for the Work orders this table contains the identification of the work order, as well as the project, status, and report date that the work order is created for. We have also created a Department table that contains departments in charge of projects with their unique identification numbers. Along with the Department table we have created a “projManager” data table where we have mapped the different possible managers there can be and given them each their own identification number. Next is our Project data table, this table contains the identification number given to projects when they are created, the manager as well as the department in charge of the project. We have a table, “projAssets”, that is used to link projects to their respective assets. Our final datatable contains information about recent activity involving projects and assets and assigned them a type, “progress”, ‘success’,  ‘alert’  which is determined by the progress of the project. 
+
